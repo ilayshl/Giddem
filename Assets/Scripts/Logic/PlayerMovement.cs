@@ -11,10 +11,12 @@ public class PlayerMovement : MonoBehaviour
     Matrix4x4 _isoMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
 
     private Rigidbody _rb;
+    private AnimationManager _am;
 
     void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        _am = GetComponent<AnimationManager>();
     }
 
     void Update()
@@ -40,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
             var rotation = Quaternion.LookRotation(ToIso(_input), Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, turnSpeed * Time.deltaTime);
         }
+        _am.anim.SetFloat("moveSpeed", _input.magnitude);
     }
 
     private void Move()
