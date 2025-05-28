@@ -5,16 +5,50 @@ using UnityEngine;
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {
-    void Start()
+    [SerializeField] private float moveSpeed = 5;
+    [SerializeField] private float turnSpeed = 360;
+    private Vector3 _input;
+    Matrix4x4 _isoMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
+
+    private Rigidbody _rb;
+
+    void Awake()
     {
-        
+        _rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        GatherInput();
+        Look();
+    }
+
+    void FixedUpdate()
+    {
+        Move();
+    }
+
+    private void GatherInput()
+    {
+        _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+    }
+
+    private void Look()
+    {
+        if (_input != Vector3.zero)
         {
-            GameManager.SaySomething();
+            var rotation = Quaternion.LookRotation(ToIso(_input), Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, turnSpeed * Time.deltaTime);
         }
+    }
+
+    private void Move()
+    {
+        _rb.MovePosition(transform.position + (ToIso(_input).normalized * _input.normalized.magnitude) * moveSpeed * Time.deltaTime);
+    }
+
+    private Vector3 ToIso(Vector3 input)
+    {
+        return _isoMatrix.MultiplyPoint3x4(input);
     }
 }
