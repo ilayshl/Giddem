@@ -651,8 +651,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4243, y: 1.4243, z: 1.4243}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 7.0000005, y: 7.0000005, z: 7.0000005}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1212042938}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -701,7 +701,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f5ffb23c71776424f8f776c97d3fd190, type: 2}
+  - {fileID: 2100000, guid: 4084a843b9ef6af45a63b7163f9fbefb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -932,6 +932,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5103650166496499159, guid: bb517174570ac1b46a62ce0904954201, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7315689767861901733, guid: bb517174570ac1b46a62ce0904954201, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 9dff71e03b58f8242bb7f4b4da51c933, type: 3}
+    - target: {fileID: 7315689767861901733, guid: bb517174570ac1b46a62ce0904954201, type: 3}
+      propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
