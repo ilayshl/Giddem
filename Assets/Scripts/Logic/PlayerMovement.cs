@@ -41,6 +41,11 @@ public class PlayerMovement : MonoBehaviour
         {
             var rotation = Quaternion.LookRotation(ToIso(_input), Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, turnSpeed * Time.deltaTime);
+            _am.anim.SetBool("isRunning", true);
+        }
+        else
+        {
+            _am.anim.SetBool("isRunning", false);
         }
         _am.anim.SetFloat("moveSpeed", _input.magnitude);
     }
