@@ -9,7 +9,8 @@ public class PlayerMovement : MonoBehaviour
     private const float ATTACK_COOLDOWN = 1f;
     [SerializeField] private float maxSpeed = 5;
     [SerializeField] private float turnSpeed = 360;
-    [SerializeField] private float currentSpeed;
+    [SerializeField] private float punchDashStrength;
+    private float currentSpeed;
     private Vector3 _input;
     private Coroutine attackCooldown;
     Matrix4x4 _isoMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
@@ -57,6 +58,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Rotates the object in the correct rotation.
+    /// </summary>
     private void Look()
     {
         if (_input != Vector3.zero)
@@ -72,6 +76,9 @@ public class PlayerMovement : MonoBehaviour
         _am.anim.SetFloat("moveSpeed", _input.normalized.magnitude);
     }
 
+    /// <summary>
+    /// Moves the object forward.
+    /// </summary>
     private void Move()
     {
         /* if (currentSpeed < maxSpeed)
@@ -89,10 +96,8 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator StartAttackCooldown(float time)
     {
-        Debug.Log("Starting cooldown");
         yield return new WaitForSeconds(time);
         attackCooldown = null;
-        Debug.Log("Finished cooldown");
     }
 
     private void StartAttack()
@@ -103,6 +108,14 @@ public class PlayerMovement : MonoBehaviour
                 currentSpeed *= 0.2f;
             }
     }
+
+    /// <summary>
+    /// To give that dashing effect when attacking
+    /// </summary>
+    /* public void AttackDash()
+    {
+        _rb.AddForce(transform.forward * punchDashStrength, ForceMode.Impulse);
+    } */
 
     public void FinishAttack()
     {

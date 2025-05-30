@@ -6,7 +6,6 @@ using UnityEngine;
 public class AnimationManager : MonoBehaviour
 {
     [HideInInspector] public Animator anim;
-    private int _comboCount = 0;
 
     void Awake()
     {
@@ -26,8 +25,6 @@ public class AnimationManager : MonoBehaviour
 
     public void StopAttack()
     {
-        _comboCount = 0;
-        anim.SetInteger("comboCount", _comboCount);
         anim.SetBool("isAttacking", false);
     }
 
