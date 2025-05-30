@@ -6,9 +6,13 @@ using UnityEngine;
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5;
+    private const float ATTACK_COOLDOWN = 1f;
+    [SerializeField] private float maxSpeed = 5;
     [SerializeField] private float turnSpeed = 360;
+    [SerializeField] private float punchDashStrength;
+    private float currentSpeed;
     private Vector3 _input;
+    private Coroutine attackCooldown;
     Matrix4x4 _isoMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
 
     private Rigidbody _rb;
@@ -18,6 +22,11 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _am = GetComponent<AnimationManager>();
+    }
+
+    void Start()
+    {
+        currentSpeed = maxSpeed;
     }
 
     void Update()
@@ -39,12 +48,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckForClick()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0) && attackCooldown == null)
         {
-            _am.OnAttack();
+            StartAttack();
+        }
+        else if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            FinishAttack();
         }
     }
 
+    /// <summary>
+    /// Rotates the object in the correct rotation.
+    /// </summary>
     private void Look()
     {
         if (_input != Vector3.zero)
@@ -60,6 +76,9 @@ public class PlayerMovement : MonoBehaviour
         _am.anim.SetFloat("moveSpeed", _input.normalized.magnitude);
     }
 
+    /// <summary>
+    /// Moves the object forward.
+    /// </summary>
     private void Move()
     {
         /* if (currentSpeed < maxSpeed)
@@ -67,11 +86,47 @@ public class PlayerMovement : MonoBehaviour
             currentSpeed += acceleration * Time.fixedDeltaTime;
             currentSpeed = Mathf.Min(currentSpeed, maxSpeed);
         } */
-        _rb.MovePosition(transform.position + (ToIso(_input).normalized * _input.normalized.magnitude) * moveSpeed * Time.fixedDeltaTime);
+        _rb.MovePosition(transform.position + (ToIso(_input).normalized * _input.normalized.magnitude) * currentSpeed * Time.fixedDeltaTime);
     }
 
     private Vector3 ToIso(Vector3 input)
     {
         return _isoMatrix.MultiplyPoint3x4(input);
+    }
+
+    private IEnumerator StartAttackCooldown(float time)
+    {
+        yield return new WaitForSeconds(time);
+        attackCooldown = null;
+    }
+
+    private void StartAttack()
+    {
+        _am.OnAttack();
+            if (currentSpeed == maxSpeed)
+            {
+                currentSpeed *= 0.2f;
+            }
+    }
+
+    /// <summary>
+    /// To give that dashing effect when attacking
+    /// </summary>
+    /* public void AttackDash()
+    {
+        _rb.AddForce(transform.forward * punchDashStrength, ForceMode.Impulse);
+    } */
+
+    public void FinishAttack()
+    {
+        if (attackCooldown == null)
+        {
+            _am.StopAttack();
+            attackCooldown = StartCoroutine(StartAttackCooldown(ATTACK_COOLDOWN));
+            if (currentSpeed != maxSpeed)
+            {
+                currentSpeed = maxSpeed;
+            }
+        }
     }
 }
