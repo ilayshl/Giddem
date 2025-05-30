@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         GatherInput();
+        CheckForClick();
         Look();
     }
 
@@ -35,24 +37,37 @@ public class PlayerMovement : MonoBehaviour
         _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
     }
 
+    private void CheckForClick()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            _am.OnAttack();
+        }
+    }
+
     private void Look()
     {
         if (_input != Vector3.zero)
         {
             var rotation = Quaternion.LookRotation(ToIso(_input), Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, turnSpeed * Time.deltaTime);
-            _am.anim.SetBool("isRunning", true);
+            _am.SetRunning(true);
         }
         else
         {
-            _am.anim.SetBool("isRunning", false);
+            _am.SetRunning(false);
         }
-        _am.anim.SetFloat("moveSpeed", _input.magnitude);
+        _am.anim.SetFloat("moveSpeed", _input.normalized.magnitude);
     }
 
     private void Move()
     {
-        _rb.MovePosition(transform.position + (ToIso(_input).normalized * _input.normalized.magnitude) * moveSpeed * Time.deltaTime);
+        /* if (currentSpeed < maxSpeed)
+        {
+            currentSpeed += acceleration * Time.fixedDeltaTime;
+            currentSpeed = Mathf.Min(currentSpeed, maxSpeed);
+        } */
+        _rb.MovePosition(transform.position + (ToIso(_input).normalized * _input.normalized.magnitude) * moveSpeed * Time.fixedDeltaTime);
     }
 
     private Vector3 ToIso(Vector3 input)
