@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        ChangeGameState();
+        ChangeGameState(GameState.Menu);
     }
 
     public void ChangeGameState(GameState newState = GameState.Active)
@@ -29,16 +29,16 @@ public class GameManager : MonoBehaviour
         switch (newState)
         {
             case GameState.Active:
-
+                Debug.Log("Game is active.");
                 break;
             case GameState.Pause:
-
+                Debug.Log("Game is paused.");
                 break;
             case GameState.Menu:
-
+                Debug.Log("Game is in main menu.");
                 break;
             case GameState.Inventory:
-
+                Debug.Log("Game is in inventory.");
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);

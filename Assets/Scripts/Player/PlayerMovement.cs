@@ -1,5 +1,9 @@
+using System;
 using System.Collections;
+using Unity.Mathematics;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Holds the basic movement of the player.
@@ -13,15 +17,19 @@ public class PlayerMovement : MonoBehaviour
     private float currentSpeed;
     private Vector3 _input;
     private Coroutine attackCooldown;
+    private Vector3 attackRotation;
     Matrix4x4 _isoMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
 
     private Rigidbody _rb;
     private AnimationManager _am;
 
+    private LayerMask playerLayer;
+
     void Awake()
     {
         _rb = GetComponent<Rigidbody>();
         _am = GetComponent<AnimationManager>();
+        //PlayerManager.OnPlayerStateChanged += 
     }
 
     void Start()
@@ -63,17 +71,27 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Look()
     {
-        if (_input != Vector3.zero)
+        if (PlayerManager.Instance.state == PlayerState.Attack)
         {
-            var rotation = Quaternion.LookRotation(ToIso(_input), Vector3.up);
+            var rotation = Quaternion.LookRotation(attackRotation, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, turnSpeed * Time.deltaTime);
-            _am.SetRunning(true);
         }
         else
         {
-            _am.SetRunning(false);
+
+            if (_input != Vector3.zero)
+            {
+                var rotation = Quaternion.LookRotation(ToIso(_input), Vector3.up);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, turnSpeed * Time.deltaTime);
+                _am.SetRunning(true);
+            }
+            else
+            {
+                _am.SetRunning(false);
+            }
         }
         _am.anim.SetFloat("moveSpeed", _input.normalized.magnitude);
+
     }
 
     /// <summary>
@@ -102,11 +120,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void StartAttack()
     {
-        _am.OnAttack();
-            if (currentSpeed == maxSpeed)
-            {
-                currentSpeed *= 0.2f;
-            }
+        if (PlayerManager.Instance.state != PlayerState.Attack)
+        {
+            PlayerManager.Instance.ChangeGameState(PlayerState.Attack);
+            currentSpeed *= 0.2f;
+            _am.OnAttack();
+            attackRotation = CalculateAttackRotation();
+        }
+
     }
 
     /// <summary>
@@ -121,12 +142,48 @@ public class PlayerMovement : MonoBehaviour
     {
         if (attackCooldown == null)
         {
-            _am.StopAttack();
-            attackCooldown = StartCoroutine(StartAttackCooldown(ATTACK_COOLDOWN));
-            if (currentSpeed != maxSpeed)
+            if (PlayerManager.Instance.state == PlayerState.Attack)
             {
+                _am.StopAttack();
+                attackCooldown = StartCoroutine(StartAttackCooldown(ATTACK_COOLDOWN));
                 currentSpeed = maxSpeed;
+                PlayerManager.Instance.ChangeGameState();
             }
         }
     }
+
+    private Vector3 CalculateAttackRotation()
+    {
+        Vector3 mouse = Input.mousePosition;
+        Ray castPoint = Camera.main.ScreenPointToRay(mouse);
+        RaycastHit hit;
+        if (Physics.Raycast(castPoint, out hit, Mathf.Infinity, ~playerLayer))
+        {
+            Vector3 requiredHitPoint;
+            Vector3 playerHeight = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+            Vector3 hitPoint = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+            float length = Vector3.Distance(playerHeight, hitPoint);
+            var degree = 30;
+            var radian = degree * Mathf.Deg2Rad;
+            float hypote = length / (Mathf.Sin(radian));
+            float distanceFromCamera = hit.distance;
+
+            if (transform.position.y > hit.point.y)
+            {
+                requiredHitPoint = castPoint.GetPoint(distanceFromCamera - hypote);
+            }
+            else if (transform.position.y < hit.point.y)
+            {
+                requiredHitPoint = castPoint.GetPoint(distanceFromCamera + hypote);
+            }
+            else
+            {
+                requiredHitPoint = castPoint.GetPoint(distanceFromCamera);
+            }
+
+            return requiredHitPoint - transform.position;
+        }
+        return transform.forward;
+    }
+
 }
