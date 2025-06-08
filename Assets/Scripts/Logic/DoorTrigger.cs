@@ -15,7 +15,7 @@ public class DoorTrigger : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("Player here");
-            doorTrigger.SetTrigger(doorTrigger.ToString());
+            doorTrigger.SetTrigger("doorTrigger");
         }
     }
 }
