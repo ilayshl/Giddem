@@ -1163,7 +1163,6 @@ Transform:
   - {fileID: 600230084}
   - {fileID: 410087041}
   - {fileID: 832575519}
-  - {fileID: 1020644523}
   m_Father: {fileID: 1212042938}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &436071133 stripped
@@ -2499,7 +2498,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 421155835}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2003498962265969326, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2560,7 +2559,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3852222411428416315, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 2073818461}
   m_SourcePrefab: {fileID: 100100000, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
 --- !u!1 &946156205 stripped
 GameObject:
@@ -2687,6 +2689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47872a121bf784e4894636bdb9f8b6f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  input: 0
 --- !u!1001 &1007186971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2778,11 +2781,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 3492137395030731995, guid: 48ecaa393d8d73048b29f5973f2c9a78, type: 3}
---- !u!4 &1020644523 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6413001906572994086, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
-  m_PrefabInstance: {fileID: 922936760}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1027796820 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6056c6bfa8b1fe849b51343efbed1624, type: 3}
@@ -5473,6 +5471,23 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 244794248834077578, guid: 6056c6bfa8b1fe849b51343efbed1624, type: 3}
+--- !u!1 &2073818455 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3852222411428416315, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
+  m_PrefabInstance: {fileID: 922936760}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2073818461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073818455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928b715a9b66a46a99fc03cf4b6918ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2081120719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5635,6 +5650,7 @@ SceneRoots:
   - {fileID: 1212042938}
   - {fileID: 2050614604}
   - {fileID: 1258034154}
+  - {fileID: 922936760}
   - {fileID: 62228516}
   - {fileID: 325932271}
   - {fileID: 1988250568}
