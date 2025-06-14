@@ -43,7 +43,7 @@ public class PlayerAnimation : MonoBehaviour
 
                 break;
         }
-            SetRunning(newState == PlayerState.Run);
+        SetRunning(newState == PlayerState.Run);
     }
 
     private void SetRunning(bool value)

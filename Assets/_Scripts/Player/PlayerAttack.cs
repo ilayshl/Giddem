@@ -45,6 +45,9 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Starts the AttackCooldown coroutine and resets PlayerStates
+    /// </summary>
     private void FinishAttack()
     {
         if (attackCooldown == null)
@@ -57,6 +60,10 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Whenever an attack animation ends, it checks if left click is still held.
+    /// TO BE USED BY ANIMATIONS
+    /// </summary>
     private void CheckFinishAttack()
     {
         if (Input.GetKey(KeyCode.Mouse0) == false)
