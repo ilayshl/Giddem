@@ -66,8 +66,6 @@ public class PlayerMovement : MonoBehaviour
         _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
     }
 
-
-
     /// <summary>
     /// Rotates the object in the correct rotation.
     /// </summary>

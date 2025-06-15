@@ -5,11 +5,13 @@ using UnityEngine;
 /// </summary>
 public abstract class Arm : MonoBehaviour
 {
-    [SerializeField] ArmData correspondingArm;
+    [SerializeField] protected ArmData correspondingArm;
 
-    protected abstract void ArmAttack();
+    protected abstract void OnEquip();
+    //All visual logic goes here.
+    protected abstract void Attack();
     //Logic for normal attack, includes the animation from the corresponding ArmData
-    protected abstract void ArmSpecialAttack();
+    protected abstract void SpecialAttack();
     //Logic for special skill, abstract keyword in order to override in every inheritance
 
 }

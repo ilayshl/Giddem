@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09b354ad5b7e64f8ea319f753d13a66d, type: 3}
-  m_Name: GrappleHookArm
+  m_Name: DefaultArm
   m_EditorClassIdentifier: 
-  armName: Grapple Arm
-  correspondingArm: {fileID: 0}
-  armAnimation: {fileID: 0}
+  armName: 
+  armAnimation: []
   armModel: {fileID: 0}
   armVFX: []
+  attackColliders: []
   skillName: 
   skillAnimation: {fileID: 0}
   skillVFX: {fileID: 0}
   skillSFX: []
+  skillColliders: []
