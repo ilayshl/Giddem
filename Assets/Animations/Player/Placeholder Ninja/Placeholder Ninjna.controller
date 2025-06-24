@@ -153,7 +153,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f81a90d426b265a40a7141c93e2a16e2, type: 2}
+  m_Motion: {fileID: 7400000, guid: 1c14595c5bc985545865f72f6c672a7d, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -352,7 +352,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player
+  m_Name: Placeholder Ninjna
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: moveSpeed
@@ -587,7 +587,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c69de26eeababea45a2140b0b4b96f54, type: 2}
+  m_Motion: {fileID: 7400000, guid: 72125c654971c434a83a04d3eb274856, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
