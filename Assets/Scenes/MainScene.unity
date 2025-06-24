@@ -2914,12 +2914,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7600510173254099529, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
       propertyPath: m_Materials.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7600510173254099529, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: 94b63bea1b920024b9972b3b5a1c940e, type: 2}
+      objectReference: {fileID: -876546973899608171, guid: 7b6386cedae754a019fd177579c03ce9, type: 3}
     - target: {fileID: 7724500025871920946, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
       propertyPath: turnSpeed
       value: 720
