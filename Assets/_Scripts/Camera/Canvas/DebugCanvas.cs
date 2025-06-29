@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class DebugCanvas : MonoBehaviour
 {
+    [SerializeField] private Canvas debugCanvas;
     [SerializeField] private TextMeshProUGUI stateText;
     void Awake()
     {
@@ -12,6 +13,14 @@ public class DebugCanvas : MonoBehaviour
     void OnDestroy()
     {
         PlayerManager.OnPlayerStateChanged -= OnPlayerStateChanged;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            debugCanvas.gameObject.SetActive(!debugCanvas.isActiveAndEnabled);
+        }
     }
 
     private void OnPlayerStateChanged(PlayerState state)

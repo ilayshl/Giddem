@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerDash : MonoBehaviour
 {
     private const float DASH_DURATION = 0.25f;
-    private const float DASH_POWER = 4f;
+    private const float DASH_POWER = 3f;
     public float dashCooldown = 1.5f; //Public to be edited in the game via attributes
     [SerializeField] private int dashLimit = 2; //How many consecutive dashes the player can perform. 
     private Coroutine _dashWindow;
@@ -38,8 +38,9 @@ public class PlayerDash : MonoBehaviour
             {
                 if (CanDash())
                 {
-                    PlayerManager.Instance.ChangePlayerState(PlayerState.Dash);
                     SetLastInput();
+                    PlayerManager.Instance.ChangePlayerState(PlayerState.Dash);
+                    Rotate();
                     Invoke(nameof(ResetDash), DASH_DURATION);
                     _currentDashes++;
                     Debug.Log($"Current dashes: {_currentDashes} out of: {dashLimit}");
@@ -50,18 +51,25 @@ public class PlayerDash : MonoBehaviour
         }
     }
 
+    private void Rotate()
+    {
+        if (_lastInput == Vector3.zero) return;
+        var rotation = Quaternion.LookRotation(IsometricHelper.ToIso(_lastInput), Vector3.up);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, Mathf.Infinity);
+    }
+
     private void Dash(Vector3 input)
     {
         Vector3 dashDirection;
         if (input == Vector3.zero)
         {
-        dashDirection = transform.forward * PlayerManager.Instance.currentMoveSpeed * DASH_POWER * Time.fixedDeltaTime;
+            dashDirection = transform.forward;
         }
         else
         {
-        dashDirection = (IsometricHelper.ToIso(input).normalized * input.normalized.magnitude) * PlayerManager.Instance.currentMoveSpeed * DASH_POWER * Time.fixedDeltaTime;
+            dashDirection = (IsometricHelper.ToIso(input).normalized * input.normalized.magnitude);
         }
-         _rb.MovePosition(transform.position + dashDirection);
+        _rb.MovePosition(transform.position + dashDirection * PlayerManager.Instance.currentMoveSpeed * DASH_POWER * Time.fixedDeltaTime);
     }
 
     private void ResetDash()
@@ -82,15 +90,6 @@ public class PlayerDash : MonoBehaviour
 
     private void SetLastInput()
     {
-        /* if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
-        {
-            _lastInput = transform.forward;
-        }
-        else
-        {
-            _lastInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        } */
         _lastInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-
     }
 }
