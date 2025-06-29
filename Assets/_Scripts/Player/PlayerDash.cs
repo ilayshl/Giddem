@@ -1,7 +1,9 @@
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// Dash ability
+/// </summary>
 public class PlayerDash : MonoBehaviour
 {
     private const float DASH_DURATION = 0.25f;
@@ -68,7 +70,7 @@ public class PlayerDash : MonoBehaviour
         else
         {
             Debug.DrawRay(forwardTransform.position, GetDashDirection() * raycastMaxDistance, Color.green, 5f);
-            return GetDashDirection() * raycastMaxDistance;
+            return transform.position + GetDashDirection() * raycastMaxDistance;
         }
     }
     private void Dash(Vector3 input)
@@ -80,7 +82,6 @@ public class PlayerDash : MonoBehaviour
         }
         else
         {
-            Debug.Log($"Reached {distanceToCalculate}");
             CancelInvoke(nameof(ResetDash));
             ResetDash();
         }
