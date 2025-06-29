@@ -20,7 +20,7 @@ public class PlayerAnimation : MonoBehaviour
 
     void Update()
     {
-        anim.SetFloat("moveSpeed", PlayerManager.Instance.input);
+        anim.SetFloat("moveSpeed", PlayerManager.Instance.magnitude);
     }
 
     private void OnPlayerStateChanged(PlayerState newState)
@@ -28,16 +28,20 @@ public class PlayerAnimation : MonoBehaviour
         switch (newState)
         {
             case PlayerState.Idle:
-                StopAttack();
+                OnAttack(false);
+                OnDash(false);
                 break;
             case PlayerState.Run:
-                StopAttack();
+                OnAttack(false);
                 break;
             case PlayerState.Attack:
-                OnAttack();
+                OnAttack(true);
                 break;
             case PlayerState.Skill:
                 Debug.LogWarning("No scripts for special attack!");
+                break;
+            case PlayerState.Dash:
+                OnDash(true);
                 break;
             case PlayerState.Inactive:
 
@@ -51,15 +55,14 @@ public class PlayerAnimation : MonoBehaviour
         anim.SetBool("isRunning", value);
     }
 
-    private void OnAttack()
+    private void OnAttack(bool value)
     {
-        SetRunning(false);
-        anim.SetBool("isAttacking", true);
+        anim.SetBool("isAttacking", value);
     }
 
-    private void StopAttack()
+    private void OnDash(bool value)
     {
-        anim.SetBool("isAttacking", false);
+        anim.SetBool("isDashing", value);
     }
 
 }
