@@ -20,7 +20,7 @@ public class PlayerAnimation : MonoBehaviour
 
     void Update()
     {
-        anim.SetFloat("moveSpeed", PlayerManager.Instance.input);
+        anim.SetFloat("moveSpeed", PlayerManager.Instance.magnitude);
     }
 
     private void OnPlayerStateChanged(PlayerState newState)

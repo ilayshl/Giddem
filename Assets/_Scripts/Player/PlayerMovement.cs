@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
                 Debug.LogWarning("No scripts for special attack!");
                 break;
             case PlayerState.Dash:
-
+                LookInstantly(_input);
                 break;
             case PlayerState.Inactive:
 
@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
         if (PlayerManager.Instance.state == PlayerState.Attack)
         {
             var rotation = Quaternion.LookRotation(attackRotation, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, TURN_SPEED * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, TURN_SPEED * Time.deltaTime * 2);
         }
         else if (PlayerManager.Instance.state == PlayerState.Idle || PlayerManager.Instance.state == PlayerState.Run)
         {
@@ -90,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
                 if (PlayerManager.Instance.state != PlayerState.Idle) PlayerManager.Instance.ChangePlayerState();
             }
         }
-        PlayerManager.Instance.input = _input.normalized.magnitude;
+        PlayerManager.Instance.magnitude = _input.normalized.magnitude;
     }
 
     /// <summary>
@@ -137,6 +137,15 @@ public class PlayerMovement : MonoBehaviour
             return requiredHitPoint - transform.position;
         }
         return transform.forward;
+    }
+
+    private void LookInstantly(Vector3 destination)
+    {
+        if (destination != Vector3.zero)
+                {
+                    var rotation = Quaternion.LookRotation(IsometricHelper.ToIso(destination), Vector3.up);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, Mathf.Infinity);
+                }
     }
 
 }

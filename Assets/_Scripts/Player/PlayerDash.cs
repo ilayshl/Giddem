@@ -1,16 +1,21 @@
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerDash : MonoBehaviour
 {
     private const float DASH_DURATION = 0.25f;
     private const float DASH_POWER = 3f;
-    public float dashCooldown = 1.5f; //Public to be edited in the game via attributes
+    public float dashCooldown = 2f; //Public to be edited in the game via attributes
     [SerializeField] private int dashLimit = 2; //How many consecutive dashes the player can perform. 
-    private Coroutine _dashWindow;
-    private Vector3 _lastInput;
-    private Rigidbody _rb;
+    [SerializeField] Transform forwardTransform; //To check collision
+    [SerializeField] private LayerMask terrainLayer;
+    private Coroutine _activeDashCooldown;
     private int _currentDashes;
+    private float _dashWindowTime = 1f;
+    private Vector3 _lastInput;
+    private Vector3 _dashDestination;
+    private Rigidbody _rb;
 
     void Awake()
     {
@@ -19,7 +24,7 @@ public class PlayerDash : MonoBehaviour
 
     void Update()
     {
-        CheckForDash();
+        CheckForInput();
     }
 
     private void FixedUpdate()
@@ -30,7 +35,7 @@ public class PlayerDash : MonoBehaviour
         }
     }
 
-    private void CheckForDash()
+    private void CheckForInput()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -40,36 +45,57 @@ public class PlayerDash : MonoBehaviour
                 {
                     SetLastInput();
                     PlayerManager.Instance.ChangePlayerState(PlayerState.Dash);
-                    Rotate();
+                    _dashDestination = CheckDashCollision(_lastInput);
                     Invoke(nameof(ResetDash), DASH_DURATION);
                     _currentDashes++;
-                    Debug.Log($"Current dashes: {_currentDashes} out of: {dashLimit}");
-                    if (_dashWindow != null) StopCoroutine(_dashWindow);
-                    _dashWindow = StartCoroutine(nameof(DashComboWindow), dashCooldown);
+                    if (_activeDashCooldown != null) StopCoroutine(_activeDashCooldown);
+                    _activeDashCooldown = StartCoroutine(nameof(DashComboWindow), CanDash() ? _dashWindowTime : dashCooldown);
                 }
             }
         }
     }
 
-    private void Rotate()
+    private Vector3 CheckDashCollision(Vector3 input)
     {
-        if (_lastInput == Vector3.zero) return;
-        var rotation = Quaternion.LookRotation(IsometricHelper.ToIso(_lastInput), Vector3.up);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, Mathf.Infinity);
-    }
-
-    private void Dash(Vector3 input)
-    {
-        Vector3 dashDirection;
-        if (input == Vector3.zero)
+        float moveSpeed = PlayerManager.Instance.currentMoveSpeed * DASH_POWER * Time.fixedDeltaTime;
+        float raycastMaxDistance = moveSpeed * 12;
+        RaycastHit hit;
+        if (Physics.Raycast(forwardTransform.position, GetDashDirection(), out hit, raycastMaxDistance, (int)terrainLayer))
         {
-            dashDirection = transform.forward;
+            Debug.DrawRay(forwardTransform.position, GetDashDirection() * hit.distance, Color.red, 5f);
+            return hit.point;
         }
         else
         {
-            dashDirection = (IsometricHelper.ToIso(input).normalized * input.normalized.magnitude);
+            Debug.DrawRay(forwardTransform.position, GetDashDirection() * raycastMaxDistance, Color.green, 5f);
+            return GetDashDirection() * raycastMaxDistance;
         }
-        _rb.MovePosition(transform.position + dashDirection * PlayerManager.Instance.currentMoveSpeed * DASH_POWER * Time.fixedDeltaTime);
+    }
+    private void Dash(Vector3 input)
+    {
+        Vector3 distanceToCalculate = _dashDestination - new Vector3(0, _dashDestination.y, 0);
+        if (Vector3.Distance(transform.position, distanceToCalculate) > 0.4)
+        {
+            _rb.MovePosition(transform.position + GetDashDirection() * PlayerManager.Instance.currentMoveSpeed * DASH_POWER * Time.fixedDeltaTime);
+        }
+        else
+        {
+            Debug.Log($"Reached {distanceToCalculate}");
+            CancelInvoke(nameof(ResetDash));
+            ResetDash();
+        }
+    }
+
+    private Vector3 GetDashDirection()
+    {
+        if (_lastInput == Vector3.zero)
+        {
+            return transform.forward;
+        }
+        else
+        {
+            return IsometricHelper.ToIso(_lastInput).normalized * _lastInput.normalized.magnitude;
+        }
     }
 
     private void ResetDash()

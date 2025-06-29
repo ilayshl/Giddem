@@ -13,7 +13,7 @@ public class PlayerManager : MonoBehaviour
     public float maxMoveSpeed { get; private set; } = 5;
     public float currentMoveSpeed { get; private set; } = 5;
     public float damage { get; private set; }
-    public float input;
+    public float magnitude;
 
     void Awake()
     {
