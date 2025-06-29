@@ -39,6 +39,9 @@ public class PlayerAnimation : MonoBehaviour
             case PlayerState.Skill:
                 Debug.LogWarning("No scripts for special attack!");
                 break;
+            case PlayerState.Dash:
+                //Debug.LogWarning("No scripts for dash are implemented yet!");
+                break;
             case PlayerState.Inactive:
 
                 break;

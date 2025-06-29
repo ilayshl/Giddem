@@ -5,5 +5,6 @@ public enum PlayerState
     Run,
     Attack,
     Skill,
+    Dash,
     Inactive,
 }

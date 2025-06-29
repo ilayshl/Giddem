@@ -39,6 +39,7 @@ public class PlayerManager : MonoBehaviour
         {
             case PlayerState.Idle:
                 currentMoveSpeed = maxMoveSpeed;
+
                 break;
             case PlayerState.Run:
 
@@ -48,6 +49,9 @@ public class PlayerManager : MonoBehaviour
                 break;
             case PlayerState.Skill:
 
+                break;
+            case PlayerState.Dash:
+                currentMoveSpeed = maxMoveSpeed;
                 break;
             case PlayerState.Inactive:
 

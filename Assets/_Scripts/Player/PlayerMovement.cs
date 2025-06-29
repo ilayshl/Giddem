@@ -8,8 +8,6 @@ public class PlayerMovement : MonoBehaviour
     private const int TURN_SPEED = 720;
     private Vector3 _input;
     private Vector3 attackRotation;
-    Matrix4x4 _isoMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
-
     private Rigidbody _rb;
 
     private LayerMask playerLayer;
@@ -52,6 +50,9 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.Skill:
                 Debug.LogWarning("No scripts for special attack!");
                 break;
+            case PlayerState.Dash:
+
+                break;
             case PlayerState.Inactive:
 
                 break;
@@ -76,22 +77,20 @@ public class PlayerMovement : MonoBehaviour
             var rotation = Quaternion.LookRotation(attackRotation, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, TURN_SPEED * Time.deltaTime);
         }
-        else
+        else if (PlayerManager.Instance.state == PlayerState.Idle || PlayerManager.Instance.state == PlayerState.Run)
         {
-
             if (_input != Vector3.zero)
             {
-                var rotation = Quaternion.LookRotation(ToIso(_input), Vector3.up);
+                var rotation = Quaternion.LookRotation(IsometricHelper.ToIso(_input), Vector3.up);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, TURN_SPEED * Time.deltaTime);
-                PlayerManager.Instance.ChangePlayerState(PlayerState.Run);
+                if (PlayerManager.Instance.state != PlayerState.Run) PlayerManager.Instance.ChangePlayerState(PlayerState.Run);
             }
             else
             {
-                PlayerManager.Instance.ChangePlayerState();
+                if (PlayerManager.Instance.state != PlayerState.Idle) PlayerManager.Instance.ChangePlayerState();
             }
         }
         PlayerManager.Instance.input = _input.normalized.magnitude;
-
     }
 
     /// <summary>
@@ -99,17 +98,8 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Move()
     {
-        _rb.MovePosition(transform.position + (ToIso(_input).normalized * _input.normalized.magnitude) * PlayerManager.Instance.currentMoveSpeed * Time.fixedDeltaTime);
-    }
-
-    /// <summary>
-    /// Changes a Vector3 to fit an Isometric POV.
-    /// </summary>
-    /// <param name="input"></param>
-    /// <returns></returns>
-    private Vector3 ToIso(Vector3 input)
-    {
-        return _isoMatrix.MultiplyPoint3x4(input);
+        if (PlayerManager.Instance.state == PlayerState.Dash) return;
+        _rb.MovePosition(transform.position + (IsometricHelper.ToIso(_input).normalized * _input.normalized.magnitude) * PlayerManager.Instance.currentMoveSpeed * Time.fixedDeltaTime);
     }
 
     /// <summary>
