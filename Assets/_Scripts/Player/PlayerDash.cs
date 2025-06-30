@@ -6,17 +6,17 @@ using UnityEngine;
 /// </summary>
 public class PlayerDash : MonoBehaviour
 {
-    private const float DASH_DURATION = 0.25f;
-    private const float DASH_POWER = 3f;
+    private const int DASH_UNITS = 12; //Same as .25 second of dash
+    private const float DASH_POWER = 3f; //Multiplier for moveSpeed
     public float dashCooldown = 2f; //Public to be edited in the game via attributes
-    [SerializeField] private int dashLimit = 2; //How many consecutive dashes the player can perform. 
-    [SerializeField] Transform forwardTransform; //To check collision
+    [SerializeField] private int dashLimit = 2; //How many consecutive dashes the player can perform before cd
+    [SerializeField] Transform forwardTransform; //To create collision ray
     [SerializeField] private LayerMask terrainLayer;
-    private Coroutine _activeDashCooldown;
-    private int _currentDashes;
-    private float _dashWindowTime = 1f;
-    private Vector3 _lastInput;
-    private Vector3 _dashDestination;
+    private Coroutine _activeDashCooldown; //Coroutine handling the cooldown
+    private int _currentDashes; //How many consecutive dashes were performed
+    private float _dashWindowTime = 1.25f; //How much time needs to elapse between dashes to reset currentDashes
+    private Vector3 _lastInput; //Direction of the dash
+    private Vector3 _dashDestination; //Last position of the dash
     private Rigidbody _rb;
 
     void Awake()
@@ -37,30 +37,45 @@ public class PlayerDash : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Checks for pressed input
+    /// </summary>
     private void CheckForInput()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (PlayerManager.Instance.state != PlayerState.Dash) //Check if not already dashing
+            PrepareDash();
+        }
+    }
+
+    /// <summary>
+    /// Does the necessary checks and declares the direction input before a dash
+    /// </summary>
+    private void PrepareDash()
+    {
+        if (PlayerManager.Instance.state != PlayerState.Dash) //Check if not already dashing
+        {
+            if (CanDash())
             {
-                if (CanDash())
-                {
-                    SetLastInput();
-                    PlayerManager.Instance.ChangePlayerState(PlayerState.Dash);
-                    _dashDestination = CheckDashCollision(_lastInput);
-                    Invoke(nameof(ResetDash), DASH_DURATION);
-                    _currentDashes++;
-                    if (_activeDashCooldown != null) StopCoroutine(_activeDashCooldown);
-                    _activeDashCooldown = StartCoroutine(nameof(DashComboWindow), CanDash() ? _dashWindowTime : dashCooldown);
-                }
+                SetLastInput();
+                PlayerManager.Instance.ChangePlayerState(PlayerState.Dash);
+                _dashDestination = CheckDashCollision(_lastInput);
+                _currentDashes++;
+                if (_activeDashCooldown != null) StopCoroutine(_activeDashCooldown);
+                _activeDashCooldown = StartCoroutine(nameof(DashComboWindow), CanDash() ? _dashWindowTime : dashCooldown);
             }
         }
     }
 
+    /// <summary>
+    /// Shoots a ray to check for collision with terrain
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
     private Vector3 CheckDashCollision(Vector3 input)
     {
         float moveSpeed = PlayerManager.Instance.currentMoveSpeed * DASH_POWER * Time.fixedDeltaTime;
-        float raycastMaxDistance = moveSpeed * 12;
+        float raycastMaxDistance = moveSpeed * DASH_UNITS;
         RaycastHit hit;
         if (Physics.Raycast(forwardTransform.position, GetDashDirection(), out hit, raycastMaxDistance, (int)terrainLayer))
         {
@@ -73,6 +88,11 @@ public class PlayerDash : MonoBehaviour
             return transform.position + GetDashDirection() * raycastMaxDistance;
         }
     }
+
+    /// <summary>
+    /// Moves the player until it reaches the dashDestination
+    /// </summary>
+    /// <param name="input"></param>
     private void Dash(Vector3 input)
     {
         Vector3 distanceToCalculate = _dashDestination - new Vector3(0, _dashDestination.y, 0);
@@ -82,11 +102,14 @@ public class PlayerDash : MonoBehaviour
         }
         else
         {
-            CancelInvoke(nameof(ResetDash));
             ResetDash();
         }
     }
 
+    /// <summary>
+    /// If no input is inserted the dash is set to forward
+    /// </summary>
+    /// <returns></returns>
     private Vector3 GetDashDirection()
     {
         if (_lastInput == Vector3.zero)
@@ -104,6 +127,11 @@ public class PlayerDash : MonoBehaviour
         PlayerManager.Instance.ChangePlayerState();
     }
 
+    /// <summary>
+    /// Waits time, then resets currentDashes
+    /// </summary>
+    /// <param name="windowTime"></param>
+    /// <returns></returns>
     private IEnumerator DashComboWindow(float windowTime)
     {
         yield return new WaitForSeconds(windowTime);
