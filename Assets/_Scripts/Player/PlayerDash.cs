@@ -12,6 +12,7 @@ public class PlayerDash : MonoBehaviour
     [SerializeField] private int dashLimit = 2; //How many consecutive dashes the player can perform before cd
     [SerializeField] Transform forwardTransform; //To create collision ray
     [SerializeField] private LayerMask terrainLayer;
+    private bool _isDashing;
     private Coroutine _activeDashCooldown; //Coroutine handling the cooldown
     private int _currentDashes; //How many consecutive dashes were performed
     private float _dashWindowTime = 1.25f; //How much time needs to elapse between dashes to reset currentDashes
@@ -31,10 +32,20 @@ public class PlayerDash : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (PlayerManager.Instance.state == PlayerState.Dash)
+        if (_isDashing)
         {
             Dash(_lastInput);
         }
+    }
+
+    void OnEnable()
+    {
+        PlayerManager.OnPlayerStateChanged += SetDashing;
+    }
+
+    void OnDisable()
+    {
+        PlayerManager.OnPlayerStateChanged -= SetDashing;
     }
 
     /// <summary>
@@ -46,6 +57,11 @@ public class PlayerDash : MonoBehaviour
         {
             PrepareDash();
         }
+    }
+
+    private void SetDashing(PlayerState state)
+    {
+            _isDashing = state == PlayerState.Dash;
     }
 
     /// <summary>

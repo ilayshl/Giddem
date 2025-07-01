@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Walls
   - PressurePlate
+  - Interactable
   layers:
   - Default
   - TransparentFX
