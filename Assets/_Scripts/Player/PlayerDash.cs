@@ -12,6 +12,7 @@ public class PlayerDash : MonoBehaviour
     [SerializeField] private int dashLimit = 2; //How many consecutive dashes the player can perform before cd
     [SerializeField] Transform forwardTransform; //To create collision ray
     [SerializeField] private LayerMask terrainLayer;
+    [SerializeField] private SkinnedMeshRenderer[] meshRenderer;
     private bool _isDashing;
     private Coroutine _activeDashCooldown; //Coroutine handling the cooldown
     private int _currentDashes; //How many consecutive dashes were performed
@@ -75,9 +76,10 @@ public class PlayerDash : MonoBehaviour
             {
                 SetLastInput();
                 PlayerManager.Instance.ChangePlayerState(PlayerState.Dash);
-                _dashDestination = CheckDashCollision(_lastInput);
+                _dashDestination = CheckDashCollision();
                 _currentDashes++;
                 if (_activeDashCooldown != null) StopCoroutine(_activeDashCooldown);
+                StartCoroutine(VFXManager.DashParticles(this.transform, 0.05f, meshRenderer));
                 _activeDashCooldown = StartCoroutine(nameof(DashComboWindow), CanDash() ? _dashWindowTime : dashCooldown);
             }
         }
@@ -88,7 +90,7 @@ public class PlayerDash : MonoBehaviour
     /// </summary>
     /// <param name="input"></param>
     /// <returns></returns>
-    private Vector3 CheckDashCollision(Vector3 input)
+    private Vector3 CheckDashCollision()
     {
         float moveSpeed = PlayerManager.Instance.currentMoveSpeed * DASH_POWER * Time.fixedDeltaTime;
         float raycastMaxDistance = moveSpeed * DASH_UNITS;
@@ -141,6 +143,7 @@ public class PlayerDash : MonoBehaviour
     private void ResetDash()
     {
         PlayerManager.Instance.ChangePlayerState();
+        StopCoroutine(VFXManager.DashParticles(this.transform, 0.1f, meshRenderer));
     }
 
     /// <summary>
