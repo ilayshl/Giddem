@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Holds the logic for spawning particles
+/// </summary>
 public class VFXManager : MonoBehaviour
 {
     /* static private Dictionary<MonoBehaviour, Coroutine> activeCoroutines = new();
@@ -19,28 +22,5 @@ public class VFXManager : MonoBehaviour
     }
  */
 
-    public static void StopCourotine()
-    {
-        StopAllCoroutines();
-    }
 
-    public static IEnumerator DashParticles(Transform position, float spawnInterval, SkinnedMeshRenderer[] objectRenderer)
-    {
-        while (true)
-        {
-            for (int i = 0; i < objectRenderer.Length; i++)
-            {
-                GameObject spawnedObject = new();
-                spawnedObject.transform.SetPositionAndRotation(position.position, position.rotation);
-                MeshRenderer spawnedMeshRenderer = spawnedObject.AddComponent<MeshRenderer>();
-                MeshFilter spawnedMeshFilter = spawnedObject.AddComponent<MeshFilter>();
-
-                Mesh mesh = new();
-                objectRenderer[i].BakeMesh(mesh);
-                spawnedMeshFilter.mesh = mesh;
-            }
-
-            yield return new WaitForSeconds(spawnInterval);
-        }
-    } 
 }

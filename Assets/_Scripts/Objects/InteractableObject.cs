@@ -1,7 +1,9 @@
+using Interfaces;
 using UnityEngine;
 
 public abstract class InteractableObject : MonoBehaviour
 {
+    [SerializeField] protected string interactableName;
     [SerializeField] protected Material highlightMat;
     protected MeshRenderer meshRenderer;
 
@@ -10,28 +12,22 @@ public abstract class InteractableObject : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>();
     }
 
-    protected void OnTriggerEnter(Collider other)
+    public void OnRangeEnter()
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Material[] materials = meshRenderer.materials;
-            Material[] newMaterials = new Material[materials.Length + 1];
-            materials.CopyTo(newMaterials, 0);
-            newMaterials[newMaterials.Length - 1] = highlightMat;
-            meshRenderer.materials = newMaterials;
-        }
+        Material[] materials = meshRenderer.materials;
+        Material[] newMaterials = new Material[materials.Length + 1];
+        materials.CopyTo(newMaterials, 0);
+        newMaterials[newMaterials.Length - 1] = highlightMat;
+        meshRenderer.materials = newMaterials;
     }
 
-    protected void OnTriggerExit(Collider other)
+    public void OnRangeExit()
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Material[] materials = meshRenderer.materials;
-            Material[] newMaterials = new Material[materials.Length - 1];
-            newMaterials[0] = materials[0];
-            meshRenderer.materials = newMaterials;
-        }
+        Material[] materials = meshRenderer.materials;
+        Material[] newMaterials = new Material[materials.Length - 1];
+        newMaterials[0] = materials[0];
+        meshRenderer.materials = newMaterials;
     }
 
-    protected abstract void OnInteract();
+    public abstract void OnInteract();
 }
