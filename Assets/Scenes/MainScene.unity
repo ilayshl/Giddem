@@ -3144,7 +3144,7 @@ PrefabInstance:
     - target: {fileID: 811083788705847490, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
       propertyPath: silhouetteMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 1fabfcca52c6d954aab63d014fcab616, type: 2}
+      objectReference: {fileID: 2100000, guid: c524f860bcb3d4c08b3eb2101c42a861, type: 2}
     - target: {fileID: 811083788705847490, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
       propertyPath: meshRenderer.Array.size
       value: 2
@@ -4906,6 +4906,7 @@ GameObject:
   - component: {fileID: 1357505611}
   - component: {fileID: 1357505616}
   - component: {fileID: 1357505618}
+  - component: {fileID: 1357505619}
   m_Layer: 8
   m_Name: Arm Placeholder
   m_TagString: Interactable
@@ -5041,9 +5042,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d3588746986453b9110b87dadc19d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableName: 
-  highlightMat: {fileID: 2100000, guid: 94b63bea1b920024b9972b3b5a1c940e, type: 2}
   armData: {fileID: 11400000, guid: eea80842bfffb44b8ab64c0d0b6804c1, type: 2}
+--- !u!114 &1357505619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357505610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c05ba5dabf39a4984836a934efac431e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightMat: {fileID: 2100000, guid: 94b63bea1b920024b9972b3b5a1c940e, type: 2}
 --- !u!4 &1390790663 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4485030469784375681, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}

@@ -1,12 +1,11 @@
 using UnityEngine;
 
-namespace Interfaces
+/// <summary>
+/// Interactable objects will be here
+/// </summary>
+public interface IInteractable
 {
-    /// <summary>
-    /// Interactable objects will be here
-    /// </summary>
-    public interface IInteractable
-    {
-        //protected void OnInteract();
+    public void OnInteract();
+    public void OnRangeEnter();
+    public void OnRangeExit();
     }
-}

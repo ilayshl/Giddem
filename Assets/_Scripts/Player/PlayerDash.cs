@@ -188,7 +188,7 @@ public class PlayerDash : MonoBehaviour
 
                 spawnedMeshRenderer.material = silhouetteMaterial;
 
-                Destroy(spawnedObject, 2f);
+                //Destroy(spawnedObject, 0.5f);
             }
 
             yield return new WaitForSeconds(spawnInterval);

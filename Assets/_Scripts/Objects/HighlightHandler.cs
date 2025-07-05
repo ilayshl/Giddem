@@ -1,11 +1,9 @@
-using Interfaces;
 using UnityEngine;
 
-public abstract class InteractableObject : MonoBehaviour
+public class HighlightHandler : MonoBehaviour
 {
-    [SerializeField] protected string interactableName;
-    [SerializeField] protected Material highlightMat;
-    protected MeshRenderer meshRenderer;
+    [SerializeField] private Material highlightMat;
+    private MeshRenderer meshRenderer;
 
     void Awake()
     {
@@ -29,5 +27,4 @@ public abstract class InteractableObject : MonoBehaviour
         meshRenderer.materials = newMaterials;
     }
 
-    public abstract void OnInteract();
 }

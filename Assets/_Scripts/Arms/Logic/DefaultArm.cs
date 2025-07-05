@@ -8,11 +8,13 @@ public class DefaultArm : Arm
     protected override void OnEquip()
     {
         Debug.Log(correspondingArm.ToString());
+        //Apply new animator
+        //Apply new skinned mesh renderer
     }
 
     protected override void Attack()
     {
-
+        
     }
 
     protected override void SpecialAttack()

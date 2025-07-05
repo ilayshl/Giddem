@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
-    private List<InteractableObject> interactablesInRange = new(); //Every object in range
+    private HashSet<IInteractable> interactablesInRange = new(); //Every object in range
 
     private void Update()
     {
@@ -24,7 +24,7 @@ public class PlayerInteract : MonoBehaviour
         {
             if (other.CompareTag("Interactable"))
             {
-                if (other.TryGetComponent<InteractableObject>(out InteractableObject interactable))
+                if (other.TryGetComponent<IInteractable>(out IInteractable interactable))
                 {
                     interactablesInRange.Add(interactable);
                     interactable.OnRangeEnter();
@@ -37,7 +37,7 @@ public class PlayerInteract : MonoBehaviour
         {
             if (other.CompareTag("Interactable"))
             {
-                if (other.TryGetComponent<InteractableObject>(out InteractableObject interactable))
+                if (other.TryGetComponent<IInteractable>(out IInteractable interactable))
                 {
                     if (interactablesInRange.Contains(interactable))
                     {
