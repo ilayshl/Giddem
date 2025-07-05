@@ -1,50 +1,50 @@
 using System.Collections.Generic;
-using Interfaces;
 using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
-    List<IInteractable> interactablesInRange = new();
+    private HashSet<IInteractable> interactablesInRange = new(); //Every object in range
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
+            foreach (var interactableInRange in interactablesInRange)
+            {
+                interactableInRange.OnInteract();
+            }
             if (interactablesInRange != null)
             {
-                foreach (var interactable in interactablesInRange)
-                {
-                    interactable.OnInteract();
-                }
-            }
-        }    
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Interactable"))
-        {
-            if (other.TryGetComponent<IInteractable>(out IInteractable interactable))
-            {
-                interactablesInRange.Add(other.GetComponent<IInteractable>());
-                interactable.OnRangeEnter();
-            }
-
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Interactable"))
-        {
-            if (other.TryGetComponent<IInteractable>(out IInteractable interactable))
-            {
-                if (interactablesInRange.Contains(interactable))
-                {
-                    interactablesInRange.Remove(interactable);
-                    interactable.OnRangeExit();
-                }
+            interactablesInRange = new();
             }
         }
     }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Interactable"))
+            {
+                if (other.TryGetComponent<IInteractable>(out IInteractable interactable))
+                {
+                    interactablesInRange.Add(interactable);
+                    interactable.OnRangeEnter();
+                }
+
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("Interactable"))
+            {
+                if (other.TryGetComponent<IInteractable>(out IInteractable interactable))
+                {
+                    if (interactablesInRange.Contains(interactable))
+                    {
+                        interactablesInRange.Remove(interactable);
+                        interactable.OnRangeExit();
+                    }
+                }
+            }
+        }
 }

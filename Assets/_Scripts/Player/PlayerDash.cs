@@ -20,6 +20,11 @@ public class PlayerDash : MonoBehaviour
     private Vector3 _dashDestination; //Last position of the dash
     private Rigidbody _rb;
 
+    private Coroutine activeDashParticles;
+    [Header("Dash Particles")]
+    [SerializeField] private SkinnedMeshRenderer[] meshRenderer;
+    [SerializeField] Material silhouetteMaterial;
+
     void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -61,7 +66,7 @@ public class PlayerDash : MonoBehaviour
 
     private void SetDashing(PlayerState state)
     {
-            _isDashing = state == PlayerState.Dash;
+        _isDashing = state == PlayerState.Dash;
     }
 
     /// <summary>
@@ -75,9 +80,10 @@ public class PlayerDash : MonoBehaviour
             {
                 SetLastInput();
                 PlayerManager.Instance.ChangePlayerState(PlayerState.Dash);
-                _dashDestination = CheckDashCollision(_lastInput);
+                _dashDestination = CheckDashCollision();
                 _currentDashes++;
                 if (_activeDashCooldown != null) StopCoroutine(_activeDashCooldown);
+                activeDashParticles = StartCoroutine(DashParticles(this.transform, 0.025f, meshRenderer));
                 _activeDashCooldown = StartCoroutine(nameof(DashComboWindow), CanDash() ? _dashWindowTime : dashCooldown);
             }
         }
@@ -88,7 +94,7 @@ public class PlayerDash : MonoBehaviour
     /// </summary>
     /// <param name="input"></param>
     /// <returns></returns>
-    private Vector3 CheckDashCollision(Vector3 input)
+    private Vector3 CheckDashCollision()
     {
         float moveSpeed = PlayerManager.Instance.currentMoveSpeed * DASH_POWER * Time.fixedDeltaTime;
         float raycastMaxDistance = moveSpeed * DASH_UNITS;
@@ -141,6 +147,7 @@ public class PlayerDash : MonoBehaviour
     private void ResetDash()
     {
         PlayerManager.Instance.ChangePlayerState();
+        StopCoroutine(activeDashParticles);
     }
 
     /// <summary>
@@ -163,4 +170,28 @@ public class PlayerDash : MonoBehaviour
     {
         _lastInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
     }
+    
+    private IEnumerator DashParticles(Transform position, float spawnInterval, SkinnedMeshRenderer[] objectRenderer)
+    {
+        while (true)
+        {
+            for (int i = 0; i < objectRenderer.Length; i++)
+            {
+                GameObject spawnedObject = new();
+                spawnedObject.transform.SetPositionAndRotation(position.position, position.rotation);
+                MeshRenderer spawnedMeshRenderer = spawnedObject.AddComponent<MeshRenderer>();
+                MeshFilter spawnedMeshFilter = spawnedObject.AddComponent<MeshFilter>();
+
+                Mesh mesh = new();
+                objectRenderer[i].BakeMesh(mesh);
+                spawnedMeshFilter.mesh = mesh;
+
+                spawnedMeshRenderer.material = silhouetteMaterial;
+
+                Destroy(spawnedObject, 0.175f);
+            }
+
+            yield return new WaitForSeconds(spawnInterval);
+        }
+    } 
 }
