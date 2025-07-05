@@ -1766,7 +1766,9 @@ PrefabInstance:
       propertyPath: chaseDistance
       value: 9
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7674889731972477119, guid: 028dc553c516a57419e7ec88497da36b, type: 3}
+    - {fileID: 5617372702656588288, guid: 028dc553c516a57419e7ec88497da36b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
