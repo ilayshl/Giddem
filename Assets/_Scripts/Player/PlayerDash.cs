@@ -12,7 +12,6 @@ public class PlayerDash : MonoBehaviour
     [SerializeField] private int dashLimit = 2; //How many consecutive dashes the player can perform before cd
     [SerializeField] Transform forwardTransform; //To create collision ray
     [SerializeField] private LayerMask terrainLayer;
-    [SerializeField] private SkinnedMeshRenderer[] meshRenderer;
     private bool _isDashing;
     private Coroutine _activeDashCooldown; //Coroutine handling the cooldown
     private int _currentDashes; //How many consecutive dashes were performed
@@ -23,6 +22,7 @@ public class PlayerDash : MonoBehaviour
 
     private Coroutine activeDashParticles;
     [Header("Dash Particles")]
+    [SerializeField] private SkinnedMeshRenderer[] meshRenderer;
     [SerializeField] Material silhouetteMaterial;
 
     void Awake()
@@ -83,7 +83,7 @@ public class PlayerDash : MonoBehaviour
                 _dashDestination = CheckDashCollision();
                 _currentDashes++;
                 if (_activeDashCooldown != null) StopCoroutine(_activeDashCooldown);
-                activeDashParticles = StartCoroutine(DashParticles(this.transform, 0.05f, meshRenderer));
+                activeDashParticles = StartCoroutine(DashParticles(this.transform, 0.025f, meshRenderer));
                 _activeDashCooldown = StartCoroutine(nameof(DashComboWindow), CanDash() ? _dashWindowTime : dashCooldown);
             }
         }
@@ -188,7 +188,7 @@ public class PlayerDash : MonoBehaviour
 
                 spawnedMeshRenderer.material = silhouetteMaterial;
 
-                //Destroy(spawnedObject, 0.5f);
+                Destroy(spawnedObject, 0.175f);
             }
 
             yield return new WaitForSeconds(spawnInterval);
