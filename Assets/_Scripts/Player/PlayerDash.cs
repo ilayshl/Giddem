@@ -6,24 +6,26 @@ using UnityEngine;
 /// </summary>
 public class PlayerDash : MonoBehaviour
 {
-    private const int DASH_UNITS = 12; //Same as .25 second of dash
-    private const float DASH_POWER = 3f; //Multiplier for moveSpeed
+    [SerializeField] CharacterManager playerManager;
+    [Header("Dash Data")]
+    private const int DASH_UNITS = 8; //Length of the dash
+    private const float DASH_POWER = 4f; //Multiplier for moveSpeed
     public float dashCooldown = 2f; //Public to be edited in the game via attributes
     [SerializeField] private int dashLimit = 2; //How many consecutive dashes the player can perform before cd
     [SerializeField] Transform forwardTransform; //To create collision ray
-    [SerializeField] private LayerMask terrainLayer;
+    [SerializeField] private LayerMask layerToCollide;
     private bool _isDashing;
     private Coroutine _activeDashCooldown; //Coroutine handling the cooldown
     private int _currentDashes; //How many consecutive dashes were performed
-    private float _dashWindowTime = 1.25f; //How much time needs to elapse between dashes to reset currentDashes
+    private float _dashWindowTime = 1.1f; //How much time needs to elapse between dashes to reset currentDashes
     private Vector3 _lastInput; //Direction of the dash
-    private Vector3 _dashDestination; //Last position of the dash
+    private Vector3 _dashDestination; //Where the dash should stop at
     private Rigidbody _rb;
 
-    private Coroutine activeDashParticles;
     [Header("Dash Particles")]
     [SerializeField] private SkinnedMeshRenderer[] meshRenderer;
-    [SerializeField] Material silhouetteMaterial;
+    [SerializeField] private Material silhouetteMaterial;
+    private Coroutine _activeDashParticles;
 
     void Awake()
     {
@@ -45,12 +47,12 @@ public class PlayerDash : MonoBehaviour
 
     void OnEnable()
     {
-        PlayerManager.OnPlayerStateChanged += SetDashing;
+        playerManager.OnCharacterStateChanged += SetDashing;
     }
 
     void OnDisable()
     {
-        PlayerManager.OnPlayerStateChanged -= SetDashing;
+        playerManager.OnCharacterStateChanged -= SetDashing;
     }
 
     /// <summary>
@@ -64,9 +66,9 @@ public class PlayerDash : MonoBehaviour
         }
     }
 
-    private void SetDashing(PlayerState state)
+    private void SetDashing(CharacterState state)
     {
-        _isDashing = state == PlayerState.Dash;
+        _isDashing = state == CharacterState.Dash;
     }
 
     /// <summary>
@@ -74,32 +76,29 @@ public class PlayerDash : MonoBehaviour
     /// </summary>
     private void PrepareDash()
     {
-        if (PlayerManager.Instance.state != PlayerState.Dash) //Check if not already dashing
+        if (CanDash() && !_isDashing)
         {
-            if (CanDash())
-            {
-                SetLastInput();
-                PlayerManager.Instance.ChangePlayerState(PlayerState.Dash);
-                _dashDestination = CheckDashCollision();
-                _currentDashes++;
-                if (_activeDashCooldown != null) StopCoroutine(_activeDashCooldown);
-                activeDashParticles = StartCoroutine(DashParticles(this.transform, 0.025f, meshRenderer));
-                _activeDashCooldown = StartCoroutine(nameof(DashComboWindow), CanDash() ? _dashWindowTime : dashCooldown);
-            }
+            SetLastInput();
+            playerManager.ChangeCharacterState(CharacterState.Dash);
+            _dashDestination = CheckDashCollision();
+            _currentDashes++;
+            ChangeGravity();
+            if (_activeDashCooldown != null) StopCoroutine(_activeDashCooldown);
+            _activeDashParticles = StartCoroutine(DashParticles(this.transform, 0.03f, meshRenderer));
+            _activeDashCooldown = StartCoroutine(nameof(DashComboWindow), CanDash() ? _dashWindowTime : dashCooldown);
         }
     }
 
     /// <summary>
     /// Shoots a ray to check for collision with terrain
     /// </summary>
-    /// <param name="input"></param>
     /// <returns></returns>
     private Vector3 CheckDashCollision()
     {
-        float moveSpeed = PlayerManager.Instance.currentMoveSpeed * DASH_POWER * Time.fixedDeltaTime;
+        float moveSpeed = playerManager.currentMoveSpeed * DASH_POWER * Time.fixedDeltaTime;
         float raycastMaxDistance = moveSpeed * DASH_UNITS;
         RaycastHit hit;
-        if (Physics.Raycast(forwardTransform.position, GetDashDirection(), out hit, raycastMaxDistance, (int)terrainLayer))
+        if (Physics.Raycast(forwardTransform.position, GetDashDirection(), out hit, raycastMaxDistance, (int)layerToCollide))
         {
             Debug.DrawRay(forwardTransform.position, GetDashDirection() * hit.distance, Color.red, 5f);
             return hit.point;
@@ -120,7 +119,7 @@ public class PlayerDash : MonoBehaviour
         Vector3 distanceToCalculate = _dashDestination - new Vector3(0, _dashDestination.y, 0);
         if (Vector3.Distance(transform.position, distanceToCalculate) > 0.4)
         {
-            _rb.MovePosition(transform.position + GetDashDirection() * PlayerManager.Instance.currentMoveSpeed * DASH_POWER * Time.fixedDeltaTime);
+            _rb.MovePosition(transform.position + GetDashDirection() * playerManager.currentMoveSpeed * DASH_POWER * Time.fixedDeltaTime);
         }
         else
         {
@@ -144,10 +143,14 @@ public class PlayerDash : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Stops the coroutine that makes the player move.
+    /// </summary>
     private void ResetDash()
     {
-        PlayerManager.Instance.ChangePlayerState();
-        StopCoroutine(activeDashParticles);
+        StopCoroutine(_activeDashParticles);
+        playerManager.ChangeCharacterState();
+        ChangeGravity();
     }
 
     /// <summary>
@@ -161,16 +164,35 @@ public class PlayerDash : MonoBehaviour
         _currentDashes = 0;
     }
 
+    /// <summary>
+    /// Whether or not the player has reached the limit amount of dashes.
+    /// </summary>
+    /// <returns></returns>
     private bool CanDash()
     {
         return _currentDashes != dashLimit;
     }
 
+    /// <summary>
+    /// Gets the last input before a dash
+    /// </summary>
     private void SetLastInput()
     {
         _lastInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
     }
-    
+
+    private void ChangeGravity()
+    {
+        _rb.useGravity = !_isDashing;
+    }
+
+    /// <summary>
+    /// Creates new objects with the current mesh of the player.
+    /// </summary>
+    /// <param name="position"></param>
+    /// <param name="spawnInterval"></param>
+    /// <param name="objectRenderer"></param>
+    /// <returns></returns>
     private IEnumerator DashParticles(Transform position, float spawnInterval, SkinnedMeshRenderer[] objectRenderer)
     {
         while (true)
@@ -193,5 +215,5 @@ public class PlayerDash : MonoBehaviour
 
             yield return new WaitForSeconds(spawnInterval);
         }
-    } 
+    }
 }

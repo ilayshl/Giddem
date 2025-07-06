@@ -1,30 +1,15 @@
 using UnityEngine;
 
-public class ArmPickup : MonoBehaviour, IInteractable
+public class ArmPickup : InteractableObject
 {
-    [SerializeField] ArmData armData;
-    private HighlightHandler highlightHandler;
+    [SerializeField] private ArmData armData;
 
-    void Awake()
-    {
-        highlightHandler = GetComponent<HighlightHandler>();
-    }
-
-    public void OnInteract()
+    public override void OnInteract()
     {
         Debug.Log("interacted");
         Destroy(this.gameObject);
     }
 
-    public void OnRangeEnter()
-    {
-        highlightHandler?.OnRangeEnter();
-    }
-
-    public void OnRangeExit()
-    {
-        highlightHandler?.OnRangeExit();
-    }
     
     
 }

@@ -5,14 +5,15 @@ public class DebugCanvas : MonoBehaviour
 {
     [SerializeField] private Canvas debugCanvas;
     [SerializeField] private TextMeshProUGUI stateText;
+    [SerializeField] private CharacterManager playerManager;
     void Awake()
     {
-        PlayerManager.OnPlayerStateChanged += OnPlayerStateChanged;
+        playerManager.OnCharacterStateChanged += OnPlayerStateChanged;
     }
 
     void OnDestroy()
     {
-        PlayerManager.OnPlayerStateChanged -= OnPlayerStateChanged;
+        playerManager.OnCharacterStateChanged -= OnPlayerStateChanged;
     }
 
     void Update()
@@ -23,7 +24,7 @@ public class DebugCanvas : MonoBehaviour
         }
     }
 
-    private void OnPlayerStateChanged(PlayerState state)
+    private void OnPlayerStateChanged(CharacterState state)
     {
         stateText.text = state.ToString();
     }

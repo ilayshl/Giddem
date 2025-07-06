@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26521bf6ae32748388795053a37c2f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerManager: {fileID: 0}
 --- !u!65 &5698160008951620978
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -64,7 +65,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.21, y: 1.2, z: 2.5}
+  m_Size: {x: 0.8, y: 1.2, z: 2.5}
   m_Center: {x: 0, y: 0.5, z: 1}
 --- !u!1 &8951341847804961117
 GameObject:
@@ -1070,6 +1071,9 @@ PrefabInstance:
       addedObject: {fileID: 4413063348149833796}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d1be9f677bd5347d79379811a12d94e4, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 4132948944991069440}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d1be9f677bd5347d79379811a12d94e4, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 7724500025871920946}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d1be9f677bd5347d79379811a12d94e4, type: 3}
       insertIndex: -1
@@ -1119,6 +1123,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4132948944991069440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3852222411428416315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47872a121bf784e4894636bdb9f8b6f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magnitude: 0
 --- !u!114 &7724500025871920946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1131,6 +1148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc1ecaf94cc7040dfabe78b0fa00e666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerManager: {fileID: 4132948944991069440}
 --- !u!114 &9191347033770302263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1143,7 +1161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41a8da9bf44ac44498f73c396b97fc3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  playerManager: {fileID: 4132948944991069440}
 --- !u!114 &9013041961421834632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1156,6 +1174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 928b715a9b66a46a99fc03cf4b6918ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerManager: {fileID: 4132948944991069440}
 --- !u!114 &811083788705847490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1168,10 +1187,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a3ae3a47d47404994b3ee37ece5925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerManager: {fileID: 4132948944991069440}
   dashCooldown: 2
   dashLimit: 2
   forwardTransform: {fileID: 3370795361514275403}
-  terrainLayer:
+  layerToCollide:
     serializedVersion: 2
     m_Bits: 256
   meshRenderer:

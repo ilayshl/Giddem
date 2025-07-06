@@ -2,63 +2,59 @@ using System;
 using UnityEngine;
 
 /// <summary>
-/// Static singleton that holds information and can change PlayerState.
+/// Holds information and can change CharacterState.
 /// </summary>
-public class PlayerManager : MonoBehaviour
+public class CharacterManager : MonoBehaviour
 {
-    public static PlayerManager Instance;
-    public PlayerState state { get; private set; }
-    public static event Action<PlayerState> OnPlayerStateChanged;
+    public CharacterState state { get; private set; }
+    public event Action<CharacterState> OnCharacterStateChanged;
 
     public float maxMoveSpeed { get; private set; } = 5;
     public float currentMoveSpeed { get; private set; } = 5;
     public float damage { get; private set; }
     [HideInInspector] public float magnitude;
 
-    void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-            Debug.Log("Destroyed " + gameObject.name);
-            return;
-        }
-        Instance = this;
-    }
-
     void Start()
     {
-        ChangePlayerState();
+        ChangeCharacterState();
     }
 
-    public void ChangePlayerState(PlayerState newState = PlayerState.Idle)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="newState"></param>
+    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    public void ChangeCharacterState(CharacterState newState = CharacterState.Idle)
     {
-        state = newState;
+
+        if (newState == state) return; //If same state- no need to transition
+        currentMoveSpeed = maxMoveSpeed;
 
         switch (newState)
         {
-            case PlayerState.Idle:
-                currentMoveSpeed = maxMoveSpeed;
+            case CharacterState.Idle:
 
                 break;
-            case PlayerState.Run:
+            case CharacterState.Run:
 
                 break;
-            case PlayerState.Attack:
+            case CharacterState.Attack:
+                if (state != CharacterState.Idle && state != CharacterState.Run) return;
                 currentMoveSpeed *= 0.2f;
                 break;
-            case PlayerState.Skill:
+            case CharacterState.Ability:
 
                 break;
-            case PlayerState.Dash:
-                currentMoveSpeed = maxMoveSpeed;
+            case CharacterState.Dash:
+
                 break;
-            case PlayerState.Inactive:
+            case CharacterState.Stunned:
 
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
-        OnPlayerStateChanged?.Invoke(newState);
+        state = newState;
+        OnCharacterStateChanged?.Invoke(state);
     }
 }

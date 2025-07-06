@@ -6,13 +6,14 @@ using UnityEngine;
 /// </summary>
 public class PlayerAttack : MonoBehaviour
 {
+    [SerializeField] CharacterManager playerManager;
     private const float ATTACK_COOLDOWN = 1f;
     private Coroutine attackCooldown;
 
     // Update is called once per frame
     private void Update()
     {
-        if(PlayerManager.Instance.state != PlayerState.Dash) CheckForClick();
+        CheckForClick();
     }
 
     private void CheckForClick()
@@ -39,10 +40,7 @@ public class PlayerAttack : MonoBehaviour
     /// </summary>
     private void StartAttack()
     {
-        if (PlayerManager.Instance.state != PlayerState.Attack)
-        {
-            PlayerManager.Instance.ChangePlayerState(PlayerState.Attack);
-        }
+        playerManager.ChangeCharacterState(CharacterState.Attack);
     }
 
     /// <summary>
@@ -52,10 +50,10 @@ public class PlayerAttack : MonoBehaviour
     {
         if (attackCooldown == null)
         {
-            if (PlayerManager.Instance.state == PlayerState.Attack)
+            if (playerManager.state == CharacterState.Attack)
             {
                 attackCooldown = StartCoroutine(StartAttackCooldown(ATTACK_COOLDOWN));
-                PlayerManager.Instance.ChangePlayerState();
+                playerManager.ChangeCharacterState();
             }
         }
     }
