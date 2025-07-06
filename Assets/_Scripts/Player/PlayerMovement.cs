@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.Dash:
                 LookInstantly(_input);
                 break;
-            case PlayerState.Inactive:
+            case PlayerState.Stunned:
 
                 break;
         }
@@ -83,11 +83,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 var rotation = Quaternion.LookRotation(IsometricHelper.ToIso(_input), Vector3.up);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, TURN_SPEED * Time.deltaTime);
-                if (PlayerManager.Instance.state != PlayerState.Run) PlayerManager.Instance.ChangePlayerState(PlayerState.Run);
+                PlayerManager.Instance.ChangePlayerState(PlayerState.Run);
             }
             else
             {
-                if (PlayerManager.Instance.state != PlayerState.Idle) PlayerManager.Instance.ChangePlayerState();
+                PlayerManager.Instance.ChangePlayerState();
             }
         }
         PlayerManager.Instance.magnitude = _input.normalized.magnitude;
@@ -98,8 +98,11 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Move()
     {
-        if (PlayerManager.Instance.state == PlayerState.Dash) return;
-        _rb.MovePosition(transform.position + (IsometricHelper.ToIso(_input).normalized * _input.normalized.magnitude) * PlayerManager.Instance.currentMoveSpeed * Time.fixedDeltaTime);
+        if (PlayerManager.Instance.state == PlayerState.Run || PlayerManager.Instance.state == PlayerState.Attack)
+        {
+        _rb.MovePosition(transform.position + (IsometricHelper.ToIso(_input).normalized * _input.normalized.magnitude)
+            * PlayerManager.Instance.currentMoveSpeed * Time.fixedDeltaTime);
+        }
     }
 
     /// <summary>

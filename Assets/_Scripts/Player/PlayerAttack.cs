@@ -12,7 +12,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if(PlayerManager.Instance.state != PlayerState.Dash) CheckForClick();
+        CheckForClick();
     }
 
     private void CheckForClick()
@@ -39,10 +39,7 @@ public class PlayerAttack : MonoBehaviour
     /// </summary>
     private void StartAttack()
     {
-        if (PlayerManager.Instance.state != PlayerState.Attack)
-        {
-            PlayerManager.Instance.ChangePlayerState(PlayerState.Attack);
-        }
+        PlayerManager.Instance.ChangePlayerState(PlayerState.Attack);
     }
 
     /// <summary>

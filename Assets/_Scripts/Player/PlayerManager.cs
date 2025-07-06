@@ -33,32 +33,35 @@ public class PlayerManager : MonoBehaviour
 
     public void ChangePlayerState(PlayerState newState = PlayerState.Idle)
     {
-        state = newState;
+
+        if (newState == state) return; //If same state- no need to transition
+        currentMoveSpeed = maxMoveSpeed;
 
         switch (newState)
         {
             case PlayerState.Idle:
-                currentMoveSpeed = maxMoveSpeed;
 
                 break;
             case PlayerState.Run:
 
                 break;
             case PlayerState.Attack:
+                if (state != PlayerState.Idle && state != PlayerState.Run) return;
                 currentMoveSpeed *= 0.2f;
                 break;
             case PlayerState.Skill:
-
+                
                 break;
             case PlayerState.Dash:
-                currentMoveSpeed = maxMoveSpeed;
+            
                 break;
-            case PlayerState.Inactive:
+            case PlayerState.Stunned:
 
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
+        state = newState;
         OnPlayerStateChanged?.Invoke(newState);
     }
 }

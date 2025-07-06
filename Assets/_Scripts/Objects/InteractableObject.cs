@@ -1,15 +1,21 @@
 using UnityEngine;
 
-public class HighlightHandler : MonoBehaviour
+/// <summary>
+/// Parent class for all interactables in the game.
+/// </summary>
+public abstract class InteractableObject : MonoBehaviour
 {
-    [SerializeField] private Material highlightMat;
-    private MeshRenderer meshRenderer;
+    [SerializeField] protected Material highlightMat;
+    protected MeshRenderer meshRenderer;
 
     void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
     }
 
+    /// <summary>
+    /// When this object gets in range of whoever checks for it.
+    /// </summary>
     public void OnRangeEnter()
     {
         Material[] materials = meshRenderer.materials;
@@ -19,6 +25,9 @@ public class HighlightHandler : MonoBehaviour
         meshRenderer.materials = newMaterials;
     }
 
+    /// <summary>
+    /// When this object gets out of range of whoever checks for it.
+    /// </summary>
     public void OnRangeExit()
     {
         Material[] materials = meshRenderer.materials;
@@ -27,4 +36,5 @@ public class HighlightHandler : MonoBehaviour
         meshRenderer.materials = newMaterials;
     }
 
+    public abstract void OnInteract();
 }

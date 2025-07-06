@@ -6,5 +6,5 @@ public enum PlayerState
     Attack,
     Skill,
     Dash,
-    Inactive,
+    Stunned,
 }

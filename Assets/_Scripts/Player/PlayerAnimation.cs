@@ -43,8 +43,8 @@ public class PlayerAnimation : MonoBehaviour
             case PlayerState.Dash:
                 OnDash(true);
                 break;
-            case PlayerState.Inactive:
-
+            case PlayerState.Stunned:
+                
                 break;
         }
         SetRunning(newState == PlayerState.Run);
