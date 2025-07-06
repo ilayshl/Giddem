@@ -6,6 +6,8 @@ using UnityEngine;
 /// </summary>
 public class PlayerDash : MonoBehaviour
 {
+    [SerializeField] CharacterManager playerManager;
+    [Header("Dash Data")]
     private const int DASH_UNITS = 8; //Length of the dash
     private const float DASH_POWER = 4f; //Multiplier for moveSpeed
     public float dashCooldown = 2f; //Public to be edited in the game via attributes
@@ -45,12 +47,12 @@ public class PlayerDash : MonoBehaviour
 
     void OnEnable()
     {
-        PlayerManager.OnPlayerStateChanged += SetDashing;
+        playerManager.OnCharacterStateChanged += SetDashing;
     }
 
     void OnDisable()
     {
-        PlayerManager.OnPlayerStateChanged -= SetDashing;
+        playerManager.OnCharacterStateChanged -= SetDashing;
     }
 
     /// <summary>
@@ -64,9 +66,9 @@ public class PlayerDash : MonoBehaviour
         }
     }
 
-    private void SetDashing(PlayerState state)
+    private void SetDashing(CharacterState state)
     {
-        _isDashing = state == PlayerState.Dash;
+        _isDashing = state == CharacterState.Dash;
     }
 
     /// <summary>
@@ -77,12 +79,12 @@ public class PlayerDash : MonoBehaviour
         if (CanDash() && !_isDashing)
         {
             SetLastInput();
-            PlayerManager.Instance.ChangePlayerState(PlayerState.Dash);
+            playerManager.ChangeCharacterState(CharacterState.Dash);
             _dashDestination = CheckDashCollision();
             _currentDashes++;
             ChangeGravity();
             if (_activeDashCooldown != null) StopCoroutine(_activeDashCooldown);
-            _activeDashParticles = StartCoroutine(DashParticles(this.transform, 0.025f, meshRenderer));
+            _activeDashParticles = StartCoroutine(DashParticles(this.transform, 0.03f, meshRenderer));
             _activeDashCooldown = StartCoroutine(nameof(DashComboWindow), CanDash() ? _dashWindowTime : dashCooldown);
         }
     }
@@ -93,7 +95,7 @@ public class PlayerDash : MonoBehaviour
     /// <returns></returns>
     private Vector3 CheckDashCollision()
     {
-        float moveSpeed = PlayerManager.Instance.currentMoveSpeed * DASH_POWER * Time.fixedDeltaTime;
+        float moveSpeed = playerManager.currentMoveSpeed * DASH_POWER * Time.fixedDeltaTime;
         float raycastMaxDistance = moveSpeed * DASH_UNITS;
         RaycastHit hit;
         if (Physics.Raycast(forwardTransform.position, GetDashDirection(), out hit, raycastMaxDistance, (int)layerToCollide))
@@ -117,7 +119,7 @@ public class PlayerDash : MonoBehaviour
         Vector3 distanceToCalculate = _dashDestination - new Vector3(0, _dashDestination.y, 0);
         if (Vector3.Distance(transform.position, distanceToCalculate) > 0.4)
         {
-            _rb.MovePosition(transform.position + GetDashDirection() * PlayerManager.Instance.currentMoveSpeed * DASH_POWER * Time.fixedDeltaTime);
+            _rb.MovePosition(transform.position + GetDashDirection() * playerManager.currentMoveSpeed * DASH_POWER * Time.fixedDeltaTime);
         }
         else
         {
@@ -146,8 +148,8 @@ public class PlayerDash : MonoBehaviour
     /// </summary>
     private void ResetDash()
     {
-        PlayerManager.Instance.ChangePlayerState();
         StopCoroutine(_activeDashParticles);
+        playerManager.ChangeCharacterState();
         ChangeGravity();
     }
 

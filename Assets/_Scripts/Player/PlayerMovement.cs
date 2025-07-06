@@ -5,6 +5,7 @@ using UnityEngine;
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] CharacterManager playerManager;
     private const int TURN_SPEED = 720;
     private Vector3 _input;
     private Vector3 attackRotation;
@@ -15,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        PlayerManager.OnPlayerStateChanged += OnPlayerStateChanged;
+        playerManager.OnCharacterStateChanged += OnPlayerStateChanged;
     }
 
     void Update()
@@ -31,29 +32,29 @@ public class PlayerMovement : MonoBehaviour
 
     void OnDestroy()
     {
-        PlayerManager.OnPlayerStateChanged -= OnPlayerStateChanged;
+        playerManager.OnCharacterStateChanged -= OnPlayerStateChanged;
     }
 
-    private void OnPlayerStateChanged(PlayerState newState)
+    private void OnPlayerStateChanged(CharacterState newState)
     {
         switch (newState)
         {
-            case PlayerState.Idle:
+            case CharacterState.Idle:
 
                 break;
-            case PlayerState.Run:
+            case CharacterState.Run:
 
                 break;
-            case PlayerState.Attack:
+            case CharacterState.Attack:
                 attackRotation = CalculateAttackRotation();
                 break;
-            case PlayerState.Skill:
+            case CharacterState.Ability:
                 Debug.LogWarning("No scripts for special attack!");
                 break;
-            case PlayerState.Dash:
+            case CharacterState.Dash:
                 LookInstantly(_input);
                 break;
-            case PlayerState.Stunned:
+            case CharacterState.Stunned:
 
                 break;
         }
@@ -72,25 +73,25 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Look()
     {
-        if (PlayerManager.Instance.state == PlayerState.Attack)
+        if (playerManager.state == CharacterState.Attack)
         {
             var rotation = Quaternion.LookRotation(attackRotation, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, TURN_SPEED * Time.deltaTime * 2);
         }
-        else if (PlayerManager.Instance.state == PlayerState.Idle || PlayerManager.Instance.state == PlayerState.Run)
+        else if (playerManager.state == CharacterState.Idle || playerManager.state == CharacterState.Run)
         {
             if (_input != Vector3.zero)
             {
                 var rotation = Quaternion.LookRotation(IsometricHelper.ToIso(_input), Vector3.up);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, TURN_SPEED * Time.deltaTime);
-                PlayerManager.Instance.ChangePlayerState(PlayerState.Run);
+                playerManager.ChangeCharacterState(CharacterState.Run);
             }
             else
             {
-                PlayerManager.Instance.ChangePlayerState();
+                playerManager.ChangeCharacterState();
             }
         }
-        PlayerManager.Instance.magnitude = _input.normalized.magnitude;
+        playerManager.magnitude = _input.normalized.magnitude;
     }
 
     /// <summary>
@@ -98,10 +99,10 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Move()
     {
-        if (PlayerManager.Instance.state == PlayerState.Run || PlayerManager.Instance.state == PlayerState.Attack)
+        if (playerManager.state == CharacterState.Run || playerManager.state == CharacterState.Attack)
         {
-        _rb.MovePosition(transform.position + (IsometricHelper.ToIso(_input).normalized * _input.normalized.magnitude)
-            * PlayerManager.Instance.currentMoveSpeed * Time.fixedDeltaTime);
+            _rb.MovePosition(transform.position + (IsometricHelper.ToIso(_input).normalized * _input.normalized.magnitude)
+                * playerManager.currentMoveSpeed * Time.fixedDeltaTime);
         }
     }
 
@@ -145,10 +146,10 @@ public class PlayerMovement : MonoBehaviour
     private void LookInstantly(Vector3 destination)
     {
         if (destination != Vector3.zero)
-                {
-                    var rotation = Quaternion.LookRotation(IsometricHelper.ToIso(destination), Vector3.up);
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, Mathf.Infinity);
-                }
+        {
+            var rotation = Quaternion.LookRotation(IsometricHelper.ToIso(destination), Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, Mathf.Infinity);
+        }
     }
 
 }

@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -5,49 +6,50 @@ using UnityEngine;
 /// </summary>
 public class PlayerAnimation : MonoBehaviour
 {
-    [HideInInspector] public Animator anim;
+    [HideInInspector] private Animator anim;
+    [SerializeField] private CharacterManager playerManager;
 
     void Awake()
     {
         anim = GetComponent<Animator>();
-        PlayerManager.OnPlayerStateChanged += OnPlayerStateChanged;
+        playerManager.OnCharacterStateChanged += OnPlayerStateChanged;
     }
 
     void OnDestroy()
     {
-        PlayerManager.OnPlayerStateChanged -= OnPlayerStateChanged;
+        playerManager.OnCharacterStateChanged -= OnPlayerStateChanged;
     }
 
     void Update()
     {
-        anim.SetFloat("moveSpeed", PlayerManager.Instance.magnitude);
+        anim.SetFloat("moveSpeed", playerManager.magnitude);
     }
 
-    private void OnPlayerStateChanged(PlayerState newState)
+    private void OnPlayerStateChanged(CharacterState newState)
     {
         switch (newState)
         {
-            case PlayerState.Idle:
+            case CharacterState.Idle:
                 OnAttack(false);
                 OnDash(false);
                 break;
-            case PlayerState.Run:
+            case CharacterState.Run:
                 OnAttack(false);
                 break;
-            case PlayerState.Attack:
+            case CharacterState.Attack:
                 OnAttack(true);
                 break;
-            case PlayerState.Skill:
+            case CharacterState.Ability:
                 Debug.LogWarning("No scripts for special attack!");
                 break;
-            case PlayerState.Dash:
+            case CharacterState.Dash:
                 OnDash(true);
                 break;
-            case PlayerState.Stunned:
+            case CharacterState.Stunned:
                 
                 break;
         }
-        SetRunning(newState == PlayerState.Run);
+        SetRunning(newState == CharacterState.Run);
     }
 
     private void SetRunning(bool value)

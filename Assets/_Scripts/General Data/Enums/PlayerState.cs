@@ -1,10 +1,10 @@
 
-public enum PlayerState
+public enum CharacterState
 {
     Idle,
     Run,
     Attack,
-    Skill,
+    Ability,
     Dash,
     Stunned,
 }

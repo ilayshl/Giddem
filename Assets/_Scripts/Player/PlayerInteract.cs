@@ -2,14 +2,15 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
+    [SerializeField] CharacterManager playerManager;
     private InteractableObject interactableObject;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            PlayerState state = PlayerManager.Instance.state;
-            if (state == PlayerState.Idle || state == PlayerState.Run)
+            CharacterState state = playerManager.state;
+            if (state == CharacterState.Idle || state == CharacterState.Run)
             {
                 if (interactableObject != null)
                 {
