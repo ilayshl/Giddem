@@ -285,10 +285,10 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
-  m_Antialiasing: 0
+  m_Antialiasing: 1
   m_AntialiasingQuality: 2
   m_StopNaN: 0
-  m_Dithering: 0
+  m_Dithering: 1
   m_ClearDepth: 1
   m_AllowXRRendering: 1
   m_AllowHDROutput: 1
@@ -1584,7 +1584,7 @@ Transform:
   m_GameObject: {fileID: 1876166520}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.614, y: 0.103, z: 15.456}
   m_LocalScale: {x: 4.9333, y: 4.9333, z: 4.9333}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1839,7 +1839,7 @@ Transform:
   m_GameObject: {fileID: 2110942958}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.54, y: 0.5, z: 1.5}
+  m_LocalPosition: {x: 3.88, y: 0.5, z: 1.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1858,29 +1858,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1642267268}
     m_Modifications:
-    - target: {fileID: 451314655439007078, guid: 07b509f7b4364f94ba28e122e0fca455, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.7713614
-      objectReference: {fileID: 0}
-    - target: {fileID: 451314655439007078, guid: 07b509f7b4364f94ba28e122e0fca455, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 451314655439007078, guid: 07b509f7b4364f94ba28e122e0fca455, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5265431265567830312, guid: 07b509f7b4364f94ba28e122e0fca455, type: 3}
-      propertyPath: m_Name
-      value: Floor2
-      objectReference: {fileID: 0}
     - target: {fileID: 6285084971716630564, guid: 07b509f7b4364f94ba28e122e0fca455, type: 3}
       propertyPath: m_Name
       value: Hexagonal Map
       objectReference: {fileID: 0}
     - target: {fileID: 7975687919957683214, guid: 07b509f7b4364f94ba28e122e0fca455, type: 3}
-      propertyPath: m_Shadows.m_NearPlane
-      value: 0.05
+      propertyPath: m_Intensity
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8644967400991603379, guid: 07b509f7b4364f94ba28e122e0fca455, type: 3}
       propertyPath: m_LocalPosition.x

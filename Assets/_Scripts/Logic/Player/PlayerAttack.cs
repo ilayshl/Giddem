@@ -6,11 +6,10 @@ using UnityEngine;
 /// </summary>
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] CharacterManager playerManager;
+    [SerializeField] private CharacterManager playerManager;
     private const float ATTACK_COOLDOWN = 1f;
-    private Coroutine attackCooldown;
+    private Coroutine _attackCooldown;
 
-    // Update is called once per frame
     private void Update()
     {
         CheckForClick();
@@ -18,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void CheckForClick()
     {
-        if (Input.GetKey(KeyCode.Mouse0) && attackCooldown == null)
+        if (Input.GetKey(KeyCode.Mouse0) && _attackCooldown == null)
         {
             StartAttack();
         }
@@ -29,10 +28,10 @@ public class PlayerAttack : MonoBehaviour
     /// </summary>
     /// <param name="time"></param>
     /// <returns></returns>
-    private IEnumerator StartAttackCooldown(float time)
+    private IEnumerator Start_attackCooldown(float time)
     {
         yield return new WaitForSeconds(time);
-        attackCooldown = null;
+        _attackCooldown = null;
     }
 
     /// <summary>
@@ -44,15 +43,15 @@ public class PlayerAttack : MonoBehaviour
     }
 
     /// <summary>
-    /// Starts the AttackCooldown coroutine and resets PlayerStates
+    /// Starts the _attackCooldown coroutine and resets PlayerStates
     /// </summary>
     private void FinishAttack()
     {
-        if (attackCooldown == null)
+        if (_attackCooldown == null)
         {
             if (playerManager.state == CharacterState.Attack)
             {
-                attackCooldown = StartCoroutine(StartAttackCooldown(ATTACK_COOLDOWN));
+                _attackCooldown = StartCoroutine(Start_attackCooldown(ATTACK_COOLDOWN));
                 playerManager.ChangeCharacterState();
             }
         }
@@ -67,6 +66,18 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse0) == false)
         {
             FinishAttack();
+        }
+    }
+
+    /// <summary>
+    /// Resets the cooldown coroutine, to be used in the dash animation
+    /// </summary>
+    private void ResetCooldown()
+    {
+        if (_attackCooldown != null)
+        {
+            StopCoroutine(_attackCooldown);
+            _attackCooldown = null;
         }
     }
 

@@ -181,6 +181,9 @@ public class PlayerDash : MonoBehaviour
         _lastInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
     }
 
+    /// <summary>
+    /// Makes player negate gravity when dashing
+    /// </summary>
     private void ChangeGravity()
     {
         _rb.useGravity = !_isDashing;

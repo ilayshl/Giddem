@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
-    [SerializeField] CharacterManager playerManager;
-    private InteractableObject interactableObject;
+    [SerializeField] private CharacterManager playerManager;
+    private InteractableObject _interactableObject;
 
     private void Update()
     {
@@ -12,12 +12,12 @@ public class PlayerInteract : MonoBehaviour
             CharacterState state = playerManager.state;
             if (state == CharacterState.Idle || state == CharacterState.Run)
             {
-                if (interactableObject != null)
+                if (_interactableObject != null)
                 {
-                    interactableObject.OnInteract();
-                    if (!interactableObject.enabled)
+                    _interactableObject.OnInteract();
+                    if (!_interactableObject.enabled)
                     {
-                        interactableObject = null;
+                        _interactableObject = null;
                     }
                 }
             }
@@ -34,8 +34,8 @@ public class PlayerInteract : MonoBehaviour
         {
             if (other.TryGetComponent<InteractableObject>(out InteractableObject interactable))
             {
-                interactableObject?.OnRangeExit();
-                interactableObject = interactable;
+                _interactableObject?.OnRangeExit();
+                _interactableObject = interactable;
                 interactable.OnRangeEnter();
             }
 
@@ -52,10 +52,10 @@ public class PlayerInteract : MonoBehaviour
         {
             if (other.TryGetComponent<InteractableObject>(out InteractableObject interactable))
             {
-                if (interactable == interactableObject)
+                if (interactable == _interactableObject)
                 {
                     interactable.OnRangeExit();
-                    interactableObject = null;
+                    _interactableObject = null;
                 }
             }
         }

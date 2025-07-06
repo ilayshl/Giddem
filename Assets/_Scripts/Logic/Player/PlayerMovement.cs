@@ -5,13 +5,13 @@ using UnityEngine;
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] CharacterManager playerManager;
+    [SerializeField] private CharacterManager playerManager;
     private const int TURN_SPEED = 720;
     private Vector3 _input;
-    private Vector3 attackRotation;
+    private Vector3 _attackRotation;
     private Rigidbody _rb;
 
-    private LayerMask playerLayer;
+    private LayerMask _playerLayer;
 
     void Awake()
     {
@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
                 break;
             case CharacterState.Attack:
-                attackRotation = CalculateAttackRotation();
+                _attackRotation = CalculateAttackRotation();
                 break;
             case CharacterState.Ability:
                 Debug.LogWarning("No scripts for special attack!");
@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (playerManager.state == CharacterState.Attack)
         {
-            var rotation = Quaternion.LookRotation(attackRotation, Vector3.up);
+            var rotation = Quaternion.LookRotation(_attackRotation, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, TURN_SPEED * Time.deltaTime * 2);
         }
         else if (playerManager.state == CharacterState.Idle || playerManager.state == CharacterState.Run)
@@ -115,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 mouse = Input.mousePosition;
         Ray castPoint = Camera.main.ScreenPointToRay(mouse);
         RaycastHit hit;
-        if (Physics.Raycast(castPoint, out hit, Mathf.Infinity, ~playerLayer))
+        if (Physics.Raycast(castPoint, out hit, Mathf.Infinity, ~_playerLayer))
         {
             Vector3 requiredHitPoint;
             Vector3 playerHeight = new Vector3(hit.point.x, transform.position.y, hit.point.z);
@@ -143,6 +143,10 @@ public class PlayerMovement : MonoBehaviour
         return transform.forward;
     }
 
+    /// <summary>
+    /// Rotates the player instantly towards the destination vector
+    /// </summary>
+    /// <param name="destination"></param>
     private void LookInstantly(Vector3 destination)
     {
         if (destination != Vector3.zero)
