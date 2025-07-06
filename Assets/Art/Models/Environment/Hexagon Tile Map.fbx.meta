@@ -8,17 +8,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Alpha_Body_MAT
-    second: {fileID: 2100000, guid: b3ef30eed2a08624a857a9c07ba7519f, type: 2}
+    second: {fileID: 2100000, guid: b394e605def9d9444950bc8ffd85db96, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Alpha_Joints_MAT
-    second: {fileID: 2100000, guid: b40f28f515fe155469842b11ab32126c, type: 2}
+    second: {fileID: 2100000, guid: 4e3f690e4ade8154f9de6c985737e5d4, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material
-    second: {fileID: 2100000, guid: d6d682885cfcde545957603828063132, type: 2}
+    second: {fileID: 2100000, guid: dbd457a48943d9340843f7bb5513e0dc, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -48,72 +48,72 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: SciFi-Tile2_diffuse
-    second: {fileID: 2800000, guid: 4f45a67d61366eb47a7a2a9631ac1511, type: 3}
+    second: {fileID: 2800000, guid: 98b893ce6315fe14cb73fa45bf5a0dd6, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: SciFi-Tile2_metallic
-    second: {fileID: 2800000, guid: b8ad7a8b242275347b55048753e951f9, type: 3}
+    second: {fileID: 2800000, guid: d052f9aa2527d044da4797cb018ea850, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: SciFi-Tile2_normal
-    second: {fileID: 2800000, guid: 56ccf68442f666e469401449ba223b56, type: 3}
+    second: {fileID: 2800000, guid: 1aa7a86f15bdf9f4f97facb6d95388fc, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: SciFi-Tile2_roughness
-    second: {fileID: 2800000, guid: 3d3b9b34a72b3424a92624833530080f, type: 3}
+    second: {fileID: 2800000, guid: 17f51827538a6434885126cc66692444, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Stone Floor Sheet
-    second: {fileID: 2800000, guid: 01abe9b41b332b143aac8fbe64694fed, type: 3}
+    second: {fileID: 2800000, guid: 245caa6c110657047957edb9623e3dee, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Stone Plate 01_BaseColor
-    second: {fileID: 2800000, guid: e0071aae48efe154faddb14163cdecc3, type: 3}
+    second: {fileID: 2800000, guid: 62e14feb05cda8848bf87a9e2a92e13d, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Stone Plate 01_Normal
-    second: {fileID: 2800000, guid: a21774db89459964b8f2c057704d7fb7, type: 3}
+    second: {fileID: 2800000, guid: 91f07042e35bcf54aaa185daef362108, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Stone Plate 01_Roughness
-    second: {fileID: 2800000, guid: 6f2480bc56eb72e4e9b56637c7a13be5, type: 3}
+    second: {fileID: 2800000, guid: ebefca65388db434e8f334ad29a0d243, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: stone-135_roughness
-    second: {fileID: 2800000, guid: 29a19a33a71dca54ebb911e9afba872d, type: 3}
+    second: {fileID: 2800000, guid: 079c8aa5bc34de24faa6bc7dea1352e9, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: stone-9_diffuse
-    second: {fileID: 2800000, guid: f6f50249a6c86114ebe032b0c2a4057b, type: 3}
+    second: {fileID: 2800000, guid: 107011fde5647af41927ecd5a6a96f35, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: stone-9_smooth
-    second: {fileID: 2800000, guid: 5749b2bd1d2c8d7478e219cffdbbf1fd, type: 3}
+    second: {fileID: 2800000, guid: 291eb40c85f159c49a29cbf34e6d2b93, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: stonewall_basecolor
-    second: {fileID: 2800000, guid: ac98dd0445fd8044f9363fae754b7e6f, type: 3}
+    second: {fileID: 2800000, guid: 3b1622bdc08803b4bad82e62bb8a38c4, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: stonewall_normal
-    second: {fileID: 2800000, guid: 516a81034c3412a43a6ebf5da107aa2f, type: 3}
+    second: {fileID: 2800000, guid: be770bddf6c976c4ca1eb0f9cd31103c, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: stonewall_roughness
-    second: {fileID: 2800000, guid: dfacb1294255dff47bca4bbdc6a2f05a, type: 3}
+    second: {fileID: 2800000, guid: 14b3566b9130ae54cbb900760e994c70, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -145,13 +145,13 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
+    importCameras: 0
     importLights: 1
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
