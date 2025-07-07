@@ -2,22 +2,32 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
+    [SerializeField] private InteractableObjectType[] objectTypeToCollide;
+    [SerializeField] private KeyCode inputKey;
     [SerializeField] private CharacterManager playerManager;
     private InteractableObject _interactableObject;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        GetInput();
+    }
+
+    /// <summary>
+    /// Checks if the required inputKey is pressed, then compares CharacterState and interacts
+    /// </summary>
+    private void GetInput()
+    {
+        if (Input.GetKeyDown(inputKey))
         {
             CharacterState state = playerManager.state;
             if (state == CharacterState.Idle || state == CharacterState.Run)
             {
-                if (_interactableObject != null)
+                if (_interactableObject != null) //If something is highlighted
                 {
                     _interactableObject.OnInteract();
-                    if (!_interactableObject.enabled)
+                    if (!_interactableObject.enabled) //If was destroyed from Interaction
                     {
-                        _interactableObject = null;
+                        _interactableObject = null; //Reset highlight
                     }
                 }
             }
@@ -34,9 +44,15 @@ public class PlayerInteract : MonoBehaviour
         {
             if (other.TryGetComponent<InteractableObject>(out InteractableObject interactable))
             {
-                _interactableObject?.OnRangeExit();
-                _interactableObject = interactable;
-                interactable.OnRangeEnter();
+                foreach (var objectType in objectTypeToCollide)
+                {
+                    if (objectType == interactable.ObjectType)
+                    {
+                        _interactableObject?.OnRangeExit();
+                        _interactableObject = interactable;
+                        interactable.OnRangeEnter();
+                    }
+                }
             }
 
         }
@@ -46,7 +62,7 @@ public class PlayerInteract : MonoBehaviour
     /// When object leaves sight, if it is the object that is currently higlighted, cancel highlight
     /// </summary>
     /// <param name="other"></param>
-    private void OnTriggerExit(Collider other)
+    protected void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Interactable"))
         {

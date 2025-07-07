@@ -226,8 +226,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: -100
-  far clip plane: 1000
+  near clip plane: -35
+  far clip plane: 100
   field of view: 60
   orthographic: 1
   orthographic size: 5
@@ -743,9 +743,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1695717028732630683, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
-      propertyPath: m_Constraints
-      value: 112
+    - target: {fileID: 2641413736701845485, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
+      propertyPath: m_Size.x
+      value: 1.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 2641413736701845485, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
+      propertyPath: m_Size.z
+      value: 5.7698603
+      objectReference: {fileID: 0}
+    - target: {fileID: 2641413736701845485, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
+      propertyPath: m_Center.z
+      value: 2.6349306
       objectReference: {fileID: 0}
     - target: {fileID: 6413001906572994086, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -788,9 +796,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7374667613008087082, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
-      propertyPath: playerManager
-      value: 
-      objectReference: {fileID: 1390790664}
+      propertyPath: objectTypeToCollide.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8951341847804961117, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1154,7 +1162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d3588746986453b9110b87dadc19d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightMat: {fileID: 2100000, guid: 94b63bea1b920024b9972b3b5a1c940e, type: 2}
+  objectType: 0
+  highlightMat: {fileID: 2100000, guid: 83494baa7e3b808499b8502b5dff168d, type: 2}
   armData: {fileID: 11400000, guid: eea80842bfffb44b8ab64c0d0b6804c1, type: 2}
 --- !u!4 &1390790663 stripped
 Transform:
@@ -1261,16 +1270,16 @@ Canvas:
   m_GameObject: {fileID: 1545310884}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 330585545}
-  m_PlaneDistance: -100
+  m_PlaneDistance: -35
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_VertexColorAlwaysGammaSpace: 1
+  m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -1523,7 +1532,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a641b492d874b244bb7b7bbba6027227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightMat: {fileID: 2100000, guid: 1a7456591aa4e954b91e38b160e5a3ed, type: 2}
+  objectType: 1
+  highlightMat: {fileID: 2100000, guid: 2a5e94d3df29ea34783a041c6f21339c, type: 2}
 --- !u!1 &1642267267
 GameObject:
   m_ObjectHideFlags: 0
@@ -1710,7 +1720,7 @@ GameObject:
   - component: {fileID: 2110942960}
   - component: {fileID: 2110942959}
   m_Layer: 8
-  m_Name: Telekinesis placeholder (1)
+  m_Name: Grapple placeholder
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1755,7 +1765,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a641b492d874b244bb7b7bbba6027227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightMat: {fileID: 2100000, guid: 1a7456591aa4e954b91e38b160e5a3ed, type: 2}
+  objectType: 2
+  highlightMat: {fileID: 2100000, guid: 1769b334970dc1d41ac069d10fa2ec6a, type: 2}
 --- !u!65 &2110942961
 BoxCollider:
   m_ObjectHideFlags: 0

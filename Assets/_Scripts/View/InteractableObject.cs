@@ -5,8 +5,10 @@ using UnityEngine;
 /// </summary>
 public abstract class InteractableObject : MonoBehaviour
 {
-    [SerializeField] protected Material highlightMat;
-    protected MeshRenderer meshRenderer;
+    public InteractableObjectType ObjectType { get => objectType; }
+    [SerializeField] private Material highlightMat;
+    [SerializeField] private InteractableObjectType objectType;
+    private MeshRenderer meshRenderer;
 
     void Awake()
     {
