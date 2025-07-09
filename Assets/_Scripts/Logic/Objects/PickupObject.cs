@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ArmPickup : InteractableObject
+public class PickupObject : InteractableObject
 {
     [SerializeField] private ArmData armData;
 

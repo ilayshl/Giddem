@@ -5,7 +5,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private InteractableObjectType[] objectTypeToCollide;
     [SerializeField] private KeyCode inputKey;
     [SerializeField] private CharacterManager playerManager;
-    private InteractableObject _interactableObject;
+    private InteractableObject _highlightedObject;
 
     private void Update()
     {
@@ -22,12 +22,12 @@ public class PlayerInteract : MonoBehaviour
             CharacterState state = playerManager.state;
             if (state == CharacterState.Idle || state == CharacterState.Run)
             {
-                if (_interactableObject != null) //If something is highlighted
+                if (_highlightedObject != null) //If something is highlighted
                 {
-                    _interactableObject.OnInteract();
-                    if (!_interactableObject.enabled) //If was destroyed from Interaction
+                    _highlightedObject.OnInteract();
+                    if (!_highlightedObject.enabled) //If was destroyed from Interaction
                     {
-                        _interactableObject = null; //Reset highlight
+                        _highlightedObject = null; //Reset highlight
                     }
                 }
             }
@@ -48,8 +48,8 @@ public class PlayerInteract : MonoBehaviour
                 {
                     if (objectType == interactable.ObjectType)
                     {
-                        _interactableObject?.OnRangeExit();
-                        _interactableObject = interactable;
+                        _highlightedObject?.OnRangeExit();
+                        _highlightedObject = interactable;
                         interactable.OnRangeEnter();
                     }
                 }
@@ -68,10 +68,10 @@ public class PlayerInteract : MonoBehaviour
         {
             if (other.TryGetComponent<InteractableObject>(out InteractableObject interactable))
             {
-                if (interactable == _interactableObject)
+                if (interactable == _highlightedObject)
                 {
                     interactable.OnRangeExit();
-                    _interactableObject = null;
+                    _highlightedObject = null;
                 }
             }
         }

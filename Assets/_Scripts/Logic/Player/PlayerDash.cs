@@ -10,6 +10,7 @@ public class PlayerDash : MonoBehaviour
     [Header("Dash Data")]
     private const int DASH_UNITS = 8; //Length of the dash
     private const float DASH_POWER = 4f; //Multiplier for moveSpeed
+    private const float DESTINATION_RANGE = 0.4f;
     public float dashCooldown = 2f; //Public to be edited in the game via attributes
     [SerializeField] private int dashLimit = 2; //How many consecutive dashes the player can perform before cd
     [SerializeField] Transform forwardTransform; //To create collision ray
@@ -32,6 +33,11 @@ public class PlayerDash : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
     }
 
+    void OnEnable()
+    {
+        playerManager.OnCharacterStateChanged += SetDashing;
+    }
+
     void Update()
     {
         CheckForInput();
@@ -43,11 +49,6 @@ public class PlayerDash : MonoBehaviour
         {
             Dash(_lastInput);
         }
-    }
-
-    void OnEnable()
-    {
-        playerManager.OnCharacterStateChanged += SetDashing;
     }
 
     void OnDisable()
@@ -117,7 +118,7 @@ public class PlayerDash : MonoBehaviour
     private void Dash(Vector3 input)
     {
         Vector3 distanceToCalculate = _dashDestination - new Vector3(0, _dashDestination.y, 0);
-        if (Vector3.Distance(transform.position, distanceToCalculate) > 0.4)
+        if (Vector3.Distance(transform.position, distanceToCalculate) > DESTINATION_RANGE)
         {
             _rb.MovePosition(transform.position + GetDashDirection() * playerManager.currentMoveSpeed * DASH_POWER * Time.fixedDeltaTime);
         }
