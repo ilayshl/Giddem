@@ -743,6 +743,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1034813666545478070, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 2641413736701845485, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
       propertyPath: m_Size.x
       value: 1.89
@@ -798,6 +802,10 @@ PrefabInstance:
     - target: {fileID: 7374667613008087082, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
       propertyPath: objectTypeToCollide.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8951341847804961117, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
+      propertyPath: m_Icon
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8951341847804961117, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
       propertyPath: m_Name
@@ -1228,7 +1236,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545310884}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
@@ -1237,7 +1245,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!114 &1545310887
 MonoBehaviour:
   m_ObjectHideFlags: 0
