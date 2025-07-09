@@ -5,7 +5,9 @@ using UnityEngine;
 /// </summary>
 public abstract class InteractableObject : MonoBehaviour
 {
+    public string ObjectName { get => objectName; }
     public InteractableObjectType ObjectType { get => objectType; }
+    [SerializeField] private string objectName;
     [SerializeField] private Material highlightMat;
     [SerializeField] private InteractableObjectType objectType;
     private MeshRenderer meshRenderer;

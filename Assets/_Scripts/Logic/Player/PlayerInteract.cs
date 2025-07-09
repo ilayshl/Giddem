@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
+    [SerializeField] private CharacterManager playerManager;
     [SerializeField] private InteractableObjectType[] objectTypeToCollide;
     [SerializeField] private KeyCode inputKey;
-    [SerializeField] private CharacterManager playerManager;
     private InteractableObject _highlightedObject;
 
     private void Update()
@@ -17,19 +17,17 @@ public class PlayerInteract : MonoBehaviour
     /// </summary>
     private void GetInput()
     {
+        if (_highlightedObject == null) return; //If nothing is highlighted
         if (Input.GetKeyDown(inputKey))
         {
             CharacterState state = playerManager.state;
             if (state == CharacterState.Idle || state == CharacterState.Run)
             {
-                if (_highlightedObject != null) //If something is highlighted
-                {
                     _highlightedObject.OnInteract();
                     if (!_highlightedObject.enabled) //If was destroyed from Interaction
                     {
                         _highlightedObject = null; //Reset highlight
                     }
-                }
             }
         }
     }
