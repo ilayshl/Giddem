@@ -7,6 +7,8 @@ public class AITarget : MonoBehaviour
     public Transform target;
     public float chaseDistance = 10f;
     public float attackRange = 2f;
+    public float speed = 3.5f;
+    public bool NPC = false;
 
     private NavMeshAgent navMeshAgent;
     private Animator animator;
@@ -45,7 +47,7 @@ public class AITarget : MonoBehaviour
             // Chase target
             navMeshAgent.isStopped = false;
             navMeshAgent.destination = target.position;
-            navMeshAgent.speed = 3.5f;
+            navMeshAgent.speed = speed;
             animator.SetFloat("moveSpeed", 3.5f);
             animator.SetBool("Attack", false);
             animator.SetBool("isRunning", true);
@@ -56,8 +58,13 @@ public class AITarget : MonoBehaviour
             navMeshAgent.isStopped = true;
             navMeshAgent.speed = 0;
             animator.SetFloat("moveSpeed", 0f);
-            animator.SetBool("Attack", true);
             animator.SetBool("isRunning", false);
+
+            if (!NPC)
+            {
+                animator.SetBool("Attack", true);
+            }
+
 
             // Rotate to face target
             Vector3 direction = (target.position - transform.position).normalized;
