@@ -7,6 +7,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Alpha_Body_MAT
+    second: {fileID: 2100000, guid: 39b39e090863f094f93847e947100598, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Alpha_Joints_MAT
+    second: {fileID: 2100000, guid: 1d406eed2413df2428ec01fa9c22e13c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Material
     second: {fileID: 2100000, guid: dbd457a48943d9340843f7bb5513e0dc, type: 2}
   - first:
@@ -34,6 +44,96 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Stylised Stone
     second: {fileID: 2100000, guid: 80178685fb7e94d4eb1332e1e534a7ce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: brass.lamp.02
+    second: {fileID: 2100000, guid: a2e14eb8e4382c84b946bc5c542132db, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass.lamp.02
+    second: {fileID: 2100000, guid: da123d99be0a42e4c9b33126d4f2d4ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal.lamp.02
+    second: {fileID: 2100000, guid: 01f69a5133327a34b862f7eb872abaf1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal.sign.clear
+    second: {fileID: 2100000, guid: f83aaa620b1ec184aaa4c6dfbdd1f7e2, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: SciFi-Tile2_diffuse
+    second: {fileID: 2800000, guid: 74ef7997dd8b75443a0adc71217e7757, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: SciFi-Tile2_metallic
+    second: {fileID: 2800000, guid: feb2c794a9edbb24cb1c411c8e61b2de, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: SciFi-Tile2_normal
+    second: {fileID: 2800000, guid: 0e9f5edebb9114346ac89cda98721842, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: SciFi-Tile2_roughness
+    second: {fileID: 2800000, guid: 79425fd64a52e96488de12c680ab0d88, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Stone Floor Sheet
+    second: {fileID: 2800000, guid: eb10b76c2e641304c8e384249ca1dc87, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Stone Plate 01_BaseColor
+    second: {fileID: 2800000, guid: 8471aec4adffa7848abfd68e9bba07d7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Stone Plate 01_Normal
+    second: {fileID: 2800000, guid: 7ed8ad18f78c72c48b9f1d92820ff04b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Stone Plate 01_Roughness
+    second: {fileID: 2800000, guid: 25bb2e764b2547a42a0a90a558424540, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: stone-135_roughness
+    second: {fileID: 2800000, guid: d4c03cb798c5ee543ab511a15c18c405, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: stone-9_diffuse
+    second: {fileID: 2800000, guid: a6bafa7c02905ce429fc80c8dba3142e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: stone-9_smooth
+    second: {fileID: 2800000, guid: 7873c29d11923604a8e686bb331cf89c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: stonewall_basecolor
+    second: {fileID: 2800000, guid: f3a28a920f5e5f049a971eac6477b458, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: stonewall_normal
+    second: {fileID: 2800000, guid: 84e31be262b576e47991e18e45bf717f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: stonewall_roughness
+    second: {fileID: 2800000, guid: 99106de816ae92e4e9987525dae32a06, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
