@@ -743,10 +743,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1034813666545478070, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 2641413736701845485, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
       propertyPath: m_Size.x
       value: 1.89
@@ -802,10 +798,6 @@ PrefabInstance:
     - target: {fileID: 7374667613008087082, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
       propertyPath: objectTypeToCollide.Array.size
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8951341847804961117, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
-      propertyPath: m_Icon
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8951341847804961117, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
       propertyPath: m_Name
@@ -1032,11 +1024,11 @@ GameObject:
   - component: {fileID: 1357505615}
   - component: {fileID: 1357505614}
   - component: {fileID: 1357505613}
-  - component: {fileID: 1357505618}
   - component: {fileID: 1357505611}
   - component: {fileID: 1357505616}
+  - component: {fileID: 1357505618}
   m_Layer: 8
-  m_Name: Pickup placeholder
+  m_Name: Arm Placeholder
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1170,7 +1162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d3588746986453b9110b87dadc19d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: pickup placeholder
+  objectName: Pickup
   highlightMat: {fileID: 2100000, guid: 83494baa7e3b808499b8502b5dff168d, type: 2}
   objectType: 0
 --- !u!4 &1390790663 stripped
@@ -1236,7 +1228,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545310884}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
@@ -1245,7 +1237,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
 --- !u!114 &1545310887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1402,9 +1394,9 @@ GameObject:
   - component: {fileID: 1571642151}
   - component: {fileID: 1571642150}
   - component: {fileID: 1571642149}
-  - component: {fileID: 1571642153}
   - component: {fileID: 1571642148}
   - component: {fileID: 1571642152}
+  - component: {fileID: 1571642153}
   m_Layer: 8
   m_Name: Telekinesis placeholder
   m_TagString: Interactable
@@ -1540,7 +1532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ae8da52632b14c5ab06bf36413e7f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: telekinesis
+  objectName: Telekinesis
   highlightMat: {fileID: 2100000, guid: 2a5e94d3df29ea34783a041c6f21339c, type: 2}
   objectType: 1
 --- !u!1 &1642267267
@@ -1725,8 +1717,8 @@ GameObject:
   - component: {fileID: 2110942964}
   - component: {fileID: 2110942963}
   - component: {fileID: 2110942962}
-  - component: {fileID: 2110942960}
   - component: {fileID: 2110942961}
+  - component: {fileID: 2110942960}
   - component: {fileID: 2110942959}
   m_Layer: 8
   m_Name: Grapple placeholder
@@ -1774,7 +1766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a641b492d874b244bb7b7bbba6027227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: grapple point
+  objectName: Grapple
   highlightMat: {fileID: 2100000, guid: 1769b334970dc1d41ac069d10fa2ec6a, type: 2}
   objectType: 2
 --- !u!65 &2110942961

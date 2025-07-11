@@ -46,9 +46,9 @@ public class PlayerInteract : MonoBehaviour
                 {
                     if (objectType == interactable.ObjectType)
                     {
-                        _highlightedObject?.OnRangeExit();
+                        _highlightedObject?.RemoveOutline();
                         _highlightedObject = interactable;
-                        interactable.OnRangeEnter();
+                        interactable.ShowOutline();
                     }
                 }
             }
@@ -68,7 +68,7 @@ public class PlayerInteract : MonoBehaviour
             {
                 if (interactable == _highlightedObject)
                 {
-                    interactable.OnRangeExit();
+                    interactable.RemoveOutline();
                     _highlightedObject = null;
                 }
             }

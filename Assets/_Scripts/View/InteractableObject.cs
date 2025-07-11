@@ -18,9 +18,9 @@ public abstract class InteractableObject : MonoBehaviour
     }
 
     /// <summary>
-    /// When this object gets in range of whoever checks for it.
+    /// For when this object gets in range of whoever checks for it.
     /// </summary>
-    public void OnRangeEnter()
+    public void ShowOutline()
     {
         Material[] materials = meshRenderer.materials;
         Material[] newMaterials = new Material[materials.Length + 1];
@@ -30,9 +30,9 @@ public abstract class InteractableObject : MonoBehaviour
     }
 
     /// <summary>
-    /// When this object gets out of range of whoever checks for it.
+    /// For when this object gets out of range of whoever checks for it.
     /// </summary>
-    public void OnRangeExit()
+    public void RemoveOutline()
     {
         Material[] materials = meshRenderer.materials;
         Material[] newMaterials = new Material[materials.Length - 1];

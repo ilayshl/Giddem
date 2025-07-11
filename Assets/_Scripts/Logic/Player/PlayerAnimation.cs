@@ -39,8 +39,11 @@ public class PlayerAnimation : MonoBehaviour
             case CharacterState.Attack:
                 OnAttack(true);
                 break;
-            case CharacterState.Ability:
-                Debug.LogWarning("No scripts for special attack!");
+            case CharacterState.Telekinesis:
+                Debug.Log($"[{this.name}] Telekinesis");
+                break;
+            case CharacterState.Grapple:
+                Debug.Log($"[{this.name}] Grapple");
                 break;
             case CharacterState.Dash:
                 OnDash(true);

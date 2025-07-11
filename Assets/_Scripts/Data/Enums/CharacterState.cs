@@ -4,7 +4,8 @@ public enum CharacterState
     Idle,
     Run,
     Attack,
-    Ability,
+    Telekinesis,
+    Grapple,
     Dash,
     Stunned,
 }

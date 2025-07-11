@@ -9,9 +9,11 @@ public class CharacterManager : MonoBehaviour
     public CharacterState state { get; private set; }
     public event Action<CharacterState> OnCharacterStateChanged;
 
-    public float maxMoveSpeed { get; private set; } = 5;
-    public float currentMoveSpeed { get; private set; } = 5;
-    public float damage { get; private set; }
+    public float MaxMoveSpeed { get; private set; } = 5;
+    public float CurrentMoveSpeed { get; private set; } = 5;
+    public float TurnSpeed { get; private set; } = 720;
+    public float Damage { get; private set; }
+
     [HideInInspector] public float magnitude;
 
     void Start()
@@ -28,7 +30,7 @@ public class CharacterManager : MonoBehaviour
     {
 
         if (newState == state) return; //If same state- no need to transition
-        currentMoveSpeed = maxMoveSpeed;
+        CurrentMoveSpeed = MaxMoveSpeed;
 
         switch (newState)
         {
@@ -40,9 +42,12 @@ public class CharacterManager : MonoBehaviour
                 break;
             case CharacterState.Attack:
                 if (state != CharacterState.Idle && state != CharacterState.Run) return;
-                currentMoveSpeed *= 0.2f;
+                CurrentMoveSpeed *= 0.2f;
                 break;
-            case CharacterState.Ability:
+            case CharacterState.Telekinesis:
+
+                break;
+            case CharacterState.Grapple:
 
                 break;
             case CharacterState.Dash:

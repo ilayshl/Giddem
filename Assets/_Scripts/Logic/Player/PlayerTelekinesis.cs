@@ -1,16 +1,30 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerTelekinesis : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] CharacterManager playerManager;
+    private TelekinesisObject objectControlled;
+
+    public void SetTelekinesisObject(TelekinesisObject objectToControl)
     {
-        
+        if (playerManager.state == CharacterState.Telekinesis)
+        {
+            objectControlled = objectToControl;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator controlObject()
     {
-        
+        while (objectControlled != null)
+        {
+            MoveObject();
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    private void MoveObject()
+    {
+
     }
 }
