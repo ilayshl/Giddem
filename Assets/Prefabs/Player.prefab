@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26521bf6ae32748388795053a37c2f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectTypeToCollide: 0100000002000000
-  inputKey: 324
   playerManager: {fileID: 4132948944991069440}
+  objectTypeToCollide: 0300000002000000
+  inputKey: 324
 --- !u!65 &2641413736701845485
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -67,8 +67,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.84, y: 1.2, z: 4.917468}
-  m_Center: {x: 0, y: 0.5, z: 2.2087345}
+  m_Size: {x: 1.89, y: 1.2, z: 5.7698603}
+  m_Center: {x: 0, y: 0.5, z: 2.6349306}
 --- !u!1 &1034813666545478070
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,9 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26521bf6ae32748388795053a37c2f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectTypeToCollide: 
-  inputKey: 101
   playerManager: {fileID: 4132948944991069440}
+  objectTypeToCollide: 0000000001000000
+  inputKey: 101
 --- !u!65 &5698160008951620978
 BoxCollider:
   m_ObjectHideFlags: 0
