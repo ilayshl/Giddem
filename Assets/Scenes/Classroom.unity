@@ -128,7 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 16870573}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Blinds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ Transform:
   m_GameObject: {fileID: 64745672}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.95, y: 0, z: 5.86}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -281,7 +281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 276964558}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mazgan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 478850042}
   - component: {fileID: 478850041}
   - component: {fileID: 478850040}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HiddenWalls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,7 +572,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 602782491}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Desks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -748,7 +748,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 893080079}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Chairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -824,7 +824,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 922341075}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1566,11 +1566,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6413001906572994086, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.006
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6413001906572994086, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6413001906572994086, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1755,7 +1755,7 @@ GameObject:
   - component: {fileID: 1669006673}
   - component: {fileID: 1669006675}
   - component: {fileID: 1669006674}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Area.007 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2102,11 +2102,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: -100
-  far clip plane: 1000
+  near clip plane: -30
+  far clip plane: 35
   field of view: 60
   orthographic: 1
-  orthographic size: 3.12
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2368,7 +2368,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2076930999}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Panelim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2403,7 +2403,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2085086584}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MIsc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2443,7 +2443,7 @@ GameObject:
   - component: {fileID: 6111881479015884099}
   - component: {fileID: 8484462615992505144}
   - component: {fileID: 8889619505078446542}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Venetian_updown.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2470,7 +2470,7 @@ GameObject:
   - component: {fileID: 1621264840116099581}
   - component: {fileID: 1112246366895602560}
   - component: {fileID: 4649651009165493412}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2564,8 +2564,7 @@ GameObject:
   - component: {fileID: 7184783354922735461}
   - component: {fileID: 5306876560345604907}
   - component: {fileID: 1685242076436429475}
-  - component: {fileID: 2880906057267735921}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2760,7 +2759,7 @@ GameObject:
   - component: {fileID: 2943081936644909425}
   - component: {fileID: 2786534777475521001}
   - component: {fileID: 2433521823683346016}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EXIT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2797,7 +2796,7 @@ GameObject:
   - component: {fileID: 55150789560116751}
   - component: {fileID: 7633482509443523002}
   - component: {fileID: 443118701}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: YellowChair.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2868,7 +2867,7 @@ GameObject:
   - component: {fileID: 8863698502059767613}
   - component: {fileID: 6496424583037247052}
   - component: {fileID: 2893839598685515404}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.f.C.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2932,7 +2931,7 @@ GameObject:
   - component: {fileID: 3395760281174086040}
   - component: {fileID: 7497781951976685388}
   - component: {fileID: 3516512670881974802}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Venetian_base.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2974,7 +2973,7 @@ GameObject:
   - component: {fileID: 7901880675909958332}
   - component: {fileID: 6652130269404093481}
   - component: {fileID: 516973645498782959}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.C.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3062,7 +3061,7 @@ GameObject:
   - component: {fileID: 1676284514263478436}
   - component: {fileID: 2866957571822202146}
   - component: {fileID: 2066791868}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: YellowChair.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3212,8 +3211,8 @@ Transform:
   m_GameObject: {fileID: 919132149410841871}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalPosition: {x: -2.51, y: 0, z: -7.19}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3561771208625272281}
@@ -3335,8 +3334,7 @@ GameObject:
   - component: {fileID: 1322872250173891765}
   - component: {fileID: 6773224032926871054}
   - component: {fileID: 732192326467816581}
-  - component: {fileID: 1167196419966617871}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3521,7 +3519,7 @@ GameObject:
   - component: {fileID: 1349000833682267733}
   - component: {fileID: 4702724230626612341}
   - component: {fileID: 47358235}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlackChair.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3615,7 +3613,7 @@ GameObject:
   - component: {fileID: 4864923488689829729}
   - component: {fileID: 5331988245473147376}
   - component: {fileID: 5143442807311126623}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.f.C.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3634,7 +3632,7 @@ GameObject:
   - component: {fileID: 5627305254478499164}
   - component: {fileID: 5547167335403763732}
   - component: {fileID: 758503708}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: YellowChair.013
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3653,7 +3651,7 @@ GameObject:
   - component: {fileID: 6175082290369207132}
   - component: {fileID: 6398833288213911656}
   - component: {fileID: 1706152015}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlackChair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3754,7 +3752,7 @@ GameObject:
   - component: {fileID: 7968912510879031704}
   - component: {fileID: 8355984373775829210}
   - component: {fileID: 2179237131176151733}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.R.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3865,7 +3863,7 @@ GameObject:
   - component: {fileID: 4893409057821333483}
   - component: {fileID: 6745375861702008754}
   - component: {fileID: 2387014994628679211}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lenovo laptop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3907,7 +3905,7 @@ GameObject:
   - component: {fileID: 5334037119580402254}
   - component: {fileID: 4539702727995436689}
   - component: {fileID: 5334037119580402255}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3956,7 +3954,7 @@ GameObject:
   - component: {fileID: 640170469375754159}
   - component: {fileID: 4846157441742646080}
   - component: {fileID: 4242662672034404820}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.C.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4019,7 +4017,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450653351354293}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mentor Studio Classroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4069,7 +4067,7 @@ GameObject:
   - component: {fileID: 7616517393642965850}
   - component: {fileID: 5420889977999198234}
   - component: {fileID: 8906254766490766985}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plinth.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4221,28 +4219,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -306377125911876422, guid: 83cdc0cceac1272429e3f1bbee66f5d1, type: 3}
---- !u!64 &1048163778848324713
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5108567404852541851}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8792586484180348971, guid: 83cdc0cceac1272429e3f1bbee66f5d1, type: 3}
 --- !u!4 &1083158575933563799
 Transform:
   m_ObjectHideFlags: 0
@@ -4399,35 +4375,13 @@ GameObject:
   - component: {fileID: 1585427698700143931}
   - component: {fileID: 4081533969289665151}
   - component: {fileID: 3881994324241392113}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Venetian_base.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &1167196419966617871
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 568317405415094811}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2534964839176971238, guid: 83cdc0cceac1272429e3f1bbee66f5d1, type: 3}
 --- !u!23 &1176625549385373674
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4539,8 +4493,7 @@ GameObject:
   - component: {fileID: 8947732855332097012}
   - component: {fileID: 6850318675336457965}
   - component: {fileID: 360383127197812268}
-  - component: {fileID: 2808895121176858644}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4559,7 +4512,7 @@ GameObject:
   - component: {fileID: 1434421120867526938}
   - component: {fileID: 2678154488198227558}
   - component: {fileID: 6890776079295487485}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.f.C.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4623,7 +4576,7 @@ GameObject:
   - component: {fileID: 6313054420455515042}
   - component: {fileID: 6694501102818242713}
   - component: {fileID: 482363771}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlackChair.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4687,7 +4640,7 @@ GameObject:
   - component: {fileID: 7959576648206124789}
   - component: {fileID: 4475908046751607414}
   - component: {fileID: 7781074214480472000}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door_main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4736,7 +4689,7 @@ GameObject:
   - component: {fileID: 934178366900129429}
   - component: {fileID: 7730243124814501192}
   - component: {fileID: 2160249342269652750}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Venetian_stick.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4755,7 +4708,7 @@ GameObject:
   - component: {fileID: 3680095843077356734}
   - component: {fileID: 1986721194632268588}
   - component: {fileID: 214572075}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: YellowChair.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4879,7 +4832,7 @@ GameObject:
   - component: {fileID: 2509148035288850469}
   - component: {fileID: 8361136390615279431}
   - component: {fileID: 8361136390615279432}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Desk.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4953,7 +4906,7 @@ GameObject:
   - component: {fileID: 6562188979989597709}
   - component: {fileID: 1468980606437225885}
   - component: {fileID: 3961263088708942872}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.b.L.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5128,7 +5081,7 @@ GameObject:
   - component: {fileID: 1181690320515250815}
   - component: {fileID: 6187845332979021163}
   - component: {fileID: 7800374514706742016}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.f.L.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5245,7 +5198,7 @@ GameObject:
   - component: {fileID: 3453666879231600474}
   - component: {fileID: 8596909355587996214}
   - component: {fileID: 1231869864521987212}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Venetian_slats.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5339,7 +5292,7 @@ GameObject:
   - component: {fileID: 83738171524330293}
   - component: {fileID: 2346283070927654714}
   - component: {fileID: 2346283070927654715}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Desk.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5647,8 +5600,7 @@ GameObject:
   - component: {fileID: 2391950313479851074}
   - component: {fileID: 5888907167943981238}
   - component: {fileID: 3517540579620456900}
-  - component: {fileID: 2908028024228089366}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5796,7 +5748,7 @@ GameObject:
   - component: {fileID: 3927389374455356969}
   - component: {fileID: 6255649498199327246}
   - component: {fileID: 2803245783348045063}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Venetian_updown.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5815,7 +5767,7 @@ GameObject:
   - component: {fileID: 5084292309299409071}
   - component: {fileID: 1563984296130152545}
   - component: {fileID: 4772733192737331916}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: VenetianFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5872,7 +5824,7 @@ GameObject:
   - component: {fileID: 2322868419081224272}
   - component: {fileID: 2213142203037551671}
   - component: {fileID: 918001707}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlackChair.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5894,28 +5846,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2143606942089967259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &1829828627121214994
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7914570863629692210}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6416302070336371891, guid: 83cdc0cceac1272429e3f1bbee66f5d1, type: 3}
 --- !u!33 &1837451917904512354
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6013,7 +5943,7 @@ GameObject:
   - component: {fileID: 315591078570008638}
   - component: {fileID: 7431499105513326502}
   - component: {fileID: 8768617739106996034}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: VenetianFrame.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6040,7 +5970,7 @@ GameObject:
   - component: {fileID: 395887694565861279}
   - component: {fileID: 3820015290080261071}
   - component: {fileID: 9142564080501760647}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Venetian_base.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6104,7 +6034,7 @@ GameObject:
   - component: {fileID: 7888250226564826211}
   - component: {fileID: 6513269333056878070}
   - component: {fileID: 7170280721703301175}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.f.L.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6138,7 +6068,7 @@ GameObject:
   - component: {fileID: 1096098500040782361}
   - component: {fileID: 2873562841113444573}
   - component: {fileID: 5272226682269851654}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Venetian_base.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6212,7 +6142,7 @@ GameObject:
   - component: {fileID: 3807939868546042058}
   - component: {fileID: 5711986519550078673}
   - component: {fileID: 5464068113448740386}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: VenetianFrame.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6419,7 +6349,7 @@ GameObject:
   - component: {fileID: 7070360520974193740}
   - component: {fileID: 9138773423854697269}
   - component: {fileID: 3481981879892726813}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.f.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6522,7 +6452,7 @@ GameObject:
   - component: {fileID: 8901652942083719850}
   - component: {fileID: 3256948514270012555}
   - component: {fileID: 8041574760402119770}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.C.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6541,7 +6471,7 @@ GameObject:
   - component: {fileID: 7496473767457519817}
   - component: {fileID: 5927595809612488350}
   - component: {fileID: 1246075861}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: YellowChair.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6559,8 +6489,8 @@ GameObject:
   - component: {fileID: 4931218026481032298}
   - component: {fileID: 4876933053744883305}
   - component: {fileID: 1305037033510181508}
-  - component: {fileID: 5758924345054658599}
-  m_Layer: 0
+  - component: {fileID: 4931218026481032299}
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6579,7 +6509,7 @@ GameObject:
   - component: {fileID: 1654173445672197700}
   - component: {fileID: 3385693362618586164}
   - component: {fileID: 7516816210343328455}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.R.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6667,7 +6597,7 @@ GameObject:
   - component: {fileID: 698078456667514935}
   - component: {fileID: 652779706793863310}
   - component: {fileID: 311933460213109820}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.L.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6686,7 +6616,7 @@ GameObject:
   - component: {fileID: 1371346574335158935}
   - component: {fileID: 7057573372635888431}
   - component: {fileID: 7947556496326978898}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Venetian_slats.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6838,7 +6768,7 @@ GameObject:
   - component: {fileID: 7509963831794475840}
   - component: {fileID: 1585367124075372330}
   - component: {fileID: 7741897149038755275}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Desk.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6947,7 +6877,7 @@ GameObject:
   - component: {fileID: 8265918226592897668}
   - component: {fileID: 1653293523004626166}
   - component: {fileID: 4898347873417972040}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.R.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6966,7 +6896,7 @@ GameObject:
   - component: {fileID: 4821888527881297243}
   - component: {fileID: 6362843724361094220}
   - component: {fileID: 1600757036317380247}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.f.C.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7077,7 +7007,7 @@ GameObject:
   - component: {fileID: 7036848347608122556}
   - component: {fileID: 2511811754790319664}
   - component: {fileID: 8569899466064042574}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7164,7 +7094,7 @@ GameObject:
   - component: {fileID: 6966770155925189206}
   - component: {fileID: 7490593940590733324}
   - component: {fileID: 386332196}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlackChair.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7302,7 +7232,7 @@ GameObject:
   - component: {fileID: 8168969872421811331}
   - component: {fileID: 8247994414317209274}
   - component: {fileID: 8247994414317209275}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7321,7 +7251,7 @@ GameObject:
   - component: {fileID: 6723280857890314569}
   - component: {fileID: 6382752822985493831}
   - component: {fileID: 3500993412542086970}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.b.L.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7340,7 +7270,7 @@ GameObject:
   - component: {fileID: 9188700910205347518}
   - component: {fileID: 7263705905570229018}
   - component: {fileID: 3292994614961529096}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.b.C.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7435,7 +7365,7 @@ GameObject:
   - component: {fileID: 1586999189840132858}
   - component: {fileID: 5127658792750396041}
   - component: {fileID: 1985765063}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: YellowChair.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7529,7 +7459,7 @@ GameObject:
   - component: {fileID: 936667399636700476}
   - component: {fileID: 3598448576810002703}
   - component: {fileID: 5969666298181582718}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: VenetianFrame.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7771,7 +7701,7 @@ GameObject:
   - component: {fileID: 4400764669729275942}
   - component: {fileID: 6073365367698712885}
   - component: {fileID: 7134070831495681512}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.L.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7845,28 +7775,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2808895121176858644
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1197725023391761910}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8999911773206952699, guid: 83cdc0cceac1272429e3f1bbee66f5d1, type: 3}
 --- !u!1 &2815988374718796371
 GameObject:
   m_ObjectHideFlags: 0
@@ -7879,7 +7787,7 @@ GameObject:
   - component: {fileID: 8453328452073401914}
   - component: {fileID: 805446080567617247}
   - component: {fileID: 2672723448865695164}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: VenetianFrame.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8015,28 +7923,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2880906057267735921
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 113634898023447889}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6239881831769578202, guid: 83cdc0cceac1272429e3f1bbee66f5d1, type: 3}
 --- !u!4 &2885544100337501260
 Transform:
   m_ObjectHideFlags: 0
@@ -8089,28 +7975,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 980068255680311706}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &2908028024228089366
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1682064601141958185}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8691780276856062721, guid: 83cdc0cceac1272429e3f1bbee66f5d1, type: 3}
 --- !u!33 &2921338603150878280
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8131,7 +7995,7 @@ GameObject:
   - component: {fileID: 3260726506078597924}
   - component: {fileID: 7915790476296204943}
   - component: {fileID: 7296537394279948891}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.f.R.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8197,7 +8061,7 @@ GameObject:
   - component: {fileID: 4548015572927595612}
   - component: {fileID: 2986879214394235034}
   - component: {fileID: 4548015572927595613}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Desk.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8424,7 +8288,7 @@ GameObject:
   - component: {fileID: 1308839999271808870}
   - component: {fileID: 3397367336171571620}
   - component: {fileID: 3361637362385069042}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.f.R.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8465,7 +8329,7 @@ GameObject:
   - component: {fileID: 100270728730298857}
   - component: {fileID: 7694816580762306722}
   - component: {fileID: 981666081176721489}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Area.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8550,7 +8414,7 @@ GameObject:
   - component: {fileID: 3695245234406893014}
   - component: {fileID: 8234182988775881183}
   - component: {fileID: 2627835903160734870}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Area.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8569,7 +8433,7 @@ GameObject:
   - component: {fileID: 7047054610931088655}
   - component: {fileID: 3385752880201862784}
   - component: {fileID: 675660022776363287}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.L.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8686,7 +8550,7 @@ GameObject:
   - component: {fileID: 1500303575334651911}
   - component: {fileID: 441674722233264509}
   - component: {fileID: 6774321478539374829}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Venetian_slats.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8735,7 +8599,7 @@ GameObject:
   - component: {fileID: 137391487971550015}
   - component: {fileID: 1851421068493406018}
   - component: {fileID: 8020492749200079322}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Desk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8896,7 +8760,7 @@ GameObject:
   - component: {fileID: 1775636285273619028}
   - component: {fileID: 6181003581279532052}
   - component: {fileID: 6181003581279532053}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AirConditionRemote
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9021,7 +8885,7 @@ GameObject:
   - component: {fileID: 2400397088309670399}
   - component: {fileID: 8007356148662237669}
   - component: {fileID: 5162157856828715798}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.f.R.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9039,7 +8903,7 @@ GameObject:
   - component: {fileID: 1798892560593881072}
   - component: {fileID: 5733911823629870870}
   - component: {fileID: 1848819769430587650}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Area.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9206,7 +9070,7 @@ GameObject:
   - component: {fileID: 2921338603150878280}
   - component: {fileID: 4179057179015167637}
   - component: {fileID: 1726202137669347522}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Venetian_updown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9225,7 +9089,7 @@ GameObject:
   - component: {fileID: 5465489899990169445}
   - component: {fileID: 3074345740895146731}
   - component: {fileID: 500485437782881306}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.R.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9244,7 +9108,7 @@ GameObject:
   - component: {fileID: 8001446174755211928}
   - component: {fileID: 1501349842661744163}
   - component: {fileID: 8001446174755211929}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Desk.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9278,7 +9142,7 @@ GameObject:
   - component: {fileID: 3118456711469845067}
   - component: {fileID: 7884573181320842560}
   - component: {fileID: 707480722}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: YellowChair.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9298,7 +9162,7 @@ GameObject:
   - component: {fileID: 5638874406426296611}
   - component: {fileID: 3769279138988793205}
   - component: {fileID: 5638874406426296612}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9446,7 +9310,7 @@ GameObject:
   - component: {fileID: 587230826221224030}
   - component: {fileID: 4485043314166747648}
   - component: {fileID: 5784554541218620391}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.L.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9533,7 +9397,7 @@ GameObject:
   - component: {fileID: 6001510809370669281}
   - component: {fileID: 3698076297594080890}
   - component: {fileID: 6481595730223922923}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plinth.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9649,7 +9513,7 @@ GameObject:
   - component: {fileID: 131379737395425624}
   - component: {fileID: 1935943264470914462}
   - component: {fileID: 8569101402334172864}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Venetian_updown.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9668,7 +9532,7 @@ GameObject:
   - component: {fileID: 5620973999203761900}
   - component: {fileID: 4150925687365295811}
   - component: {fileID: 9069538894246604368}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Venetian_stick.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9687,7 +9551,7 @@ GameObject:
   - component: {fileID: 382906590365919125}
   - component: {fileID: 2084708364130558734}
   - component: {fileID: 6308940266077923696}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.C.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9841,7 +9705,7 @@ GameObject:
   - component: {fileID: 6362088696000634581}
   - component: {fileID: 153010753374460011}
   - component: {fileID: 2095559261852801031}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door_handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9859,8 +9723,7 @@ GameObject:
   - component: {fileID: 1265376864731431687}
   - component: {fileID: 2496228825118786805}
   - component: {fileID: 7310228378173379574}
-  - component: {fileID: 6882876752598366955}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10044,7 +9907,7 @@ GameObject:
   - component: {fileID: 829674429092532026}
   - component: {fileID: 7082946251163113435}
   - component: {fileID: 7307824075204633621}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.f.R.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10122,7 +9985,7 @@ GameObject:
   - component: {fileID: 2007419201329943274}
   - component: {fileID: 9044675979880485494}
   - component: {fileID: 1034422437003226565}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.b.R.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10141,7 +10004,7 @@ GameObject:
   - component: {fileID: 4242425769308086913}
   - component: {fileID: 2036993451054282627}
   - component: {fileID: 4232363424931850126}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.f.R.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10240,7 +10103,7 @@ GameObject:
   - component: {fileID: 5483215353098713144}
   - component: {fileID: 568042189731529869}
   - component: {fileID: 8189208968845237190}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.b.C.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10304,7 +10167,7 @@ GameObject:
   - component: {fileID: 6043559369866012904}
   - component: {fileID: 7683919964732507313}
   - component: {fileID: 1411598043000039175}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Venetian_stick.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10368,7 +10231,7 @@ GameObject:
   - component: {fileID: 1410549064685450366}
   - component: {fileID: 1261794517415278784}
   - component: {fileID: 3500565384956114420}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Venetian_slats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10980,7 +10843,7 @@ GameObject:
   - component: {fileID: 5360506208259030189}
   - component: {fileID: 4362843231616594490}
   - component: {fileID: 879122991}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: YellowChair.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11044,7 +10907,7 @@ GameObject:
   - component: {fileID: 433941257345012296}
   - component: {fileID: 6340448222970634701}
   - component: {fileID: 324024359775267685}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.f.C.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11155,7 +11018,7 @@ GameObject:
   - component: {fileID: 8664469238749847647}
   - component: {fileID: 5551885880742296139}
   - component: {fileID: 7937467948061770030}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.f.C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11174,7 +11037,7 @@ GameObject:
   - component: {fileID: 2664252943260455735}
   - component: {fileID: 9154418699446971055}
   - component: {fileID: 502934134}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlackChair.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11441,7 +11304,7 @@ GameObject:
   - component: {fileID: 7972899715826892391}
   - component: {fileID: 7754670553793501388}
   - component: {fileID: 8047923092323686378}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.b.L.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11480,6 +11343,27 @@ Transform:
   - {fileID: 2292938242652709171}
   m_Father: {fileID: 2085086584}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 82.026}
+--- !u!65 &4931218026481032299
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2193423313169163556}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1825649, y: 0.32, z: 1.69}
+  m_Center: {x: 0.0037425589, y: -0.010228799, z: 0.76}
 --- !u!23 &4941351586073311068
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11736,8 +11620,7 @@ GameObject:
   - component: {fileID: 946390609958243495}
   - component: {fileID: 2958469335729552030}
   - component: {fileID: 488851749093771709}
-  - component: {fileID: 1048163778848324713}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11832,8 +11715,8 @@ GameObject:
   - component: {fileID: 1729776007716820224}
   - component: {fileID: 6697621763593693196}
   - component: {fileID: 882129738217727771}
-  - component: {fileID: 5383010483846580024}
-  m_Layer: 0
+  - component: {fileID: 6697621763593693197}
+  m_Layer: 8
   m_Name: Plane.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11985,7 +11868,7 @@ GameObject:
   - component: {fileID: 2117628148007454310}
   - component: {fileID: 6964593698139403827}
   - component: {fileID: 5522325592420796313}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.b.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12141,7 +12024,7 @@ GameObject:
   - component: {fileID: 1837451917904512354}
   - component: {fileID: 801190200730262195}
   - component: {fileID: 1012332274}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlackChair.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12160,7 +12043,7 @@ GameObject:
   - component: {fileID: 8177101928208732793}
   - component: {fileID: 3119306235864858518}
   - component: {fileID: 9150751522700040205}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AirConditionRemote.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12179,7 +12062,7 @@ GameObject:
   - component: {fileID: 8823512866881486186}
   - component: {fileID: 2806213420697549715}
   - component: {fileID: 7713328445704988739}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Venetian_slats.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12198,7 +12081,7 @@ GameObject:
   - component: {fileID: 3742875473160409435}
   - component: {fileID: 8913730855609756914}
   - component: {fileID: 269536016}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: YellowChair.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12217,35 +12100,13 @@ GameObject:
   - component: {fileID: 249837459315051775}
   - component: {fileID: 7572562745880742874}
   - component: {fileID: 6291800126410829872}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Venetian_stick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &5383010483846580024
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5148817236056365897}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4579454407841743219, guid: 83cdc0cceac1272429e3f1bbee66f5d1, type: 3}
 --- !u!33 &5384551657401664042
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -12310,7 +12171,7 @@ GameObject:
   - component: {fileID: 4987642586526744150}
   - component: {fileID: 4146887529817561802}
   - component: {fileID: 4360761364706859509}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12438,28 +12299,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3526524254968661255}
   m_Mesh: {fileID: 5822894378982249351, guid: 83cdc0cceac1272429e3f1bbee66f5d1, type: 3}
---- !u!64 &5474195046018138748
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8961690204110186741}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8314571269056883277, guid: 83cdc0cceac1272429e3f1bbee66f5d1, type: 3}
 --- !u!33 &5483215353098713144
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -12547,7 +12386,7 @@ GameObject:
   - component: {fileID: 3304414257809164545}
   - component: {fileID: 1720123629050823708}
   - component: {fileID: 788997714}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: YellowChair.011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12566,7 +12405,7 @@ GameObject:
   - component: {fileID: 5585730035737650025}
   - component: {fileID: 3212122900391376731}
   - component: {fileID: 3308821371640677293}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.b.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18650,7 +18489,7 @@ GameObject:
   - component: {fileID: 5152585198705559530}
   - component: {fileID: 496107691714931035}
   - component: {fileID: 3001834732866460795}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.f.L.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18722,28 +18561,6 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
---- !u!64 &5758924345054658599
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2193423313169163556}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -462981019419857548, guid: 83cdc0cceac1272429e3f1bbee66f5d1, type: 3}
 --- !u!64 &5784554541218620391
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18778,7 +18595,7 @@ GameObject:
   - component: {fileID: 7188611851574959504}
   - component: {fileID: 7359093901110022145}
   - component: {fileID: 437569068}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: YellowChair.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18797,7 +18614,7 @@ GameObject:
   - component: {fileID: 5441453943511354326}
   - component: {fileID: 4954740269556174781}
   - component: {fileID: 5846863668584942171}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Desk.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18937,7 +18754,7 @@ GameObject:
   - component: {fileID: 4876143273651658236}
   - component: {fileID: 592452636907784039}
   - component: {fileID: 1462725151549054848}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FrontWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19121,7 +18938,7 @@ GameObject:
   - component: {fileID: 4648003680547185161}
   - component: {fileID: 4367273552022010417}
   - component: {fileID: 2282114733734484785}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plinth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19493,7 +19310,7 @@ GameObject:
   - component: {fileID: 1379470228269041271}
   - component: {fileID: 4719390954352297534}
   - component: {fileID: 5156852706178742969}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.b.R.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19676,7 +19493,7 @@ GameObject:
   - component: {fileID: 8008413676455630530}
   - component: {fileID: 5345070603206512909}
   - component: {fileID: 325997956}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: YellowChair.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19763,7 +19580,7 @@ GameObject:
   - component: {fileID: 6081989580660108169}
   - component: {fileID: 1176625549385373674}
   - component: {fileID: 151580273324330271}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plinth.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19874,7 +19691,7 @@ GameObject:
   - component: {fileID: 546732224866324577}
   - component: {fileID: 5911462321709079482}
   - component: {fileID: 5273127875232234252}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.b.L.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20005,7 +19822,7 @@ GameObject:
   - component: {fileID: 6855408495634329289}
   - component: {fileID: 945656613304738082}
   - component: {fileID: 3206090742528513558}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Venetian_stick.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20218,7 +20035,7 @@ GameObject:
   - component: {fileID: 6144027097651874746}
   - component: {fileID: 2583897559076988888}
   - component: {fileID: 4096341766582513989}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20327,6 +20144,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5148817236056365897}
   m_Mesh: {fileID: 4579454407841743219, guid: 83cdc0cceac1272429e3f1bbee66f5d1, type: 3}
+--- !u!65 &6697621763593693197
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5148817236056365897}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0000002, y: 0.034345288, z: 2.1053605}
+  m_Center: {x: 0.00000015748647, y: 0.017171815, z: 0.035157677}
 --- !u!33 &6723280857890314569
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -20393,7 +20231,7 @@ GameObject:
   - component: {fileID: 8878549553410494103}
   - component: {fileID: 5975371706853517212}
   - component: {fileID: 7764881432556173635}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.C.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20476,28 +20314,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 556635047635834356}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &6882876752598366955
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3871662466161022132}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7387706064836869012, guid: 83cdc0cceac1272429e3f1bbee66f5d1, type: 3}
 --- !u!64 &6890776079295487485
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20608,7 +20424,7 @@ GameObject:
   - component: {fileID: 2597658739047922287}
   - component: {fileID: 5597078928099429153}
   - component: {fileID: 6951286422032223189}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Security camera.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20648,7 +20464,7 @@ GameObject:
   - component: {fileID: 9197667969632717789}
   - component: {fileID: 4401989396540843047}
   - component: {fileID: 5184271627441596178}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.b.C.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20798,7 +20614,7 @@ GameObject:
   - component: {fileID: 7478770147270293231}
   - component: {fileID: 6692957404431365238}
   - component: {fileID: 541250213}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlackChair.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20888,7 +20704,7 @@ GameObject:
   - component: {fileID: 9109709898837464374}
   - component: {fileID: 2525251508433016621}
   - component: {fileID: 8203101581040564779}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.b.R.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21035,7 +20851,7 @@ GameObject:
   - component: {fileID: 1960678969050172454}
   - component: {fileID: 2303480242791178567}
   - component: {fileID: 8540618646669527092}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Area.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21107,7 +20923,7 @@ GameObject:
   - component: {fileID: 7045903255117969153}
   - component: {fileID: 8612869823441702142}
   - component: {fileID: 1155086100}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: YellowChair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21126,7 +20942,7 @@ GameObject:
   - component: {fileID: 3076400959449820628}
   - component: {fileID: 4966894196434064409}
   - component: {fileID: 4595992488863611461}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.b.C.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21235,7 +21051,7 @@ GameObject:
   - component: {fileID: 5102977377803268903}
   - component: {fileID: 3778824874747813484}
   - component: {fileID: 3420313796059557115}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.f.L.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21623,7 +21439,7 @@ GameObject:
   - component: {fileID: 3419366755900293924}
   - component: {fileID: 2799865939222287761}
   - component: {fileID: 7389107682829644789}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.L.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21642,7 +21458,7 @@ GameObject:
   - component: {fileID: 5132700627149812025}
   - component: {fileID: 1187707459977551000}
   - component: {fileID: 1344618818}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlackChair.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21716,7 +21532,7 @@ GameObject:
   - component: {fileID: 8350012944582722168}
   - component: {fileID: 6895049915281737726}
   - component: {fileID: 8350012944582722169}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Desk.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21863,7 +21679,7 @@ GameObject:
   - component: {fileID: 1839914764002250484}
   - component: {fileID: 204066327363117431}
   - component: {fileID: 179827406}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlackChair.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21945,7 +21761,7 @@ GameObject:
   - component: {fileID: 3948777621087824146}
   - component: {fileID: 8871566006354038832}
   - component: {fileID: 2787488964578705299}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: VenetianFrame.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22024,7 +21840,7 @@ GameObject:
   - component: {fileID: 3194272130673164896}
   - component: {fileID: 5949228169023826818}
   - component: {fileID: 5686005593436720165}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.b.C.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22130,7 +21946,7 @@ GameObject:
   - component: {fileID: 456144686566718543}
   - component: {fileID: 601254496929100734}
   - component: {fileID: 4585501839901526918}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22531,8 +22347,7 @@ GameObject:
   - component: {fileID: 2292938242652709171}
   - component: {fileID: 7618795877654574418}
   - component: {fileID: 2106321079416304310}
-  - component: {fileID: 1829828627121214994}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22596,7 +22411,7 @@ GameObject:
   - component: {fileID: 4916945206981536612}
   - component: {fileID: 4672031439353728690}
   - component: {fileID: 4103326019025127475}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Venetian_stick.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22637,7 +22452,7 @@ GameObject:
   - component: {fileID: 5594414621820652555}
   - component: {fileID: 7949880169133339794}
   - component: {fileID: 2818536333835171781}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22865,7 +22680,7 @@ GameObject:
   - component: {fileID: 4426740665424172800}
   - component: {fileID: 665819755933167625}
   - component: {fileID: 8025107352488062037}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plastic trash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22950,7 +22765,7 @@ GameObject:
   - component: {fileID: 7025591751895464051}
   - component: {fileID: 6963543313343539553}
   - component: {fileID: 2270069330122752078}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.f.L.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23165,7 +22980,7 @@ GameObject:
   - component: {fileID: 1886371290859492334}
   - component: {fileID: 1214839218772213768}
   - component: {fileID: 6065322451289318210}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.b.R.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23352,7 +23167,7 @@ GameObject:
   - component: {fileID: 2297154152919274001}
   - component: {fileID: 5976967169258580876}
   - component: {fileID: 6119780132024960993}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Venetian_updown.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23595,7 +23410,7 @@ GameObject:
   - component: {fileID: 9064551899739220567}
   - component: {fileID: 1203880910571655921}
   - component: {fileID: 8058539720357427803}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.R.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23636,7 +23451,7 @@ GameObject:
   - component: {fileID: 119541879751075602}
   - component: {fileID: 2752003508445389539}
   - component: {fileID: 8596900418889844761}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Area.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23655,7 +23470,7 @@ GameObject:
   - component: {fileID: 4396854236073046064}
   - component: {fileID: 4781161190431033801}
   - component: {fileID: 8130505019317786286}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Icosphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23718,8 +23533,7 @@ GameObject:
   - component: {fileID: 8150477793252868304}
   - component: {fileID: 4308571952248063380}
   - component: {fileID: 5489485283538878284}
-  - component: {fileID: 8591545849816448903}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23738,7 +23552,7 @@ GameObject:
   - component: {fileID: 2350043650186380056}
   - component: {fileID: 5388274570536959900}
   - component: {fileID: 3813293367339795440}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Venetian_base.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23779,7 +23593,7 @@ GameObject:
   - component: {fileID: 124224852902409351}
   - component: {fileID: 8400778794666997682}
   - component: {fileID: 5411839025788680802}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Security camera.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23836,7 +23650,7 @@ GameObject:
   - component: {fileID: 7323221837899951960}
   - component: {fileID: 5567582441826295789}
   - component: {fileID: 4880601142472903377}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Simple white door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23905,28 +23719,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3633865748600368068, guid: 83cdc0cceac1272429e3f1bbee66f5d1, type: 3}
---- !u!64 &8591545849816448903
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8500853994657250130}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2124705421725058983, guid: 83cdc0cceac1272429e3f1bbee66f5d1, type: 3}
 --- !u!114 &8596900418889844761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24006,7 +23798,7 @@ GameObject:
   - component: {fileID: 3947364345939384468}
   - component: {fileID: 6621819779214484218}
   - component: {fileID: 7248641389987381273}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Area.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24117,7 +23909,7 @@ GameObject:
   - component: {fileID: 3260616448853591006}
   - component: {fileID: 7762067042404227663}
   - component: {fileID: 8707273952702773327}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24157,7 +23949,7 @@ GameObject:
   - component: {fileID: 72929644405960556}
   - component: {fileID: 1104948201789304550}
   - component: {fileID: 8507452851942464795}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Venetian_updown.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24176,7 +23968,7 @@ GameObject:
   - component: {fileID: 9151494102018733636}
   - component: {fileID: 8920197750241714959}
   - component: {fileID: 6021018953471212550}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Venetian_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24285,7 +24077,7 @@ GameObject:
   - component: {fileID: 5384551657401664042}
   - component: {fileID: 8029860573869267864}
   - component: {fileID: 741752424343410174}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Venetian_slats.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24357,7 +24149,7 @@ GameObject:
   - component: {fileID: 8059518651909285518}
   - component: {fileID: 4941351586073311068}
   - component: {fileID: 8706101720893322113}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.b.L.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24413,7 +24205,7 @@ GameObject:
   - component: {fileID: 5692171430096574114}
   - component: {fileID: 1370251673626214584}
   - component: {fileID: 6544954689058641058}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Area.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24561,7 +24353,7 @@ GameObject:
   - component: {fileID: 4356392754331520051}
   - component: {fileID: 1376130603529792573}
   - component: {fileID: 5565397996775019032}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.b.C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24579,8 +24371,7 @@ GameObject:
   - component: {fileID: 3734041181478101908}
   - component: {fileID: 1236767007049517937}
   - component: {fileID: 2476929543783471167}
-  - component: {fileID: 5474195046018138748}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24599,7 +24390,7 @@ GameObject:
   - component: {fileID: 6580163043932160147}
   - component: {fileID: 8089393665820200383}
   - component: {fileID: 690226508}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: YellowChair.012
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24633,7 +24424,7 @@ GameObject:
   - component: {fileID: 7753500262483382346}
   - component: {fileID: 3804666846861166557}
   - component: {fileID: 6268359625187025258}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.b.R.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24750,7 +24541,7 @@ GameObject:
   - component: {fileID: 2022163634063919545}
   - component: {fileID: 7405985748089541273}
   - component: {fileID: 4754951959203099262}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: String.f.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
