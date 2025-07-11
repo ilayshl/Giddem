@@ -13,6 +13,16 @@ public class PlayerAttack : MonoBehaviour
     private Vector3 _attackRotation;
     private LayerMask _playerLayer;
 
+    private void OnEnable()
+    {
+        playerManager.OnCharacterStateChanged += SetAttackRotationTarget;
+    }
+
+    private void OnDisable()
+    {
+        playerManager.OnCharacterStateChanged -= SetAttackRotationTarget;
+    }
+
     private void Update()
     {
         CheckForClick();
@@ -27,11 +37,23 @@ public class PlayerAttack : MonoBehaviour
     }
 
     /// <summary>
+    /// Sets the last cursor position as the rotation target for the player when attacking. This happens once when attacking.
+    /// </summary>
+    /// <param name="state"></param>
+    private void SetAttackRotationTarget(CharacterState state)
+    {
+        if (state == CharacterState.Attack)
+        {
+            _attackRotation = CalculateAttackRotation();
+        }
+    }
+
+    /// <summary>
     /// Runs the Coroutine for /time/ seconds.
     /// </summary>
     /// <param name="time"></param>
     /// <returns></returns>
-    private IEnumerator Start_attackCooldown(float time)
+    private IEnumerator StartAttackCooldown(float time)
     {
         yield return new WaitForSeconds(time);
         _attackCooldown = null;
@@ -55,7 +77,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (playerManager.state == CharacterState.Attack)
             {
-                _attackCooldown = StartCoroutine(Start_attackCooldown(ATTACK_COOLDOWN));
+                _attackCooldown = StartCoroutine(StartAttackCooldown(ATTACK_COOLDOWN));
                 playerManager.ChangeCharacterState();
             }
         }
@@ -127,7 +149,7 @@ public class PlayerAttack : MonoBehaviour
     /// </summary>
     private void LookAtCursor()
     {
-        var rotation = Quaternion.LookRotation(CalculateAttackRotation(), Vector3.up);
+        var rotation = Quaternion.LookRotation(_attackRotation, Vector3.up);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, playerManager.TurnSpeed * Time.deltaTime * 2);
     }
 
