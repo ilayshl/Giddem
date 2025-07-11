@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class PlayerInteract : MonoBehaviour
 {
@@ -24,10 +25,21 @@ public class PlayerInteract : MonoBehaviour
             if (state == CharacterState.Idle || state == CharacterState.Run)
             {
                     _highlightedObject.OnInteract();
+                    
+                var objectType = _highlightedObject.ObjectType;
+                if (objectType == InteractableObjectType.Grapple)
+                {
+                    playerManager.ChangeCharacterState(CharacterState.Grapple);
+                }
+                else if (objectType == InteractableObjectType.Telekinesis)
+                {
+                    playerManager.ChangeCharacterState(CharacterState.Telekinesis);
+                }
+                
                     if (!_highlightedObject.enabled) //If was destroyed from Interaction
-                    {
-                        _highlightedObject = null; //Reset highlight
-                    }
+                {
+                    _highlightedObject = null; //Reset highlight
+                }
             }
         }
     }
