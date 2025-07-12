@@ -22,7 +22,7 @@ public class CharacterManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Respoinsible for the current state of the character and pings all subscribed methods.
     /// </summary>
     /// <param name="newState"></param>
     /// <exception cref="ArgumentOutOfRangeException"></exception>
