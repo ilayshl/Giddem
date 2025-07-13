@@ -52,7 +52,7 @@ public class PlayerAttack : MonoBehaviour
         }
         else if(_currentAttackIndex != 0)
         {
-            ResetAttack();
+            //ResetAttack();
         }
     }
 
@@ -93,7 +93,7 @@ public class PlayerAttack : MonoBehaviour
             FinishAttack();
         }
 
-        IncrementAttack();
+        //IncrementAttack();
     }
 
     /// <summary>
@@ -159,7 +159,7 @@ public class PlayerAttack : MonoBehaviour
     /// </summary>
     private void OnAttackAnimationStart()
     {
-        EnableCollider();
+        //EnableCollider();
     }
 
     private void EnableCollider()
@@ -174,11 +174,11 @@ public class PlayerAttack : MonoBehaviour
 
     private void ResetAttack()
     {
-        DisableCollider();
-        ResetCurrentAttack();
+        //DisableCollider();
+        //ResetCurrentAttack();
     }
 
-    private void IncrementAttack()
+    /* private void IncrementAttack()
     {
         _currentAttackIndex++;
         Debug.Log("current attack is now " + _currentAttackIndex);
@@ -193,6 +193,6 @@ public class PlayerAttack : MonoBehaviour
     {
         Debug.Log("Reset!");
         _currentAttackIndex = 0;
-    }
+    } */
 
 }
