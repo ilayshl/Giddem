@@ -13,6 +13,7 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _EMISSION
+  - _SPECULAR_SETUP
   m_InvalidKeywords: []
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
@@ -115,13 +116,13 @@ Material:
     - _SrcBlendAlpha: 1
     - _Surface: 0
     - _UVSec: 0
-    - _WorkflowMode: 1
+    - _WorkflowMode: 0
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.9431706, g: 0.9431706, b: 0.9431706, a: 1}
-    - _Color: {r: 0.9431706, g: 0.9431706, b: 0.9431706, a: 1}
-    - _EmissionColor: {r: 6.2000017, g: 6.2000017, b: 6.2000017, a: 6.2000017}
+    - _BaseColor: {r: 0.6132076, g: 0.5929602, b: 0.5929602, a: 1}
+    - _Color: {r: 0.6132076, g: 0.5929601, b: 0.5929601, a: 1}
+    - _EmissionColor: {r: 2.1185474, g: 2.1185474, b: 2.1185474, a: 6.2000017}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
