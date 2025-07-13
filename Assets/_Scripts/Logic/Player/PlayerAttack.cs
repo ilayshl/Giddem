@@ -50,7 +50,7 @@ public class PlayerAttack : MonoBehaviour
         {
             _attackRotation = CalculateAttackRotation();
         }
-        else if(_currentAttackIndex != 0)
+        else if (_currentAttackIndex != 0)
         {
             //ResetAttack();
         }
@@ -150,8 +150,11 @@ public class PlayerAttack : MonoBehaviour
     /// </summary>
     private void LookAtCursor()
     {
-        var rotation = Quaternion.LookRotation(_attackRotation, Vector3.up);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, playerManager.TurnSpeed * Time.deltaTime * 2);
+        if (playerManager.state == CharacterState.Attack)
+        {
+            var rotation = Quaternion.LookRotation(_attackRotation, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, playerManager.TurnSpeed * Time.deltaTime * 2);
+        }
     }
 
     /// <summary>
