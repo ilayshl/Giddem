@@ -17,28 +17,5 @@ public abstract class InteractableObject : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>();
     }
 
-    /// <summary>
-    /// For when this object gets in range of whoever checks for it.
-    /// </summary>
-    public void ShowOutline()
-    {
-        Material[] materials = meshRenderer.materials;
-        Material[] newMaterials = new Material[materials.Length + 1];
-        materials.CopyTo(newMaterials, 0);
-        newMaterials[newMaterials.Length - 1] = highlightMat;
-        meshRenderer.materials = newMaterials;
-    }
-
-    /// <summary>
-    /// For when this object gets out of range of whoever checks for it.
-    /// </summary>
-    public void RemoveOutline()
-    {
-        Material[] materials = meshRenderer.materials;
-        Material[] newMaterials = new Material[materials.Length - 1];
-        newMaterials[0] = materials[0];
-        meshRenderer.materials = newMaterials;
-    }
-
-    public abstract void OnInteract();
+    public abstract void OnInteract(CharacterManager character);
 }

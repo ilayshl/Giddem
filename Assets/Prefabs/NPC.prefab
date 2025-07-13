@@ -365,18 +365,17 @@ GameObject:
   m_Component:
   - component: {fileID: 773933277664376359}
   - component: {fileID: 8367910810553604559}
-  - component: {fileID: 7291679063735305752}
   - component: {fileID: 7631574103181273058}
   - component: {fileID: 8878399036929026794}
   - component: {fileID: 5581600318417170961}
+  - component: {fileID: 7566729129263771836}
   - component: {fileID: 8566465427559695455}
   - component: {fileID: 1241140972057621999}
   - component: {fileID: 1228744326338530981}
   - component: {fileID: 4149312313588926784}
-  - component: {fileID: 7566729129263771836}
   m_Layer: 0
   m_Name: Y Bot
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -389,8 +388,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 678428365917318323}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.25, y: 0, z: 4.43}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.00000058114523}
+  m_LocalPosition: {x: 7.97, y: 0, z: 6.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -398,7 +397,7 @@ Transform:
   - {fileID: 6705655852547647103}
   - {fileID: 562028866040146759}
   m_Father: {fileID: 2243127815260372657}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!95 &8367910810553604559
 Animator:
   serializedVersion: 7
@@ -421,20 +420,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7291679063735305752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 678428365917318323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84cbf31f25493234e9ba2a03e1b749c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pressEPrompt: {fileID: 778849338150832067}
-  dialogWindow: {fileID: 8468325446245203629}
 --- !u!114 &7631574103181273058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,6 +466,22 @@ MonoBehaviour:
   healthRateInterval: 4
   healthRegenAmount: 1
   hpBarImage: {fileID: 3899171790595604226}
+--- !u!114 &7566729129263771836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678428365917318323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff6d05de33cd443c87fdb1e70f82e31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Maarla
+  highlightMat: {fileID: 2100000, guid: 4839acef4eb1a41de908088b7bee9fed, type: 2}
+  objectType: 1
+  dialogWindow: {fileID: 6526914764846348705}
 --- !u!65 &8566465427559695455
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -500,8 +501,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 1, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 5.2258472, y: 1, z: 2.765139}
+  m_Center: {x: 1.6129231, y: 0, z: 0.3825696}
 --- !u!136 &1241140972057621999
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -574,21 +575,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7566729129263771836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 678428365917318323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cff6d05de33cd443c87fdb1e70f82e31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: 
-  highlightMat: {fileID: 0}
-  objectType: 0
 --- !u!1 &707062850646626268
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,7 +618,7 @@ GameObject:
   - component: {fileID: 4639783928579215761}
   - component: {fileID: 8286890764117838786}
   - component: {fileID: 2422815859910890699}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PressEPrompt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1641,7 +1627,7 @@ GameObject:
   - component: {fileID: 3272942114366647290}
   - component: {fileID: 4725077902625002535}
   - component: {fileID: 1262947639715839838}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2248,7 +2234,7 @@ GameObject:
   - component: {fileID: 8474005457035260183}
   - component: {fileID: 109532796455086466}
   - component: {fileID: 5182781548381763576}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SpeakingCharacterImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2591,7 +2577,7 @@ GameObject:
   - component: {fileID: 6890987840274675850}
   - component: {fileID: 314569663889455341}
   - component: {fileID: 282162034536830975}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: NpcDialogCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2788,7 +2774,7 @@ GameObject:
   - component: {fileID: 8377296488232080643}
   - component: {fileID: 5351400249459800852}
   - component: {fileID: 7119545752562663219}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Dialog TextBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3004,7 +2990,7 @@ GameObject:
   - component: {fileID: 7218490851412948717}
   - component: {fileID: 8941836136915965959}
   - component: {fileID: 4132380308755130215}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3363,7 +3349,7 @@ GameObject:
   - component: {fileID: 100672413246030458}
   - component: {fileID: 2243741585501759370}
   - component: {fileID: 2817848630324031789}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Dialog Panrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3601,7 +3587,7 @@ GameObject:
   - component: {fileID: 805920231218119428}
   - component: {fileID: 1296402543731378895}
   - component: {fileID: 4898041201601608541}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PlayerImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
