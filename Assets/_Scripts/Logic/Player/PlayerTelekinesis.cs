@@ -4,9 +4,15 @@ using UnityEngine;
 public class PlayerTelekinesis : MonoBehaviour
 {
     [SerializeField] CharacterManager playerManager;
-    private TelekinesisObject objectControlled;
+    [SerializeField] PlayerInteract playerInteract;
+    private InteractableObject objectControlled;
 
-    public void SetTelekinesisObject(TelekinesisObject objectToControl)
+    void OnEnable()
+    {
+        playerInteract.OnInteractAbility += SetTelekinesisObject;
+    }
+
+    public void SetTelekinesisObject(InteractableObject objectToControl)
     {
         if (playerManager.state == CharacterState.Telekinesis)
         {

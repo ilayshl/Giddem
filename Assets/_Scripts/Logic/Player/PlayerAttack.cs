@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -9,7 +8,7 @@ public class PlayerAttack : MonoBehaviour
 {
     private const float ATTACK_COOLDOWN = 1f;
     [SerializeField] private CharacterManager playerManager;
-    [SerializeField] private Collider[] attackColliders;
+    [SerializeField] private PlayerAttackColliders attackColliders;
     private int _currentAttackIndex;
     private Coroutine _attackCooldown;
 
@@ -52,7 +51,8 @@ public class PlayerAttack : MonoBehaviour
         }
         else if (_currentAttackIndex != 0)
         {
-            //ResetAttack();
+            OnAttackEnd();
+            attackColliders.ResetCurrentAttack();
         }
     }
 
@@ -92,8 +92,6 @@ public class PlayerAttack : MonoBehaviour
         {
             FinishAttack();
         }
-
-        //IncrementAttack();
     }
 
     /// <summary>
@@ -162,40 +160,11 @@ public class PlayerAttack : MonoBehaviour
     /// </summary>
     private void OnAttackAnimationStart()
     {
-        //EnableCollider();
+        attackColliders.InitiateAttack();
     }
 
-    private void EnableCollider()
+    public void OnAttackEnd()
     {
-        attackColliders[_currentAttackIndex].enabled = true;
+        attackColliders.StopAttack();
     }
-
-    private void DisableCollider()
-    {
-        attackColliders[_currentAttackIndex].enabled = false;
-    }
-
-    private void ResetAttack()
-    {
-        //DisableCollider();
-        //ResetCurrentAttack();
-    }
-
-    /* private void IncrementAttack()
-    {
-        _currentAttackIndex++;
-        Debug.Log("current attack is now " + _currentAttackIndex);
-        if (_currentAttackIndex > attackColliders.Length)
-        {
-            Debug.Log("current attack > " + attackColliders.Length);
-            ResetCurrentAttack();
-        }
-    }
-
-    private void ResetCurrentAttack()
-    {
-        Debug.Log("Reset!");
-        _currentAttackIndex = 0;
-    } */
-
 }
