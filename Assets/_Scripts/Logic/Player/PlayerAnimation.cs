@@ -6,16 +6,20 @@ using UnityEngine;
 /// </summary>
 public class PlayerAnimation : MonoBehaviour
 {
-    [HideInInspector] private Animator anim;
     [SerializeField] private CharacterManager playerManager;
+    private Animator anim;
 
     void Awake()
     {
         anim = GetComponent<Animator>();
-        playerManager.OnCharacterStateChanged += OnPlayerStateChanged;
     }
 
-    void OnDestroy()
+    private void OnEnable()
+    {
+        playerManager.OnCharacterStateChanged += OnPlayerStateChanged;        
+    }
+
+    private void OnDisable()
     {
         playerManager.OnCharacterStateChanged -= OnPlayerStateChanged;
     }

@@ -24,8 +24,8 @@ public class PlayerInteract : MonoBehaviour
             CharacterState state = playerManager.state;
             if (state == CharacterState.Idle || state == CharacterState.Run)
             {
-                    _highlightedObject.OnInteract();
-                    
+                _highlightedObject.OnInteract(playerManager);
+
                 var objectType = _highlightedObject.ObjectType;
                 if (objectType == InteractableObjectType.Grapple)
                 {
@@ -58,9 +58,7 @@ public class PlayerInteract : MonoBehaviour
                 {
                     if (objectType == interactable.ObjectType)
                     {
-                        _highlightedObject?.RemoveOutline();
                         _highlightedObject = interactable;
-                        interactable.ShowOutline();
                     }
                 }
             }
@@ -80,7 +78,6 @@ public class PlayerInteract : MonoBehaviour
             {
                 if (interactable == _highlightedObject)
                 {
-                    interactable.RemoveOutline();
                     _highlightedObject = null;
                 }
             }
