@@ -19,12 +19,15 @@ public class DialogManager : MonoBehaviour
             if (playerCharacter != null)
             {
                 currentTarget.OnInteract(playerCharacter);
+                if (pressEPrompt != null) pressEPrompt.SetActive(false);
             }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        isPlayerInRange = true;
+        pressEPrompt.SetActive(true);
         if (!other.CompareTag("Interactable")) return;
 
         InteractableObject interactable = other.GetComponent<InteractableObject>();
@@ -33,8 +36,6 @@ public class DialogManager : MonoBehaviour
             currentTarget = interactable;
         }
 
-        isPlayerInRange = true;
-        if (pressEPrompt != null) pressEPrompt.SetActive(true);
     }
 
 
@@ -48,7 +49,6 @@ public class DialogManager : MonoBehaviour
         }
 
         isPlayerInRange = false;
-        if (pressEPrompt != null) pressEPrompt.SetActive(false);
     }
 
 }
