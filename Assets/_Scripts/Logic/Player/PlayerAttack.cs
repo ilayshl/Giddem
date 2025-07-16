@@ -8,8 +8,7 @@ public class PlayerAttack : MonoBehaviour
 {
     private const float ATTACK_COOLDOWN = 1f;
     [SerializeField] private CharacterManager playerManager;
-    [SerializeField] private PlayerAttackColliders attackColliders;
-    private int _currentAttackIndex;
+    [SerializeField] private AttackColliders attackColliders;
     private Coroutine _attackCooldown;
 
     private Vector3 _attackRotation;
@@ -18,11 +17,13 @@ public class PlayerAttack : MonoBehaviour
     private void OnEnable()
     {
         playerManager.OnCharacterStateChanged += GetActiveState;
+        attackColliders.OnTargetHit += OnHitTarget;
     }
 
     private void OnDisable()
     {
         playerManager.OnCharacterStateChanged -= GetActiveState;
+        attackColliders.OnTargetHit -= OnHitTarget;
     }
 
     private void Update()
@@ -41,6 +42,7 @@ public class PlayerAttack : MonoBehaviour
 
     /// <summary>
     /// Sets the last cursor position as the rotation target for the player when attacking. This happens once when attacking.
+    /// If states was changed while attacking, call OnAnimationCancel.
     /// </summary>
     /// <param name="state"></param>
     private void GetActiveState(CharacterState state)
@@ -49,10 +51,9 @@ public class PlayerAttack : MonoBehaviour
         {
             _attackRotation = CalculateAttackRotation();
         }
-        else if (_currentAttackIndex != 0)
+        else if (attackColliders.attackIndex != 0)
         {
-            OnAttackEnd();
-            attackColliders.ResetCurrentAttack();
+            OnAnimationCancel();
         }
     }
 
@@ -156,15 +157,39 @@ public class PlayerAttack : MonoBehaviour
     }
 
     /// <summary>
-    /// Will be on the attack's animations.
+    /// Will be called through the attack's animation.
     /// </summary>
-    private void OnAttackAnimationStart()
+    private void OnAnimationStart()
     {
         attackColliders.InitiateAttack();
     }
 
-    public void OnAttackEnd()
+    /// <summary>
+    /// Will be called through the attack's animation.
+    /// </summary>
+    private void OnAnimationEnd()
     {
-        attackColliders.StopAttack();
+        attackColliders.EndAttack();
     }
+
+    private void OnAnimationCancel()
+    {
+        attackColliders.EndAttack();
+        attackColliders.ResetCurrentAttack();
+    }
+
+    private void OnHitTarget(IDamageable target)
+    {
+        if (attackColliders.IsLastHit())
+        {
+            target.Damage(playerManager.Damage * 3);
+            Debug.Log("Damaged for " + playerManager.Damage * 3);
+        }
+        else
+        {
+            target.Damage(playerManager.Damage);
+            Debug.Log("Damaged for " + playerManager.Damage);
+        }
+    }
+
 }
