@@ -2,8 +2,15 @@ using UnityEngine;
 
 public class EnemyExaple : MonoBehaviour, IDamageable, IKillable
 {
-    public void Damage(float amount)
+    Animator anim;
+
+    void Awake()
     {
+        anim = GetComponent<Animator>();
+    }
+    public void TakeDamage(float amount)
+    {
+        anim.SetTrigger("isDamaged");
     }
 
     public void OnKill()

@@ -31,6 +31,9 @@ public class PlayerAttack : MonoBehaviour
         CheckForClick();
     }
 
+    /// <summary>
+    /// Checks for correct input and if hadn't attacked already
+    /// </summary>
     private void CheckForClick()
     {
         if (Input.GetKey(KeyCode.Mouse0) && _attackCooldown == null)
@@ -172,24 +175,26 @@ public class PlayerAttack : MonoBehaviour
         attackColliders.EndAttack();
     }
 
+    /// <summary>
+    /// For when the animation is canceled via dash or any other action- resets the attack index.
+    /// </summary>
     private void OnAnimationCancel()
     {
         attackColliders.EndAttack();
         attackColliders.ResetCurrentAttack();
     }
 
+/// <summary>
+/// Whenever an attack collider hits a target with IDamageable, damage it by the player's damage.
+/// </summary>
+/// <param name="target"></param>
     private void OnHitTarget(IDamageable target)
     {
-        if (attackColliders.IsLastHit())
-        {
-            target.Damage(playerManager.Damage * 3);
-            Debug.Log("Damaged for " + playerManager.Damage * 3);
-        }
-        else
-        {
-            target.Damage(playerManager.Damage);
-            Debug.Log("Damaged for " + playerManager.Damage);
-        }
+        float playerDamage = playerManager.Damage;
+        if (attackColliders.IsLastHit()) playerDamage *= 3;
+
+        target.TakeDamage(playerDamage);
+        Debug.Log("Damaged for " + playerDamage);
     }
 
 }

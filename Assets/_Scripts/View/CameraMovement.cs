@@ -7,6 +7,7 @@ public class CameraMovement : MonoBehaviour
 {
     public static CameraMovement Instance;
 
+    public Transform Target { get => target; }
     [SerializeField] private Transform target;
     [SerializeField] private float smoothTime = 0.3f;
     private Vector3 _currentVelocity = Vector3.zero;
@@ -19,7 +20,7 @@ public class CameraMovement : MonoBehaviour
             Destroy(this);
             return;
         }
-        Instance = null;
+        Instance = this;
 
         _offset = transform.position - target.position;
     }

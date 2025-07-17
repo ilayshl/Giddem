@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -30,17 +29,26 @@ public class AttackColliders : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// For when the attack collider starts, resets the already-hit targets.
+    /// </summary>
     public void InitiateAttack()
     {
         objectsHit = new();
-        SetAttackCollider(true);
+        SetAttackColliderActive(true);
     }
 
+    /// <summary>
+    /// Resets the combo.
+    /// </summary>
     public void ResetCurrentAttack()
     {
         attackIndex = 0;
     }
 
+    /// <summary>
+    /// Continues to the next attack in the combo, if the end was reached, resets the counter.
+    /// </summary>
     private void IncrementAttackIndex()
     {
         attackIndex++;
@@ -50,17 +58,29 @@ public class AttackColliders : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// For when the collider ends, and increments the counter.
+    /// </summary>
     public void EndAttack()
     {
-        SetAttackCollider(false);
+        SetAttackColliderActive(false);
         IncrementAttackIndex();
     }
 
-    private void SetAttackCollider(bool value)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="value"></param>
+    private void SetAttackColliderActive(bool value)
     {
         attackColliders[attackIndex].gameObject.SetActive(value);
     }
 
+    /// <summary>
+    /// When a target is hit through HitCollider, notify whoever's subscribed to the Action.
+    /// Also adds the IDamageable to the HashSet of already-damaged target so it won't be damaged again.
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTargetCollision(Collider other)
     {
         if (other.TryGetComponent<IDamageable>(out IDamageable target))

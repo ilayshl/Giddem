@@ -3,10 +3,9 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
-    public Action<InteractableObject> OnInteractAbility;
-    public Action<InteractableObject> OnInteractGrapple;
+    public Action<InteractableObject> OnInteractAbility; //To use on the PlayerTelekinesis and PlayerGrapple abilities
     [SerializeField] private CharacterManager playerManager;
-    [SerializeField] private InteractableObjectType[] objectTypeToCollide;
+    [SerializeField] private InteractableObjectType[] objectTypeToCollide; //Types that the collider will be able to detect.
     [SerializeField] private KeyCode inputKey;
     private InteractableObject _highlightedObject;
 
@@ -28,7 +27,7 @@ public class PlayerInteract : MonoBehaviour
             {
                 _highlightedObject.OnInteract();
 
-                switch (_highlightedObject.ObjectType)
+                switch (_highlightedObject.ObjectType) //For player-related behaviour such as abilities
                 {
                     case InteractableObjectType.Telekinesis:
                         playerManager.ChangeCharacterState(CharacterState.Telekinesis);
@@ -49,7 +48,7 @@ public class PlayerInteract : MonoBehaviour
     }
 
     /// <summary>
-    /// When a new objects enters sight, get rid of old object and highlight the new one
+    /// When a new objects enters sight, highlight it. If there was already a highlighted object, get rid of the old one.
     /// </summary>
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
@@ -58,7 +57,7 @@ public class PlayerInteract : MonoBehaviour
         {
             if (other.TryGetComponent<InteractableObject>(out InteractableObject interactable))
             {
-                foreach (var objectType in objectTypeToCollide)
+                foreach (var objectType in objectTypeToCollide) //Iterate through the selected interactable types of objects.
                 {
                     if (objectType == interactable.ObjectType)
                     {
