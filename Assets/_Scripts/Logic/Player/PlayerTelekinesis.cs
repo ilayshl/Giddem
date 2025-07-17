@@ -10,13 +10,13 @@ public class PlayerTelekinesis : MonoBehaviour
     private void OnEnable()
     {
         playerManager.OnCharacterStateChanged += InitiateTelekinesis;
-        abilityInteract.OnInteractAbility += GetInteratedObject;
+        //abilityInteract.OnInteractAbility += GetInteratedObject;
     }
 
     private void OnDisable()
     {
         playerManager.OnCharacterStateChanged -= InitiateTelekinesis;
-        abilityInteract.OnInteractAbility -= GetInteratedObject;
+        //abilityInteract.OnInteractAbility -= GetInteratedObject;
     }
 
     private void InitiateTelekinesis(CharacterState state)
