@@ -42,16 +42,16 @@ public class PlayerInteract : MonoBehaviour
                     _highlightedObject = null;
                 }
 
-                /* if (interactPrompt != null)
-                    interactPrompt.SetActive(false); */
+                if (interactPrompt != null)
+                    interactPrompt.SetActive(false);
             }
-            /* else if (state == CharacterState.Dialog)
+            else if (state == CharacterState.Dialog)
             {
                 if (_highlightedObject is NpcObject npc)
                 {
                     npc.ContinueDialog(playerManager);
                 }
-            } */
+            }
         }
     }
 
@@ -64,11 +64,11 @@ public class PlayerInteract : MonoBehaviour
                 if (objectType == interactable.ObjectType)
                 {
                     _highlightedObject = interactable;
-                    _highlightedObject.O
-                    /* if (interactPrompt != null)
-                        interactPrompt.SetActive(true); */
 
-                    //return;
+                    if (interactPrompt != null)
+                        interactPrompt.SetActive(true);
+
+                    return;
                 }
             }
         }
