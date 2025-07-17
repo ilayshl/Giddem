@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
 public class PlayerInteract : MonoBehaviour
 {
+    public Action<InteractableObject> OnInteractAbility;
+    public Action<InteractableObject> OnInteractGrapple;
     [SerializeField] private CharacterManager playerManager;
     [SerializeField] private InteractableObjectType[] objectTypeToCollide;
     [SerializeField] private KeyCode inputKey;
@@ -24,22 +26,24 @@ public class PlayerInteract : MonoBehaviour
             CharacterState state = playerManager.state;
             if (state == CharacterState.Idle || state == CharacterState.Run)
             {
-                    _highlightedObject.OnInteract();
-                    
-                var objectType = _highlightedObject.ObjectType;
-                if (objectType == InteractableObjectType.Grapple)
+                _highlightedObject.OnInteract();
+
+                switch (_highlightedObject.ObjectType)
                 {
-                    playerManager.ChangeCharacterState(CharacterState.Grapple);
+                    case InteractableObjectType.Telekinesis:
+                        playerManager.ChangeCharacterState(CharacterState.Telekinesis);
+                        break;
+                    case InteractableObjectType.Grapple:
+                        playerManager.ChangeCharacterState(CharacterState.Grapple);
+                        break;
                 }
-                else if (objectType == InteractableObjectType.Telekinesis)
-                {
-                    playerManager.ChangeCharacterState(CharacterState.Telekinesis);
-                }
-                
-                    if (!_highlightedObject.enabled) //If was destroyed from Interaction
+
+                if (!_highlightedObject.enabled) //If was destroyed from Interaction
                 {
                     _highlightedObject = null; //Reset highlight
                 }
+
+                OnInteractAbility?.Invoke(_highlightedObject);
             }
         }
     }

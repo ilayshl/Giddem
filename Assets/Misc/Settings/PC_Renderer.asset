@@ -123,10 +123,10 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_TransparentLayerMask:
     serializedVersion: 2
-    m_Bits: 127
+    m_Bits: 4294967295
   m_DefaultStencilState:
     overrideStencilState: 0
-    stencilReference: 1
+    stencilReference: 3
     stencilCompareFunction: 4
     passOperation: 0
     failOperation: 0
@@ -176,12 +176,12 @@ MonoBehaviour:
     AOMethod: 0
     Downsample: 0
     AfterOpaque: 0
-    Source: 1
+    Source: 0
     NormalSamples: 1
-    Intensity: 0.4
-    DirectLightingStrength: 0.2
-    Radius: 0.3
-    Samples: 1
-    BlurQuality: 0
+    Intensity: 0.06
+    DirectLightingStrength: 0.527
+    Radius: 0.06
+    Samples: 2
+    BlurQuality: 2
     Falloff: 100
     SampleCount: -1

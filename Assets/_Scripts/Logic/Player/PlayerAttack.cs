@@ -6,8 +6,9 @@ using UnityEngine;
 /// </summary>
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] private CharacterManager playerManager;
     private const float ATTACK_COOLDOWN = 1f;
+    [SerializeField] private CharacterManager playerManager;
+    [SerializeField] private AttackColliders attackColliders;
     private Coroutine _attackCooldown;
 
     private Vector3 _attackRotation;
@@ -15,12 +16,14 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnEnable()
     {
-        playerManager.OnCharacterStateChanged += SetAttackRotationTarget;
+        playerManager.OnCharacterStateChanged += GetActiveState;
+        attackColliders.OnTargetHit += OnHitTarget;
     }
 
     private void OnDisable()
     {
-        playerManager.OnCharacterStateChanged -= SetAttackRotationTarget;
+        playerManager.OnCharacterStateChanged -= GetActiveState;
+        attackColliders.OnTargetHit -= OnHitTarget;
     }
 
     private void Update()
@@ -32,19 +35,25 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Mouse0) && _attackCooldown == null)
         {
-            StartAttack();
+            playerManager.ChangeCharacterState(CharacterState.Attack);
+            LookAtCursor();
         }
     }
 
     /// <summary>
     /// Sets the last cursor position as the rotation target for the player when attacking. This happens once when attacking.
+    /// If states was changed while attacking, call OnAnimationCancel.
     /// </summary>
     /// <param name="state"></param>
-    private void SetAttackRotationTarget(CharacterState state)
+    private void GetActiveState(CharacterState state)
     {
         if (state == CharacterState.Attack)
         {
             _attackRotation = CalculateAttackRotation();
+        }
+        else if (attackColliders.attackIndex != 0)
+        {
+            OnAnimationCancel();
         }
     }
 
@@ -57,15 +66,6 @@ public class PlayerAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         _attackCooldown = null;
-    }
-
-    /// <summary>
-    /// If not already attacking, sets state to attack.
-    /// </summary>
-    private void StartAttack()
-    {
-        playerManager.ChangeCharacterState(CharacterState.Attack);
-        LookAtCursor();
     }
 
     /// <summary>
@@ -149,8 +149,47 @@ public class PlayerAttack : MonoBehaviour
     /// </summary>
     private void LookAtCursor()
     {
-        var rotation = Quaternion.LookRotation(_attackRotation, Vector3.up);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, playerManager.TurnSpeed * Time.deltaTime * 2);
+        if (playerManager.state == CharacterState.Attack)
+        {
+            var rotation = Quaternion.LookRotation(_attackRotation, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, playerManager.TurnSpeed * Time.deltaTime * 2);
+        }
+    }
+
+    /// <summary>
+    /// Will be called through the attack's animation.
+    /// </summary>
+    private void OnAnimationStart()
+    {
+        attackColliders.InitiateAttack();
+    }
+
+    /// <summary>
+    /// Will be called through the attack's animation.
+    /// </summary>
+    private void OnAnimationEnd()
+    {
+        attackColliders.EndAttack();
+    }
+
+    private void OnAnimationCancel()
+    {
+        attackColliders.EndAttack();
+        attackColliders.ResetCurrentAttack();
+    }
+
+    private void OnHitTarget(IDamageable target)
+    {
+        if (attackColliders.IsLastHit())
+        {
+            target.Damage(playerManager.Damage * 3);
+            Debug.Log("Damaged for " + playerManager.Damage * 3);
+        }
+        else
+        {
+            target.Damage(playerManager.Damage);
+            Debug.Log("Damaged for " + playerManager.Damage);
+        }
     }
 
 }
