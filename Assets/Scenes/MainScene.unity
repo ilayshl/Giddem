@@ -166,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugCanvas: {fileID: 1545310888}
   stateText: {fileID: 841133101}
-  playerManager: {fileID: 0}
+  playerManager: {fileID: 1707236017}
 --- !u!1001 &304367043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -665,6 +665,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8800748997830913, guid: 028dc553c516a57419e7ec88497da36b, type: 3}
+      propertyPath: m_Name
+      value: Enemy Bot
+      objectReference: {fileID: 0}
     - target: {fileID: 4136568813016621352, guid: 028dc553c516a57419e7ec88497da36b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.238405
@@ -717,6 +721,10 @@ PrefabInstance:
       propertyPath: m_Acceleration
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7458444120109960670, guid: 028dc553c516a57419e7ec88497da36b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3f6ddd89890d862418d3b25c4a941047, type: 2}
     - target: {fileID: 9074758774401453216, guid: 028dc553c516a57419e7ec88497da36b, type: 3}
       propertyPath: target
       value: 
@@ -2621,6 +2629,17 @@ Transform:
   - {fileID: 543450651990900950}
   m_Father: {fileID: 1212042938}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1707236017 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4132948944991069440, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
+  m_PrefabInstance: {fileID: 304367043}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47872a121bf784e4894636bdb9f8b6f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1750458087
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2629,6 +2648,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 428137275148400882, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 678428365917318323, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
+      propertyPath: m_Name
+      value: NPC Bot
+      objectReference: {fileID: 0}
     - target: {fileID: 1649228137799208258, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
       propertyPath: m_Name
       value: NPC
@@ -2685,11 +2712,21 @@ PrefabInstance:
       propertyPath: m_Acceleration
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7566729129263771836, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
+      propertyPath: objectName
+      value: Marla
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566729129263771836, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
+      propertyPath: 'dialogLines.Array.data[2]'
+      value: Welcome to the Burrow, its just what remains from our home, a lot more
+        then what remains from our bodies.. phh
+      objectReference: {fileID: 0}
     - target: {fileID: 7631574103181273058, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 304367044}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5965367788283697956, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -39,7 +39,7 @@ public class AITarget : MonoBehaviour
             // Target is too far, stop move and stop attack
             navMeshAgent.isStopped = true;
             navMeshAgent.speed = 0;
-            animator.SetBool("Attack", false);
+            animator.SetBool("isAttacking", false);
             animator.SetBool("isRunning", false);
         }
         else if (distanceToTarget > attackRange)
@@ -49,7 +49,7 @@ public class AITarget : MonoBehaviour
             navMeshAgent.destination = target.position;
             navMeshAgent.speed = speed;
             animator.SetFloat("moveSpeed", 3.5f);
-            animator.SetBool("Attack", false);
+            animator.SetBool("isAttacking", false);
             animator.SetBool("isRunning", true);
         }
         else
@@ -62,7 +62,7 @@ public class AITarget : MonoBehaviour
 
             if (!NPC)
             {
-                animator.SetBool("Attack", true);
+                animator.SetBool("isAttacking", true);
             }
 
 

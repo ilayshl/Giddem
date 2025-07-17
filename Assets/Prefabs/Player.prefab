@@ -48,6 +48,7 @@ MonoBehaviour:
   playerManager: {fileID: 4132948944991069440}
   objectTypeToCollide: 0300000002000000
   inputKey: 324
+  interactPrompt: {fileID: 0}
 --- !u!65 &2641413736701845485
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -117,6 +118,7 @@ MonoBehaviour:
   playerManager: {fileID: 4132948944991069440}
   objectTypeToCollide: 0000000001000000
   inputKey: 101
+  interactPrompt: {fileID: 0}
 --- !u!65 &5698160008951620978
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -148,6 +150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1322817197982532953}
   - component: {fileID: 5546335136339255788}
+  - component: {fileID: 1372104476519067413}
   m_Layer: 3
   m_Name: Collider2
   m_TagString: Player
@@ -191,6 +194,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.54, y: 1.8, z: 2.4955127}
   m_Center: {x: 0, y: 0.9, z: 0.7477566}
+--- !u!114 &1372104476519067413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2430032775645451308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9107171a09120204e98e1ed5c0ef3846, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2726176746859666284
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,9 +254,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackColliders:
-  - {fileID: 2865714684699994149}
-  - {fileID: 7514068160072624914}
-  - {fileID: 5546335136339255788}
+  - {fileID: 8944354480723709112}
+  - {fileID: 3559428601882079032}
+  - {fileID: 1372104476519067413}
 --- !u!1 &3613826672818650809
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,6 +267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4093239324857292648}
   - component: {fileID: 2865714684699994149}
+  - component: {fileID: 8944354480723709112}
   m_Layer: 3
   m_Name: Collider0
   m_TagString: Player
@@ -295,6 +311,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.12, y: 1.8, z: 2.044983}
   m_Center: {x: 0, y: 0.9, z: 0.52249134}
+--- !u!114 &8944354480723709112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3613826672818650809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9107171a09120204e98e1ed5c0ef3846, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6481846109559866608
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,6 +333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5681461356653328958}
   - component: {fileID: 7514068160072624914}
+  - component: {fileID: 3559428601882079032}
   m_Layer: 3
   m_Name: Collider1
   m_TagString: Player
@@ -348,6 +377,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.12, y: 1.8, z: 2.044983}
   m_Center: {x: 0, y: 0.9, z: 0.52249134}
+--- !u!114 &3559428601882079032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6481846109559866608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9107171a09120204e98e1ed5c0ef3846, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8951341847804961117
 GameObject:
   m_ObjectHideFlags: 0
@@ -1505,7 +1546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerManager: {fileID: 4132948944991069440}
-  playerInteract: {fileID: 3701492641372190876}
+  abilityInteract: {fileID: 3701492641372190876}
 --- !u!114 &7510219137509449090
 MonoBehaviour:
   m_ObjectHideFlags: 0
