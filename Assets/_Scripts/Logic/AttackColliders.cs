@@ -63,10 +63,8 @@ public class AttackColliders : MonoBehaviour
 
     private void OnTargetCollision(Collider other)
     {
-        Debug.Log("Hit something...");
         if (other.TryGetComponent<IDamageable>(out IDamageable target))
         {
-            Debug.Log("Hit an IDamageable");
             if (!objectsHit.Contains(target))
             {
                 objectsHit.Add(target);

@@ -12,7 +12,7 @@ public class CharacterManager : MonoBehaviour
     public float MaxMoveSpeed { get; private set; } = 5;
     public float CurrentMoveSpeed { get; private set; } = 5;
     public float TurnSpeed { get; private set; } = 720;
-    public float Damage { get; private set; }
+    public float Damage { get; private set; } = 5;
 
     [HideInInspector] public float magnitude;
 

@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     public Action<InteractableObject> OnInteractAbility;
+    public Action<InteractableObject> OnInteractGrapple;
     [SerializeField] private CharacterManager playerManager;
     [SerializeField] private InteractableObjectType[] objectTypeToCollide;
     [SerializeField] private KeyCode inputKey;
@@ -26,6 +27,16 @@ public class PlayerInteract : MonoBehaviour
             if (state == CharacterState.Idle || state == CharacterState.Run)
             {
                 _highlightedObject.OnInteract();
+
+                switch (_highlightedObject.ObjectType)
+                {
+                    case InteractableObjectType.Telekinesis:
+                        playerManager.ChangeCharacterState(CharacterState.Telekinesis);
+                        break;
+                    case InteractableObjectType.Grapple:
+                        playerManager.ChangeCharacterState(CharacterState.Grapple);
+                        break;
+                }
 
                 if (!_highlightedObject.enabled) //If was destroyed from Interaction
                 {

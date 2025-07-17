@@ -4,19 +4,37 @@ using UnityEngine;
 public class PlayerTelekinesis : MonoBehaviour
 {
     [SerializeField] CharacterManager playerManager;
-    [SerializeField] PlayerInteract playerInteract;
-    private InteractableObject objectControlled;
+    [SerializeField] PlayerInteract abilityInteract;
+    private TelekinesisObject objectControlled;
 
-    void OnEnable()
+    private void OnEnable()
     {
-        playerInteract.OnInteractAbility += SetTelekinesisObject;
+        playerManager.OnCharacterStateChanged += InitiateTelekinesis;
+        abilityInteract.OnInteractAbility += GetInteratedObject;
     }
 
-    public void SetTelekinesisObject(InteractableObject objectToControl)
+    private void OnDisable()
     {
-        if (playerManager.state == CharacterState.Telekinesis)
+        playerManager.OnCharacterStateChanged -= InitiateTelekinesis;
+        abilityInteract.OnInteractAbility -= GetInteratedObject;
+    }
+
+    private void InitiateTelekinesis(CharacterState state)
+    {
+        if (state == CharacterState.Telekinesis)
         {
+            
+        }
+    }
+
+    private void GetInteratedObject(InteractableObject interactedObect)
+    {
+        if (interactedObect.TryGetComponent<TelekinesisObject>(out TelekinesisObject objectToControl))
+        {
+            if (playerManager.state == CharacterState.Telekinesis)
+            {
             objectControlled = objectToControl;
+            }
         }
     }
 
