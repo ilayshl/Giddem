@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class GrappleObject : InteractableObject//, IGrappleable
 {
-    public override void OnInteract()
+    public override void OnInteract(CharacterManager character)
     {
-        Debug.Log("Grapple");
+        Debug.Log("Grapple to: " + ObjectName);
+        Destroy(this.gameObject);
     }
 
 }

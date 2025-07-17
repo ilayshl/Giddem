@@ -58,6 +58,9 @@ public class CharacterManager : MonoBehaviour
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
+
+            case CharacterState.Dialog:
+                break;
         }
         state = newState;
         OnCharacterStateChanged?.Invoke(state);

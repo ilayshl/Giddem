@@ -1,13 +1,14 @@
-using System;
 using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
-    public Action<InteractableObject> OnInteractAbility;
-    public Action<InteractableObject> OnInteractGrapple;
     [SerializeField] private CharacterManager playerManager;
     [SerializeField] private InteractableObjectType[] objectTypeToCollide;
-    [SerializeField] private KeyCode inputKey;
+    [SerializeField] private KeyCode inputKey = KeyCode.E;
+
+    // Reference the GameObject that holds the interact prompt UI text
+    [SerializeField] private GameObject interactPrompt;
+
     private InteractableObject _highlightedObject;
 
     private void Update()
@@ -15,80 +16,75 @@ public class PlayerInteract : MonoBehaviour
         GetInput();
     }
 
-    /// <summary>
-    /// Checks if the required inputKey is pressed, then compares CharacterState and interacts
-    /// </summary>
     private void GetInput()
     {
-        if (_highlightedObject == null) return; //If nothing is highlighted
         if (Input.GetKeyDown(inputKey))
         {
             CharacterState state = playerManager.state;
-            if (state == CharacterState.Idle || state == CharacterState.Run)
-            {
-                _highlightedObject.OnInteract();
 
+            if (_highlightedObject != null && (state == CharacterState.Idle || state == CharacterState.Run))
+            {
+                _highlightedObject.OnInteract(playerManager);
+
+                // Change state if needed
                 switch (_highlightedObject.ObjectType)
                 {
-                    case InteractableObjectType.Telekinesis:
-                        playerManager.ChangeCharacterState(CharacterState.Telekinesis);
-                        break;
                     case InteractableObjectType.Grapple:
                         playerManager.ChangeCharacterState(CharacterState.Grapple);
                         break;
+                    case InteractableObjectType.Telekinesis:
+                        playerManager.ChangeCharacterState(CharacterState.Telekinesis);
+                        break;
                 }
 
-                if (!_highlightedObject.enabled) //If was destroyed from Interaction
+                if (!_highlightedObject.enabled)
                 {
-                    _highlightedObject = null; //Reset highlight
-                }
-
-                OnInteractAbility?.Invoke(_highlightedObject);
-            }
-        }
-    }
-
-    /// <summary>
-    /// When a new objects enters sight, get rid of old object and highlight the new one
-    /// </summary>
-    /// <param name="other"></param>
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Interactable"))
-        {
-            if (other.TryGetComponent<InteractableObject>(out InteractableObject interactable))
-            {
-                foreach (var objectType in objectTypeToCollide)
-                {
-                    if (objectType == interactable.ObjectType)
-                    {
-                        _highlightedObject?.RemoveOutline();
-                        _highlightedObject = interactable;
-                        interactable.ShowOutline();
-                    }
-                }
-            }
-
-        }
-    }
-
-    /// <summary>
-    /// When object leaves sight, if it is the object that is currently higlighted, cancel highlight
-    /// </summary>
-    /// <param name="other"></param>
-    protected void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Interactable"))
-        {
-            if (other.TryGetComponent<InteractableObject>(out InteractableObject interactable))
-            {
-                if (interactable == _highlightedObject)
-                {
-                    interactable.RemoveOutline();
                     _highlightedObject = null;
                 }
+
+                if (interactPrompt != null)
+                    interactPrompt.SetActive(false);
+            }
+            else if (state == CharacterState.Dialog)
+            {
+                if (_highlightedObject is NpcObject npc)
+                {
+                    npc.ContinueDialog(playerManager);
+                }
             }
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out InteractableObject interactable))
+        {
+            foreach (var objectType in objectTypeToCollide)
+            {
+                if (objectType == interactable.ObjectType)
+                {
+                    _highlightedObject = interactable;
+
+                    if (interactPrompt != null)
+                        interactPrompt.SetActive(true);
+
+                    return;
+                }
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent(out InteractableObject interactable))
+        {
+            if (interactable == _highlightedObject)
+            {
+                _highlightedObject = null;
+
+                if (interactPrompt != null)
+                    interactPrompt.SetActive(false);
+            }
+        }
+    }
 }

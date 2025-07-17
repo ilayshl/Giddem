@@ -10,8 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 816440781198177211}
   - component: {fileID: 7458444120109960670}
+  - component: {fileID: 4554390274472845620}
   - component: {fileID: 9074758774401453216}
   - component: {fileID: 7674889731972477119}
+  - component: {fileID: 8846188899995797568}
   - component: {fileID: 2457676972576736141}
   - component: {fileID: 7530116359539107706}
   - component: {fileID: 1192797289066713914}
@@ -64,6 +66,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4554390274472845620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8800748997830913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47872a121bf784e4894636bdb9f8b6f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magnitude: 0
 --- !u!114 &9074758774401453216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,7 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   chaseDistance: 9
-  attackRange: 1.5
+  attackRange: 2
   speed: 3.5
   NPC: 0
 --- !u!114 &7674889731972477119
@@ -93,7 +108,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41a8da9bf44ac44498f73c396b97fc3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  playerManager: {fileID: 4554390274472845620}
+--- !u!114 &8846188899995797568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8800748997830913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928b715a9b66a46a99fc03cf4b6918ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerManager: {fileID: 4554390274472845620}
 --- !u!114 &2457676972576736141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,7 +137,7 @@ MonoBehaviour:
   maxHP: 10
   healthRateInterval: 4
   healthRegenAmount: 1
-  hpBarImage: {fileID: 0}
+  hpBarImage: {fileID: 4088375036154557542}
 --- !u!114 &7530116359539107706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,7 +218,7 @@ NavMeshAgent:
   m_Acceleration: 15
   avoidancePriority: 50
   m_AngularSpeed: 1420
-  m_StoppingDistance: 1
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -2358,7 +2386,7 @@ Canvas:
   m_GameObject: {fileID: 7310376869476254372}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 6
   m_PixelPerfect: 0
@@ -2366,7 +2394,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -2384,10 +2412,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

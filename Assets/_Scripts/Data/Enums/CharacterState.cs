@@ -8,4 +8,5 @@ public enum CharacterState
     Grapple,
     Dash,
     Stunned,
+    Dialog,
 }
