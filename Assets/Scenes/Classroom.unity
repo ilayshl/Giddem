@@ -1139,7 +1139,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -7.3959, y: -0.00010213852, z: 12.808812}
-  m_LocalScale: {x: 2.2557, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450653351354293}
@@ -6901,6 +6901,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1241140972057621999, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
+      propertyPath: m_Radius
+      value: 0.27
+      objectReference: {fileID: 0}
     - target: {fileID: 1649228137799208258, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
       propertyPath: m_Name
       value: NPC
@@ -6945,37 +6949,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4149312313588926784, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
-      propertyPath: m_AutoBraking
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6526914764846348705, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 5965367788283697956, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
+      propertyPath: interactPrompt
+      value: 
+      objectReference: {fileID: 818832004}
+    - target: {fileID: 6890987840274675850, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1944049192}
+    - target: {fileID: 7566729129263771836, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
+      propertyPath: dialogPanel
+      value: 
+      objectReference: {fileID: 1479890780}
+    - target: {fileID: 7566729129263771836, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
+      propertyPath: highlightMat
+      value: 
+      objectReference: {fileID: 2100000, guid: eeb89a19b0431b945911c28b318abbc6, type: 2}
+    - target: {fileID: 7566729129263771836, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
+      propertyPath: npcDialogCanvas
+      value: 
+      objectReference: {fileID: 1479890780}
+    - target: {fileID: 7566729129263771836, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
+      propertyPath: 'dialogLines.Array.data[2]'
+      value: Welcome to the Burrow, its just what remains from our home, a lot more
+        then what remains from our bodys.. phh
       objectReference: {fileID: 0}
     - target: {fileID: 7631574103181273058, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1358887682}
-    - target: {fileID: 8566465427559695455, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
-      propertyPath: m_Size.y
-      value: 1.2645668
-      objectReference: {fileID: 0}
-    - target: {fileID: 8566465427559695455, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
-      propertyPath: m_Size.z
-      value: 5.6378326
-      objectReference: {fileID: 0}
-    - target: {fileID: 8566465427559695455, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
-      propertyPath: m_Center.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8566465427559695455, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
-      propertyPath: m_Center.y
-      value: 0.594513
-      objectReference: {fileID: 0}
-    - target: {fileID: 8566465427559695455, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
-      propertyPath: m_Center.z
-      value: 0
+    - target: {fileID: 8468325446245203629, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
+      propertyPath: m_Name
+      value: Dialog Panel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7056,6 +7061,11 @@ Transform:
   - {fileID: 1944049188}
   m_Father: {fileID: 1915756310}
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
+--- !u!1 &818832004 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7854106008573287357, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
+  m_PrefabInstance: {fileID: 709558177}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &836888151
 GameObject:
   m_ObjectHideFlags: 0
@@ -7983,6 +7993,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1915756310}
     m_Modifications:
+    - target: {fileID: 1695717028732630683, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 2003498962265969326, guid: 2713c43604fad41d6ab92fd689cac8d8, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -8081,7 +8095,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 480df205c00d42540ad0ba65783d02bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pressEPrompt: {fileID: 1755265630}
+  pressEPrompt: {fileID: 0}
+  currentTarget: {fileID: 0}
+  isPlayerInRange: 0
 --- !u!1 &1423835459
 GameObject:
   m_ObjectHideFlags: 0
@@ -8203,6 +8219,11 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!1 &1479890780 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6526914764846348705, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
+  m_PrefabInstance: {fileID: 709558177}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1586245831
 GameObject:
   m_ObjectHideFlags: 0
@@ -8655,11 +8676,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5715a47818073d46b089b5dc083812b, type: 3}
---- !u!1 &1755265630 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 778849338150832067, guid: 837ea42217320414bb7711a0542d1c90, type: 3}
-  m_PrefabInstance: {fileID: 709558177}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1808315851
 GameObject:
   m_ObjectHideFlags: 0
@@ -31080,10 +31096,10 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 7742352904813098834}
+  - {fileID: 1712252961}
   - {fileID: 1282991247}
   - {fileID: 64745673}
   - {fileID: 543450653351354293}
-  - {fileID: 709558177}
-  - {fileID: 7742352904813098834}
   - {fileID: 2044762366}
-  - {fileID: 1712252961}
+  - {fileID: 709558177}
