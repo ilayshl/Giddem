@@ -48,6 +48,7 @@ public class PlayerAnimation : MonoBehaviour
                 break;
             case CharacterState.Dash:
                 OnDash(true);
+                OnTelekinesis(false);
                 break;
             case CharacterState.Stunned:
 
