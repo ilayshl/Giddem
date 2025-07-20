@@ -11,7 +11,7 @@ public class HealthManager : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private GameObject hpBarCanvas;
-    private Image hpBarImage;
+    [SerializeField] private Image hpBarImage;
 
     private int currentHP;
     private float healTimer;
@@ -20,14 +20,13 @@ public class HealthManager : MonoBehaviour
     {
         currentHP = maxHP;
         healTimer = 0f;
-        hpBarImage = hpBarCanvas.GetComponent<Image>();
         UpdateHPBar();
         hpBarCanvas.SetActive(false);
     }
 
     private void Update()
     {
-        //HealOverTime();
+        HealOverTime();
     }
 
     private void HealOverTime()
@@ -44,6 +43,12 @@ public class HealthManager : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        if (hpBarCanvas.activeSelf == false)
+        {
+            hpBarCanvas.SetActive(true);
+        }
+
+        CancelInvoke(nameof(DisableHpBar));
         if (currentHP <= 0) return;  // Already dead
 
         currentHP -= amount;
@@ -61,7 +66,7 @@ public class HealthManager : MonoBehaviour
     {
         currentHP += amount;
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
-        UpdateHPBar();
+
     }
 
     private void UpdateHPBar()
@@ -69,6 +74,11 @@ public class HealthManager : MonoBehaviour
         if (hpBarImage != null)
         {
             hpBarImage.fillAmount = (float)currentHP / maxHP;
+
+            if (hpBarCanvas.activeSelf == true)
+            {
+                Invoke(nameof(DisableHpBar), 5);
+            }
         }
     }
 
@@ -85,16 +95,7 @@ public class HealthManager : MonoBehaviour
         {
             CancelInvoke(nameof(DisableHpBar));
             Debug.Log("player hit");
-            hpBarCanvas.SetActive(true);
             TakeDamage(1);
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Invoke(nameof(DisableHpBar), 5);
         }
     }
 
@@ -102,5 +103,14 @@ public class HealthManager : MonoBehaviour
     {
         Debug.Log("canvas down");
         hpBarCanvas.SetActive(false);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("PlayerPunch"))
+        {
+            Debug.Log("Player is hitting with trigger");
+            TakeDamage(1);
+        }
     }
 }
