@@ -176,7 +176,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8052602953930032482
 RectTransform:
   m_ObjectHideFlags: 0
@@ -365,7 +365,6 @@ GameObject:
   m_Component:
   - component: {fileID: 773933277664376359}
   - component: {fileID: 8367910810553604559}
-  - component: {fileID: 5965367788283697956}
   - component: {fileID: 2560562750562956096}
   - component: {fileID: 7631574103181273058}
   - component: {fileID: 8878399036929026794}
@@ -376,7 +375,7 @@ GameObject:
   - component: {fileID: 1228744326338530981}
   - component: {fileID: 4149312313588926784}
   m_Layer: 0
-  m_Name: Y Bot
+  m_Name: NPC Bot
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -413,7 +412,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 3f6ddd89890d862418d3b25c4a941047, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -422,22 +421,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5965367788283697956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 678428365917318323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26521bf6ae32748388795053a37c2f29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerManager: {fileID: 2560562750562956096}
-  objectTypeToCollide: 01000000
-  inputKey: 101
-  interactPrompt: {fileID: 8267308561420094632}
 --- !u!114 &2560562750562956096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,7 +447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  chaseDistance: 5
+  chaseDistance: 6
   attackRange: 1
   speed: 5
   NPC: 1
@@ -496,6 +479,7 @@ MonoBehaviour:
   maxHP: 10
   healthRateInterval: 4
   healthRegenAmount: 1
+  hpBarCanvas: {fileID: 0}
   hpBarImage: {fileID: 3899171790595604226}
 --- !u!114 &7566729129263771836
 MonoBehaviour:
@@ -509,7 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cff6d05de33cd443c87fdb1e70f82e31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: Maarla
+  objectName: Marla
   highlightMat: {fileID: 2100000, guid: 4839acef4eb1a41de908088b7bee9fed, type: 2}
   objectType: 1
   npcDialogCanvas: {fileID: 6526914764846348705}
@@ -518,7 +502,7 @@ MonoBehaviour:
   - Hey there, name is Maarla
   - I guess you lost a lot out there, if youre in here
   - Welcome to the Burrow, its just what remains from our home, a lot more then what
-    remains from our bodys.. phh
+    remains from our bodies.. phh
 --- !u!65 &8566465427559695455
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -600,13 +584,13 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 0.35
-  m_Speed: 5
-  m_Acceleration: 1
+  m_Speed: 7
+  m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 780
-  m_StoppingDistance: 1
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
+  m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.73
   m_BaseOffset: 0
@@ -3660,10 +3644,5 @@ PrefabInstance:
 --- !u!224 &7337992604609516217 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6730098011251648950, guid: e6c417b8ab686204680c1428188aa125, type: 3}
-  m_PrefabInstance: {fileID: 4085843614230788879}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8267308561420094632 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5334711993674479527, guid: e6c417b8ab686204680c1428188aa125, type: 3}
   m_PrefabInstance: {fileID: 4085843614230788879}
   m_PrefabAsset: {fileID: 0}
