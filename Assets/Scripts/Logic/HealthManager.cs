@@ -9,7 +9,8 @@ public class HealthManager : MonoBehaviour
     [SerializeField] private int healthRegenAmount = 1;
 
     [Header("UI")]
-    [SerializeField] private Image hpBarImage;
+    [SerializeField] private GameObject hpBarCanvas;
+    private Image hpBarImage;
 
     private int currentHP;
     private float healTimer;
@@ -18,12 +19,14 @@ public class HealthManager : MonoBehaviour
     {
         currentHP = maxHP;
         healTimer = 0f;
+        hpBarImage = hpBarCanvas.GetComponent<Image>();
         UpdateHPBar();
+        hpBarCanvas.SetActive(false);
     }
 
     private void Update()
     {
-        HealOverTime();
+        //HealOverTime();
     }
 
     private void HealOverTime()
@@ -82,4 +85,21 @@ public class HealthManager : MonoBehaviour
             TakeDamage(1);
         }
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            hpBarCanvas.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            hpBarCanvas.SetActive(false);
+        }
+    }
+
 }
