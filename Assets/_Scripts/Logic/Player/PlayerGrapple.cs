@@ -34,11 +34,11 @@ public class PlayerGrapple : MonoBehaviour
     {
         if (state == CharacterState.Grapple)
         {
-
+            
         }
         else
         {
-            if (_activeGrapple != null)
+            if (_grappleTarget != null)
             {
                 EndAbility(true);
             }
@@ -76,7 +76,7 @@ public class PlayerGrapple : MonoBehaviour
 
     private void EndAbility(bool wasCanceled)
     {
-        StopCoroutine(_activeGrapple);
+        if(_activeGrapple != null) StopCoroutine(_activeGrapple);
         _activeGrapple = null;
         _grappleTarget = null;
         CameraMovement.Instance.ChangeCameraTarget(transform);
