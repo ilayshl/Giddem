@@ -36,7 +36,6 @@ public class PlayerTelekinesis : MonoBehaviour
         {
             EndAbility(true);
         }
-        //Setting the camera's target to the object, then changing it back to the player
     }
 
     private void GetInteractedObject(InteractableObject interactedObect)
@@ -47,6 +46,7 @@ public class PlayerTelekinesis : MonoBehaviour
             {
                 _objectControlled = objectToControl;
                 _rb = objectToControl.GetComponent<Rigidbody>();
+                SpawnCameraAnchor();
                 _getInput = StartCoroutine(GetInput());
                 _activeTelekinesis = StartCoroutine(ControlObject(TIME_LIMIT, MOVE_FORCE));
             }
@@ -80,6 +80,8 @@ public class PlayerTelekinesis : MonoBehaviour
     {
         _rb.AddForce((IsometricHelper.ToIso(_input).normalized * _input.normalized.magnitude)
                 * MOVE_FORCE * Time.fixedDeltaTime, ForceMode.Acceleration);
+        Vector3 newCameraPosition = Vector3.Lerp(transform.position, _objectControlled.transform.position, 0.5f);
+        CameraMovement.Instance.MoveCameraAnchor(newCameraPosition);
     }
 
     private void ShootObject(float movePower)
@@ -94,9 +96,16 @@ public class PlayerTelekinesis : MonoBehaviour
         StopCoroutine(_activeTelekinesis);
         _activeTelekinesis = null;
         _getInput = null;
+        CameraMovement.Instance.ChangeCameraTarget(transform);
         if (!wasCanceled)
         {
-        playerManager.ChangeCharacterState();
+            playerManager.ChangeCharacterState();
         }
+    }
+
+    private void SpawnCameraAnchor()
+    {
+        Vector3 positionToSpawn = Vector3.Lerp(transform.position, _objectControlled.transform.position, 0.5f);
+        CameraMovement.Instance.SpawnCameraAnchor(positionToSpawn, "Telekinesis Camera Anchor");
     }
 }
