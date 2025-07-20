@@ -12,12 +12,13 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private float smoothTime = 0.3f;
     private Vector3 _currentVelocity = Vector3.zero;
     private Vector3 _offset;
+    private GameObject _cameraAnchor;
 
     void Awake()
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(this);
+            Destroy(Instance);
             return;
         }
         Instance = this;
@@ -34,5 +35,23 @@ public class CameraMovement : MonoBehaviour
     public void ChangeCameraTarget(Transform newTarget)
     {
         target = newTarget;
+        if (target != _cameraAnchor.transform && _cameraAnchor != null)
+        {
+            Destroy(_cameraAnchor);
+        }
+    }
+
+    public void SpawnCameraAnchor(Vector3 position, string name)
+    {
+        _cameraAnchor = new GameObject();
+        _cameraAnchor.transform.position = position;
+        _cameraAnchor.name = name;
+        ChangeCameraTarget(_cameraAnchor.transform);
+    }
+
+    public void MoveCameraAnchor(Vector3 targetPosition)
+    {
+        if (_cameraAnchor == null) return;
+        _cameraAnchor.transform.position = targetPosition;
     }
 }

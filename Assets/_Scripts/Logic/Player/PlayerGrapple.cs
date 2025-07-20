@@ -10,7 +10,6 @@ public class PlayerGrapple : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     private LineRenderer _lr;
     private GrappleObject _grappleTarget;
-    private bool _isGrounded;
     private Rigidbody _rb;
     private Coroutine _activeGrapple;
 
@@ -35,13 +34,13 @@ public class PlayerGrapple : MonoBehaviour
     {
         if (state == CharacterState.Grapple)
         {
-
+            
         }
         else
         {
-            if (_activeGrapple != null)
+            if (_grappleTarget != null)
             {
-                StopCoroutine(_activeGrapple);
+                EndAbility(true);
             }
         }
     }
@@ -53,15 +52,10 @@ public class PlayerGrapple : MonoBehaviour
             if (playerManager.state == CharacterState.Grapple)
             {
                 _grappleTarget = objectToGrapple;
+                SpawnCameraAnchor();
             }
         }
     }
-
-    /* private IEnumerator DrawLine()
-    {
-
-        yield return new WaitForEndOfFrame();
-    } */
 
     private void StartGrapple()
     {
@@ -77,11 +71,25 @@ public class PlayerGrapple : MonoBehaviour
             _rb.MovePosition(Vector3.Lerp(transform.position, targetPosition.position, MOVE_SPEED * Time.fixedDeltaTime));
             yield return new WaitForFixedUpdate();
         }
-        if (_activeGrapple != null)
+        EndAbility(false);
+        }
+
+    private void EndAbility(bool wasCanceled)
+    {
+        if(_activeGrapple != null) StopCoroutine(_activeGrapple);
+        _activeGrapple = null;
+        _grappleTarget = null;
+        CameraMovement.Instance.ChangeCameraTarget(transform);
+        _rb.linearVelocity = Vector3.zero;
+        if (!wasCanceled)
         {
             playerManager.ChangeCharacterState();
-            _rb.linearVelocity = Vector3.zero;
         }
     }
 
+    private void SpawnCameraAnchor()
+    {
+        Vector3 positionToSpawn = Vector3.Lerp(transform.position, _grappleTarget.transform.position, 0.5f);
+        CameraMovement.Instance.SpawnCameraAnchor(positionToSpawn, "Grapple Camera Anchor");
+    }
 }

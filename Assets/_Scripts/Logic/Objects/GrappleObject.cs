@@ -4,7 +4,7 @@ public class GrappleObject : InteractableObject//, IGrappleable
 {
     public override void OnInteract()
     {
-        Debug.Log("Grapple");
+        
     }
 
 }
