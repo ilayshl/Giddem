@@ -84,6 +84,7 @@ public class PlayerDash : MonoBehaviour
             _dashDestination = CheckDashCollision();
             _currentDashes++;
             ChangeGravity();
+            _rb.linearVelocity = Vector3.zero;
             LookInstantly(_lastInput);
             if (_activeDashCooldown != null) StopCoroutine(_activeDashCooldown);
             _activeDashParticles = StartCoroutine(DashParticles(this.transform, 0.03f, meshRenderer));
@@ -118,8 +119,10 @@ public class PlayerDash : MonoBehaviour
     /// <param name="input"></param>
     private void Dash(Vector3 input)
     {
-        Vector3 distanceToCalculate = _dashDestination - new Vector3(0, _dashDestination.y, 0);
-        if (Vector3.Distance(transform.position, distanceToCalculate) > DESTINATION_RANGE)
+        //Vector3 distanceToCalculate = _dashDestination - new Vector3(0, _dashDestination.y, 0);
+        Vector2 targetPosition = new Vector2(_dashDestination.x, _dashDestination.z);
+        Vector2 playerPosition = new Vector2(transform.position.x, transform.position.z);
+        if (Vector3.Distance(playerPosition, targetPosition) > DESTINATION_RANGE)
         {
             _rb.MovePosition(transform.position + GetDashDirection() * playerManager.CurrentMoveSpeed * DASH_POWER * Time.fixedDeltaTime);
         }

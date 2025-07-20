@@ -76,14 +76,11 @@ public class PlayerAttack : MonoBehaviour
     /// </summary>
     private void FinishAttack()
     {
-        if (_attackCooldown == null)
-        {
             if (playerManager.state == CharacterState.Attack)
             {
                 _attackCooldown = StartCoroutine(StartAttackCooldown(ATTACK_COOLDOWN));
                 playerManager.ChangeCharacterState();
             }
-        }
     }
 
     /// <summary>

@@ -48,7 +48,7 @@ public class CharacterManager : MonoBehaviour
 
                 break;
             case CharacterState.Grapple:
-
+                CurrentMoveSpeed *= 0.01f;
                 break;
             case CharacterState.Dash:
 
