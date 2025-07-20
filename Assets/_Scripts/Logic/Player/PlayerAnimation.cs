@@ -33,6 +33,7 @@ public class PlayerAnimation : MonoBehaviour
                 OnAttack(false);
                 OnDash(false);
                 OnTelekinesis(false);
+                OnGrapple(false);
                 break;
             case CharacterState.Run:
                 OnAttack(false);
@@ -44,7 +45,7 @@ public class PlayerAnimation : MonoBehaviour
                 OnTelekinesis(true);
                 break;
             case CharacterState.Grapple:
-                OnGrapple();
+                OnGrapple(true);
                 break;
             case CharacterState.Dash:
                 OnDash(true);
@@ -72,9 +73,9 @@ public class PlayerAnimation : MonoBehaviour
         anim.SetBool("isDashing", value);
     }
 
-    private void OnGrapple()
+    private void OnGrapple(bool value)
     {
-        anim.SetTrigger("grapple");
+        anim.SetBool("isGrapple", value);
     }
 
     private void OnTelekinesis(bool value)

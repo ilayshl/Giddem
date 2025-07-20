@@ -59,16 +59,12 @@ public class PlayerTelekinesis : MonoBehaviour
         while (playerManager.state == CharacterState.Telekinesis
         && timePassed < timeLimit)
         {
-            Debug.Log($"{timePassed} < {timeLimit}");
             MoveObject(movePower);
             timePassed += Time.fixedDeltaTime;
             yield return new WaitForFixedUpdate();
         }
-        if (_objectControlled != null)
-            {
         ShootObject(movePower);
         EndAbility(false);
-            }
     }
 
     private IEnumerator GetInput()
@@ -95,6 +91,7 @@ public class PlayerTelekinesis : MonoBehaviour
     private void EndAbility(bool wasCanceled)
     {
         _objectControlled = null;
+        StopCoroutine(_activeTelekinesis);
         _activeTelekinesis = null;
         _getInput = null;
         if (!wasCanceled)
