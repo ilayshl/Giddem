@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -74,6 +75,7 @@ public class HealthManager : MonoBehaviour
     private void Die()
     {
         Debug.Log($"{gameObject.name} died!");
+        hpBarCanvas.SetActive(false);
         Destroy(gameObject);
     }
 
@@ -81,25 +83,24 @@ public class HealthManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            CancelInvoke(nameof(DisableHpBar));
             Debug.Log("player hit");
+            hpBarCanvas.SetActive(true);
             TakeDamage(1);
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnCollisionExit(Collision collision)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            hpBarCanvas.SetActive(true);
+            Invoke(nameof(DisableHpBar), 5);
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void DisableHpBar()
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            hpBarCanvas.SetActive(false);
-        }
+        Debug.Log("canvas down");
+        hpBarCanvas.SetActive(false);
     }
-
 }

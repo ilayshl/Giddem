@@ -18,7 +18,6 @@ GameObject:
   - component: {fileID: 1192797289066713914}
   - component: {fileID: 3371159564410502768}
   - component: {fileID: 7016355594342559646}
-  - component: {fileID: 8626708056690279166}
   m_Layer: 0
   m_Name: Enemy Bot
   m_TagString: Untagged
@@ -211,27 +210,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!65 &8626708056690279166
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8800748997830913}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 7, y: 1, z: 7}
-  m_Center: {x: -1, y: 0, z: 0}
 --- !u!1 &193728538291010853
 GameObject:
   m_ObjectHideFlags: 0
@@ -2220,6 +2198,7 @@ GameObject:
   - component: {fileID: 2568860731572966283}
   - component: {fileID: 7573506345394864629}
   - component: {fileID: 951078403081614818}
+  - component: {fileID: 6352515983363717243}
   m_Layer: 5
   m_Name: HpCanvas
   m_TagString: Untagged
@@ -2310,6 +2289,32 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6352515983363717243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7310376869476254372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: -408
+    m_Right: 6
+    m_Top: 333
+    m_Bottom: 873
+  m_ChildAlignment: 0
+  m_Spacing: -167.02
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &7436738559542170045
 GameObject:
   m_ObjectHideFlags: 0
@@ -2758,9 +2763,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2484765116298815683}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -752.2999, y: -62.299988}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1171.1711, y: 234.23425}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6293761246241762511
