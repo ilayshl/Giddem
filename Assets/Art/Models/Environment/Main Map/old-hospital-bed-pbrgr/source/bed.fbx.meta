@@ -3,7 +3,22 @@ guid: 3fea077d84ca8574a817430aa0821370
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bed
+    second: {fileID: 2100000, guid: 6a74fcf1793e79749988022960ff369b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blanket
+    second: {fileID: 2100000, guid: 0e7a4f309eec027499e2d525132d1ee7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mattress
+    second: {fileID: 2100000, guid: 97bf65235fb284d4baab225fc4644747, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

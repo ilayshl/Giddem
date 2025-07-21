@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8806911717387689252, guid: 3896ef022b23767499be4e0e2e4f3237, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3896ef022b23767499be4e0e2e4f3237, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.7265699
@@ -68,6 +72,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Industrial Door
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3896ef022b23767499be4e0e2e4f3237, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5392400098515469283, guid: 3896ef022b23767499be4e0e2e4f3237, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6690866937354325142, guid: 3896ef022b23767499be4e0e2e4f3237, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.46
@@ -110,14 +122,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3896ef022b23767499be4e0e2e4f3237, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3562771060591866177}
+      addedObject: {fileID: 8171489019667519297}
   m_SourcePrefab: {fileID: 100100000, guid: 3896ef022b23767499be4e0e2e4f3237, type: 3}
 --- !u!1 &8947281266486083430 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3896ef022b23767499be4e0e2e4f3237, type: 3}
   m_PrefabInstance: {fileID: 8136396189691396663}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &3562771060591866177
+--- !u!64 &8171489019667519297
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
