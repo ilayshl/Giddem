@@ -7,7 +7,6 @@ public class PlayerGrapple : MonoBehaviour
     private const float TIME_LIMIT = 0.5f;
     [SerializeField] CharacterManager playerManager;
     [SerializeField] PlayerInteract abilityInteract;
-    [SerializeField] private LayerMask groundLayer;
     private LineRenderer _lr;
     private GrappleObject _grappleTarget;
     private Rigidbody _rb;
