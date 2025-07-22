@@ -14,7 +14,7 @@ public class PlayerDash : MonoBehaviour
     public float dashCooldown = 2f; //Public to be edited in the game via attributes
     [SerializeField] private int dashLimit = 2; //How many consecutive dashes the player can perform before cd
     [SerializeField] Transform forwardTransform; //To create collision ray
-    [SerializeField] private LayerMask layerToCollide;
+    [SerializeField] private LayerMask[] layersToCollide;
     private bool _isDashing;
     private Coroutine _activeDashCooldown; //Coroutine handling the cooldown
     private int _currentDashes; //How many consecutive dashes were performed
@@ -101,16 +101,16 @@ public class PlayerDash : MonoBehaviour
         float moveSpeed = playerManager.CurrentMoveSpeed * DASH_POWER * Time.fixedDeltaTime;
         float raycastMaxDistance = moveSpeed * DASH_UNITS;
         RaycastHit hit;
-        if (Physics.Raycast(forwardTransform.position, GetDashDirection(), out hit, raycastMaxDistance, (int)layerToCollide))
+        foreach(var layer in layersToCollide)
+        {
+        if (Physics.Raycast(forwardTransform.position, GetDashDirection(), out hit, raycastMaxDistance, (int)layer))
         {
             Debug.DrawRay(forwardTransform.position, GetDashDirection() * hit.distance, Color.red, 5f);
             return hit.point;
         }
-        else
-        {
+        }
             Debug.DrawRay(forwardTransform.position, GetDashDirection() * raycastMaxDistance, Color.green, 5f);
             return transform.position + GetDashDirection() * raycastMaxDistance;
-        }
     }
 
     /// <summary>
