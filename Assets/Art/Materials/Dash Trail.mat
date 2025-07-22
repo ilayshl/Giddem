@@ -52,12 +52,12 @@ Material:
     m_Ints: []
     m_Floats:
     - _Alpha: 1
-    - _FresnelPower: 1.25
+    - _FresnelPower: 2
     - _QueueControl: 0
     - _QueueOffset: 0
     - _TimeLimit: 1
     - _Visibility: 1
     m_Colors:
-    - _Color: {r: 1.5224025, g: 0.25134, b: 0.25134, a: 1}
+    - _Color: {r: 1.0592736, g: 0.17488006, b: 0.17488006, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
