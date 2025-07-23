@@ -9,12 +9,13 @@ public abstract class InteractableObject : MonoBehaviour
     public InteractableObjectType ObjectType { get => objectType; }
     [SerializeField] private string objectName;
     [SerializeField] private Material highlightMat;
-    [SerializeField] private InteractableObjectType objectType;
+    protected InteractableObjectType objectType;
     private MeshRenderer meshRenderer;
 
     void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
+        ObjectTypeInitiate(); //Declare each inheriting script's type
     }
 
     /// <summary>
@@ -40,5 +41,13 @@ public abstract class InteractableObject : MonoBehaviour
         meshRenderer.materials = newMaterials;
     }
 
+    /// <summary>
+    /// Each inheriting script should declare what happens when the object is interacted with.
+    /// </summary>
     public abstract void OnInteract();
+
+    /// <summary>
+    /// Each inheriting script should declare its own type.
+    /// </summary>
+    protected abstract void ObjectTypeInitiate();
 }

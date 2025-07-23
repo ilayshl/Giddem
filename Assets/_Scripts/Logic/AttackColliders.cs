@@ -10,22 +10,29 @@ public class AttackColliders : MonoBehaviour
 {
     public int attackIndex { get; private set; } = 0;
     public Action<IDamageable> OnTargetHit;
-    [SerializeField] private HitCollider[] attackColliders;
+    private List<HitCollider> attackColliders = new();
     private HashSet<IDamageable> objectsHit = new();
 
     private void OnEnable()
     {
-        foreach (var collider in attackColliders)
+        foreach (Transform childObject in transform)
         {
-            collider.OnTriggerCollision += OnTargetCollision;
+            if (childObject.TryGetComponent<HitCollider>(out HitCollider collider))
+            {
+                attackColliders.Add(collider);
+                collider.OnTriggerCollision += OnTargetCollision;
+            }
         }
     }
 
     private void OnDisable()
     {
-        foreach (var collider in attackColliders)
+        foreach (Transform childObject in transform)
         {
-            collider.OnTriggerCollision -= OnTargetCollision;
+            if (childObject.TryGetComponent<HitCollider>(out HitCollider collider))
+            {
+                collider.OnTriggerCollision -= OnTargetCollision;
+            }
         }
     }
 
@@ -52,7 +59,7 @@ public class AttackColliders : MonoBehaviour
     private void IncrementAttackIndex()
     {
         attackIndex++;
-        if (attackIndex > attackColliders.Length - 1)
+        if (attackIndex > attackColliders.Count - 1)
         {
             ResetCurrentAttack();
         }
@@ -95,6 +102,6 @@ public class AttackColliders : MonoBehaviour
 
     public bool IsLastHit()
     {
-        return attackIndex == attackColliders.Length - 1;
+        return attackIndex == attackColliders.Count - 1;
     }
 }

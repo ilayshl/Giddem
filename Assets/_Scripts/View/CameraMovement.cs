@@ -32,6 +32,10 @@ public class CameraMovement : MonoBehaviour
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _currentVelocity, smoothTime * Time.deltaTime);
     }
 
+    /// <summary>
+    /// Changes the target object of camera, causing it so swiftly slide towards it.
+    /// </summary>
+    /// <param name="newTarget"></param>
     public void ChangeCameraTarget(Transform newTarget)
     {
         target = newTarget;
@@ -41,6 +45,11 @@ public class CameraMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Spawns an object at the target position, and sets the camera to follow it.
+    /// </summary>
+    /// <param name="position"></param>
+    /// <param name="name"></param>
     public void SpawnCameraAnchor(Vector3 position, string name)
     {
         _cameraAnchor = new GameObject();
@@ -49,6 +58,10 @@ public class CameraMovement : MonoBehaviour
         ChangeCameraTarget(_cameraAnchor.transform);
     }
 
+    /// <summary>
+    /// Moves the currently spawned Camera Anchor.
+    /// </summary>
+    /// <param name="targetPosition"></param>
     public void MoveCameraAnchor(Vector3 targetPosition)
     {
         if (_cameraAnchor == null) return;

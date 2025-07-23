@@ -6,4 +6,9 @@ public class NpcObject : InteractableObject
     {
         Debug.Log("NPC Dialogue");
     }
+
+    protected override void ObjectTypeInitiate()
+    {
+        objectType = InteractableObjectType.NPC;
+    }
 }

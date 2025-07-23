@@ -9,6 +9,9 @@ public class PickupObject : InteractableObject
         Destroy(this.gameObject);
     }
 
-    
+    protected override void ObjectTypeInitiate()
+    {
+        objectType = InteractableObjectType.Interact;
+    }
     
 }
