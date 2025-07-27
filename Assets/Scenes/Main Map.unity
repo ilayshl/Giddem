@@ -1573,7 +1573,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Hanger
   highlightMat: {fileID: 2100000, guid: 1769b334970dc1d41ac069d10fa2ec6a, type: 2}
-  objectType: 3
 --- !u!23 &73310575
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11117,7 +11116,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Matress
   highlightMat: {fileID: 2100000, guid: 2a5e94d3df29ea34783a041c6f21339c, type: 2}
-  objectType: 2
 --- !u!54 &707428978
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22049,7 +22047,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Hanger
   highlightMat: {fileID: 2100000, guid: 1769b334970dc1d41ac069d10fa2ec6a, type: 2}
-  objectType: 3
 --- !u!23 &1305535686
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -34846,7 +34843,7 @@ Transform:
   m_GameObject: {fileID: 1644944655}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.732342, y: -1.769134, z: 7.361172}
+  m_LocalPosition: {x: -8.732342, y: -1.02, z: 7.361172}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -39012,7 +39009,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Chairs
   highlightMat: {fileID: 2100000, guid: 2a5e94d3df29ea34783a041c6f21339c, type: 2}
-  objectType: 2
 --- !u!54 &1899692083
 Rigidbody:
   m_ObjectHideFlags: 0
