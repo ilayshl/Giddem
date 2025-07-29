@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: Outlines
   m_EditorClassIdentifier: 
   m_Active: 1
-  injectionPoint: 600
+  injectionPoint: 550
   fetchColorBuffer: 1
   requirements: 6
   passMaterial: {fileID: 2100000, guid: fb7f1595472731c4c82254e93c390c24, type: 2}
