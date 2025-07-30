@@ -67,7 +67,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.39, y: 3.62, z: 6.2710457}
+  m_Size: {x: 2.39, y: 3.65, z: 6.2710457}
   m_Center: {x: 0, y: 1.5588852, z: 2.8855233}
 --- !u!1 &1034813666545478070
 GameObject:
@@ -251,10 +251,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 425938ca4068da74d8b38f850a4a7d51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackColliders:
-  - {fileID: 1927835889688076112}
-  - {fileID: 5849365423347055731}
-  - {fileID: 7942698556363571465}
 --- !u!1 &3613826672818650809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1524,9 +1520,11 @@ MonoBehaviour:
   dashCooldown: 2
   dashLimit: 2
   forwardTransform: {fileID: 3370795361514275403}
-  layerToCollide:
-    serializedVersion: 2
+  layersToCollide:
+  - serializedVersion: 2
     m_Bits: 256
+  - serializedVersion: 2
+    m_Bits: 512
   meshRenderer:
   - {fileID: 3036608280112498900}
   - {fileID: 7600510173254099529}
