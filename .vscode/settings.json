@@ -66,5 +66,5 @@
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj"
     },
-    "dotnet.defaultSolution": "Giddem.sln"
+    "dotnet.defaultSolution": "Giddem_Generosity.sln"
 }
