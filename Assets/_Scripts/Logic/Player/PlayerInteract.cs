@@ -5,6 +5,7 @@ public class PlayerInteract : MonoBehaviour
 {
     public Action<InteractableObject> OnInteractAbility; //To use on the PlayerTelekinesis and PlayerGrapple abilities
     [SerializeField] private CharacterManager playerManager;
+    [SerializeField] private bool isControlledByMouse;
     [SerializeField] private InteractableObjectType[] objectTypeToCollide; //Types that the collider will be able to detect.
     [SerializeField] private KeyCode inputKey;
     private InteractableObject _highlightedObject;
@@ -12,6 +13,11 @@ public class PlayerInteract : MonoBehaviour
     private void Update()
     {
         GetInput();
+
+        if (isControlledByMouse)
+        {
+            RotateToMouse();
+        }
     }
 
     /// <summary>
@@ -88,6 +94,12 @@ public class PlayerInteract : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void RotateToMouse()
+    {
+                    var rotation = Quaternion.LookRotation(IsometricHelper.MouseToWorldPosition(transform.parent), Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, playerManager.TurnSpeed);
     }
 
 }

@@ -12,7 +12,6 @@ public class PlayerAttack : MonoBehaviour
     private Coroutine _attackCooldown;
 
     private Vector3 _attackRotation;
-    private LayerMask _playerLayer;
 
     private void OnEnable()
     {
@@ -52,7 +51,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (state == CharacterState.Attack)
         {
-            _attackRotation = CalculateAttackRotation();
+            _attackRotation = IsometricHelper.MouseToWorldPosition(transform);
         }
         else if (attackColliders.attackIndex != 0)
         {
@@ -105,43 +104,6 @@ public class PlayerAttack : MonoBehaviour
             StopCoroutine(_attackCooldown);
             _attackCooldown = null;
         }
-    }
-
-    /// <summary>
-    /// Returns the Vector3 position of the mouse in the isometric world.
-    /// </summary>
-    /// <returns></returns>
-    private Vector3 CalculateAttackRotation()
-    {
-        Vector3 mouse = Input.mousePosition;
-        Ray castPoint = Camera.main.ScreenPointToRay(mouse);
-        RaycastHit hit;
-        if (Physics.Raycast(castPoint, out hit, Mathf.Infinity, ~_playerLayer))
-        {
-            Vector3 requiredHitPoint;
-            Vector3 playerHeight = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-            Vector3 hitPoint = new Vector3(hit.point.x, hit.point.y, hit.point.z);
-            float length = Vector3.Distance(playerHeight, hitPoint);
-            var degree = 30;
-            var radian = degree * Mathf.Deg2Rad;
-            float hypote = length / (Mathf.Sin(radian));
-            float distanceFromCamera = hit.distance;
-
-            if (transform.position.y > hit.point.y)
-            {
-                requiredHitPoint = castPoint.GetPoint(distanceFromCamera - hypote);
-            }
-            else if (transform.position.y < hit.point.y)
-            {
-                requiredHitPoint = castPoint.GetPoint(distanceFromCamera + hypote);
-            }
-            else
-            {
-                requiredHitPoint = castPoint.GetPoint(distanceFromCamera);
-            }
-            return requiredHitPoint - transform.position;
-        }
-        return transform.forward;
     }
 
     /// <summary>
