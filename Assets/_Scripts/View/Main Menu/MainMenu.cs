@@ -8,10 +8,13 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Transform mainCamera;
     [SerializeField] Transform secondScreenCameraPosition;
     [SerializeField] Button backButton;
-    [SerializeField] Transform lights;
     [SerializeField] Canvas settingsCanvas, aboutCanvas;
     private Vector3 firstScreenCameraPosition;
 
+    void OnEnable()
+    {
+        FadeUI.Instance.OnFadeInFinish += TransitionScenes;
+    }
     void Start()
     {
         firstScreenCameraPosition = mainCamera.position;
@@ -41,7 +44,6 @@ public class MainMenu : MonoBehaviour
     {
         mainCamera.DOMoveX(secondScreenCameraPosition.position.x, 0.5f).SetEase(Ease.InOutSine);
         Invoke(nameof(ShowBackButton), 0.5f);
-        lights.DOLocalRotate(new Vector3(0, 0, 45), 0.5f);
     }
 
     private void ShowBackButton()
@@ -53,7 +55,6 @@ public class MainMenu : MonoBehaviour
     {
         mainCamera.DOMoveX(firstScreenCameraPosition.x, 0.5f).SetEase(Ease.InOutSine);
         backButton.gameObject.SetActive(false);
-        lights.DOLocalRotate(Vector3.zero, 0.5f);
     }
 
     /// <summary>
@@ -68,5 +69,10 @@ public class MainMenu : MonoBehaviour
     public void QuitApplication()
     {
         Application.Quit();
+    }
+
+    private void TransitionScenes()
+    {
+
     }
 }

@@ -3,10 +3,8 @@ using UnityEngine;
 /// <summary>
 /// Camera follows a target smoothly.
 /// </summary>
-public class CameraMovement : MonoBehaviour
+public class CameraMovement : Singleton<CameraMovement>
 {
-    public static CameraMovement Instance;
-
     public Transform Target { get => target; }
     [SerializeField] private Transform target;
     [SerializeField] private float smoothTime = 0.3f;
@@ -14,15 +12,8 @@ public class CameraMovement : MonoBehaviour
     private Vector3 _offset;
     private GameObject _cameraAnchor;
 
-    void Awake()
+    void Start()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(Instance);
-            return;
-        }
-        Instance = this;
-
         _offset = transform.position - target.position;
     }
 
@@ -34,6 +25,7 @@ public class CameraMovement : MonoBehaviour
 
     /// <summary>
     /// Changes the target object of camera, causing it so swiftly slide towards it.
+    /// If set to an object that is not a camera anchor- destroys the previous anchor.
     /// </summary>
     /// <param name="newTarget"></param>
     public void ChangeCameraTarget(Transform newTarget)
@@ -52,9 +44,8 @@ public class CameraMovement : MonoBehaviour
     /// <param name="name"></param>
     public void SpawnCameraAnchor(Vector3 position, string name)
     {
-        _cameraAnchor = new GameObject();
+        _cameraAnchor = new GameObject(name);
         _cameraAnchor.transform.position = position;
-        _cameraAnchor.name = name;
         ChangeCameraTarget(_cameraAnchor.transform);
     }
 

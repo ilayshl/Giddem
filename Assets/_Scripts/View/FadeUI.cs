@@ -1,8 +1,10 @@
 using UnityEngine;
 using DG.Tweening;
+using System;
 
-public class UIFade : MonoBehaviour
+public class FadeUI : Singleton<FadeUI>
 {
+    public Action OnFadeInFinish;
     [SerializeField] private bool isActiveOnStart;
     [SerializeField] private float fadeInDuration;
     [SerializeField] private float fadeOutDuration;
@@ -11,8 +13,9 @@ public class UIFade : MonoBehaviour
     private bool _isVisible = false;
     private SpriteRenderer _sr;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _sr = GetComponent<SpriteRenderer>();
     }
 
@@ -39,6 +42,7 @@ public class UIFade : MonoBehaviour
         else
         {
             _sr.DOColor(startColor, fadeInDuration).SetEase(Ease.InOutSine);
+            OnFadeInFinish?.Invoke();
         }
         _isVisible = !_isVisible;
     }

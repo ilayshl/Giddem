@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyExaple : MonoBehaviour, IDamageable, IKillable
+public class EnemyExample : MonoBehaviour, IDamageable, IKillable
 {
     Animator anim;
 

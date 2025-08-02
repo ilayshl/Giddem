@@ -1,21 +1,10 @@
 using System;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    public static GameManager Instance;
     public GameState state { get; private set; }
     public static event Action<GameState> OnGameStateChanged;
-
-    void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(Instance);
-            return;
-        }
-        Instance = this;
-    }
 
     void Start()
     {
