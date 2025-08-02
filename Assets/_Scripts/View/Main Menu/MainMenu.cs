@@ -1,23 +1,32 @@
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] Transform mainCamera;
-    [SerializeField] Transform secondScreenCameraPosition;
-    [SerializeField] Button backButton;
-    [SerializeField] Canvas settingsCanvas, aboutCanvas;
-    private Vector3 firstScreenCameraPosition;
+    [SerializeField] private Transform mainCamera;
+    [SerializeField] private Transform secondScreenCameraPosition;
+    [SerializeField] private Button backButton;
+    [SerializeField] private Canvas settingsCanvas, aboutCanvas;
+    [SerializeField] private float animationTime;
+    [SerializeField] private AudioClip[] music;
+    private int _sceneToTransition;
+    private Vector3 _firstScreenCameraPosition;
 
-    void OnEnable()
+    private void OnEnable()
     {
         FadeUI.Instance.OnFadeInFinish += TransitionScenes;
     }
+
+    private void OnDestroy()
+    {
+        FadeUI.Instance.OnFadeInFinish -= TransitionScenes;
+    }
+
     void Start()
     {
-        firstScreenCameraPosition = mainCamera.position;
+        _firstScreenCameraPosition = mainCamera.position;
+        SoundManager.Instance.PlayMusic(music[_sceneToTransition]);
     }
 
     private void DisableCanvases()
@@ -42,28 +51,30 @@ public class MainMenu : MonoBehaviour
 
     private void MoveToSecondScreen()
     {
-        mainCamera.DOMoveX(secondScreenCameraPosition.position.x, 0.5f).SetEase(Ease.InOutSine);
-        Invoke(nameof(ShowBackButton), 0.5f);
+        mainCamera.DOMoveX(secondScreenCameraPosition.position.x, animationTime).SetEase(Ease.InOutSine);
+        Invoke(nameof(ChangeBackButton), animationTime);
     }
 
-    private void ShowBackButton()
+    private void ChangeBackButton()
     {
-        backButton.gameObject.SetActive(true);
+        bool isActive = backButton.isActiveAndEnabled;
+        backButton.gameObject.SetActive(!isActive);
     }
 
     public void MoveToFirstScreen()
     {
-        mainCamera.DOMoveX(firstScreenCameraPosition.x, 0.5f).SetEase(Ease.InOutSine);
-        backButton.gameObject.SetActive(false);
+        mainCamera.DOMoveX(_firstScreenCameraPosition.x, animationTime).SetEase(Ease.InOutSine);
+        ChangeBackButton();
     }
 
     /// <summary>
     /// 1 = New game, 2 = Sandbox
     /// </summary>
     /// <param name="scene"></param>
-    public void LoadScene(int scene)
+    public void SetSceneToTransition(int scene)
     {
-        SceneManager.LoadScene(scene);
+        _sceneToTransition = scene;
+        SoundManager.Instance.PlayMusic(music[_sceneToTransition], 1f);
     }
 
     public void QuitApplication()
@@ -73,6 +84,13 @@ public class MainMenu : MonoBehaviour
 
     private void TransitionScenes()
     {
-
+        if (_sceneToTransition != 0)
+        {
+            SceneHandler.Instance.TransitionScene((SceneType)_sceneToTransition);
+        }
+        else
+        {
+            Debug.LogWarning("[MainMenu] No scene was selected!");
+        }
     }
 }

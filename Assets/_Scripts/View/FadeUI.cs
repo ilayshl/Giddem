@@ -41,8 +41,8 @@ public class FadeUI : Singleton<FadeUI>
         }
         else
         {
-            _sr.DOColor(startColor, fadeInDuration).SetEase(Ease.InOutSine);
-            OnFadeInFinish?.Invoke();
+            _sr.DOColor(startColor, fadeInDuration).OnComplete(() => OnFadeInFinish?.Invoke())
+            .SetEase(Ease.InOutSine);
         }
         _isVisible = !_isVisible;
     }
