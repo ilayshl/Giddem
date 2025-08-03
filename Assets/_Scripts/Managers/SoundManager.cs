@@ -13,7 +13,7 @@ public class SoundManager : Singleton<SoundManager>
 
     public void PlayMusic(AudioClip music, float fadeDuration = 0)
     {
-        if (fadeDuration <= 0)
+        if (fadeDuration <= 0) //If no fade duration was given, play the new clip immediately
         {
             musicSource.Stop();
             musicSource.clip = music;
@@ -21,38 +21,54 @@ public class SoundManager : Singleton<SoundManager>
         }
         else
         {
-            StartCoroutine(SwitchMusic(musicSource, music, fadeDuration));
+            StartCoroutine(SwitchSound(musicSource, music, fadeDuration));
         }
     }
 
-    public IEnumerator SwitchMusic(AudioSource source, AudioClip music, float fadeDuration)
+    public void StopMusic(float fadeDuration)
     {
-        float volume = source.volume;
-        if (source.isPlaying)
+        if (musicSource.isPlaying)
         {
-            yield return FadeSound(source, fadeDuration);
+            if (fadeDuration <= 0)
+            {
+                ResetSound(musicSource);
+            }
+            else
+            {
+                StartCoroutine(FadeOutSound(musicSource, fadeDuration));
+            }
+        }
+    }
+
+    public IEnumerator SwitchSound(AudioSource source, AudioClip music, float fadeDuration)
+    {
+        float volume = source.volume; //Gets the current volume for later
+        if (source.isPlaying) //If there's already music playing, fade it out first
+        {
+            yield return FadeOutSound(source, fadeDuration);
         }
 
-        source.clip = music;
-        source.Play();
-        while (source.volume < volume)
+        source.clip = music; //Set the new clip
+        source.Play(); //Start it
+        while (source.volume < volume) //Gradually get to the previous volume
         {
             source.volume += Time.deltaTime / fadeDuration;
             yield return null;
+            source.volume = volume; //Reset it to what is was before
         }
     }
 
-    private IEnumerator FadeSound(AudioSource source, float fadeDuration)
+    private IEnumerator FadeOutSound(AudioSource source, float fadeDuration)
     {
-        while (source.volume > 0)
+        while (source.volume > 0) //Gradually lower the volume
         {
             source.volume -= Time.deltaTime / fadeDuration;
             yield return null;
         }
-        ResetClip(source);
+        ResetSound(source);
     }
 
-    private void ResetClip(AudioSource source)
+    private void ResetSound(AudioSource source)
     {
         source.clip = null;
     }

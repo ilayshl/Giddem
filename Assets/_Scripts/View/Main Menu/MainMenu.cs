@@ -9,7 +9,6 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Button backButton;
     [SerializeField] private Canvas settingsCanvas, aboutCanvas;
     [SerializeField] private float animationTime;
-    [SerializeField] private AudioClip[] music;
     private int _sceneToTransition;
     private Vector3 _firstScreenCameraPosition;
 
@@ -26,7 +25,6 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         _firstScreenCameraPosition = mainCamera.position;
-        SoundManager.Instance.PlayMusic(music[_sceneToTransition]);
     }
 
     private void DisableCanvases()
@@ -74,7 +72,7 @@ public class MainMenu : MonoBehaviour
     public void SetSceneToTransition(int scene)
     {
         _sceneToTransition = scene;
-        SoundManager.Instance.PlayMusic(music[_sceneToTransition], 1f);
+        SoundManager.Instance.StopMusic(2f);
     }
 
     public void QuitApplication()
