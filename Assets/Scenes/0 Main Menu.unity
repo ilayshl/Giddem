@@ -413,7 +413,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1342560824}
+      - m_Target: {fileID: 1659588413}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: MoveToFirstScreen
         m_Mode: 1
@@ -1119,7 +1119,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1342560824}
+      - m_Target: {fileID: 1659588413}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: ShowSettingsCanvas
         m_Mode: 1
@@ -3592,7 +3592,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1342560825}
-  - component: {fileID: 1342560824}
   m_Layer: 0
   m_Name: Canvases
   m_TagString: Untagged
@@ -3600,24 +3599,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1342560824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1342560823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 009a626cc16a1cd4b820c874dbfafbcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 1710544052}
-  secondScreenCameraPosition: {fileID: 2078032463}
-  backButton: {fileID: 155289781}
-  settingsCanvas: {fileID: 1985656109}
-  aboutCanvas: {fileID: 2000152009}
-  animationTime: 0.5
 --- !u!4 &1342560825
 Transform:
   m_ObjectHideFlags: 0
@@ -3960,7 +3941,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1342560824}
+      - m_Target: {fileID: 1659588413}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: ShowAboutCanvas
         m_Mode: 1
@@ -4472,6 +4453,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1636280886}
   m_CullTransparentMesh: 1
+--- !u!1 &1659588412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1659588414}
+  - component: {fileID: 1659588413}
+  m_Layer: 0
+  m_Name: Main Menu Handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1659588413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659588412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 009a626cc16a1cd4b820c874dbfafbcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 1710544052}
+  secondScreenCameraPosition: {fileID: 2078032463}
+  backButton: {fileID: 155289781}
+  settingsCanvas: {fileID: 1985656109}
+  aboutCanvas: {fileID: 2000152009}
+  animationTime: 0.5
+--- !u!4 &1659588414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659588412}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.38173, y: 0, z: 101.46732}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1699930322
 GameObject:
   m_ObjectHideFlags: 0
@@ -4555,7 +4586,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1342560824}
+      - m_Target: {fileID: 1659588413}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: QuitApplication
         m_Mode: 1
@@ -6367,6 +6398,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4249304158259984778, guid: 87df5707199bd1548bc5ed8b1c81e1f5, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6360504809611636019, guid: 87df5707199bd1548bc5ed8b1c81e1f5, type: 3}
       propertyPath: m_Name
       value: Persistent Systems
@@ -6499,9 +6534,10 @@ SceneRoots:
   m_Roots:
   - {fileID: 1710544052}
   - {fileID: 2078032463}
+  - {fileID: 1659588414}
   - {fileID: 1342560825}
   - {fileID: 1865771753}
   - {fileID: 3943721412569818403}
   - {fileID: 290163063}
-  - {fileID: 5572768770990794508}
   - {fileID: 171874435}
+  - {fileID: 5572768770990794508}
