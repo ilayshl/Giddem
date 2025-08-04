@@ -1477,6 +1477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerManager: {fileID: 4132948944991069440}
+  forwardHeightOffset: {fileID: 7695714589339376471}
 --- !u!114 &9191347033770302263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1591,7 +1592,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3852222411428416315}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: f34a8fa3ea4cdc343932cf3fc24ddf5e, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

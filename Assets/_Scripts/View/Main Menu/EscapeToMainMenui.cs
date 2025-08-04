@@ -7,7 +7,7 @@ public class EscapeToMainMenui : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene(0);
+            SceneHandler.Instance.SetSceneToTransition(0);
         }
     }
 }

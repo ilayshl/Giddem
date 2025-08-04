@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private CharacterManager playerManager;
+    [SerializeField] private Transform forwardHeightOffset;
     private Vector3 _input;
     private Rigidbody _rb;
 
@@ -64,8 +65,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (playerManager.state == CharacterState.Run || playerManager.state == CharacterState.Attack)
         {
-            _rb.MovePosition(transform.position + (IsometricHelper.ToIso(_input).normalized * _input.normalized.magnitude)
-                * playerManager.CurrentMoveSpeed * Time.fixedDeltaTime);
+            Vector3 correctDirection = IsometricHelper.ToIso(_input).normalized * _input.normalized.magnitude;
+            //_rb.linearVelocity = correctDirection * playerManager.CurrentMoveSpeed;
+            RaycastHit hit;
+            Debug.DrawLine(transform.position, transform.position + correctDirection *  0.33f, Color.white, 0.1f);
+            if (!Physics.Raycast(forwardHeightOffset.position, correctDirection, out hit, .33f))
+            {
+                _rb.MovePosition(transform.position + correctDirection * playerManager.CurrentMoveSpeed * Time.fixedDeltaTime);
+            }
         }
     }
 

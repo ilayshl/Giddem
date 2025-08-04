@@ -1,20 +1,20 @@
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] Transform mainCamera;
-    [SerializeField] Transform secondScreenCameraPosition;
-    [SerializeField] Button backButton;
-    [SerializeField] Transform lights;
-    [SerializeField] Canvas settingsCanvas, aboutCanvas;
-    private Vector3 firstScreenCameraPosition;
+    [SerializeField] private Transform mainCamera;
+    [SerializeField] private Transform secondScreenCameraPosition;
+    [SerializeField] private Button backButton;
+    [SerializeField] private Canvas settingsCanvas, aboutCanvas;
+    [SerializeField] private float animationTime;
+    private int _sceneToTransition;
+    private Vector3 _firstScreenCameraPosition;
 
     void Start()
     {
-        firstScreenCameraPosition = mainCamera.position;
+        _firstScreenCameraPosition = mainCamera.position;
     }
 
     private void DisableCanvases()
@@ -39,34 +39,26 @@ public class MainMenu : MonoBehaviour
 
     private void MoveToSecondScreen()
     {
-        mainCamera.DOMoveX(secondScreenCameraPosition.position.x, 0.5f).SetEase(Ease.InOutSine);
-        Invoke(nameof(ShowBackButton), 0.5f);
-        lights.DOLocalRotate(new Vector3(0, 0, 45), 0.5f);
+        mainCamera.DOMoveX(secondScreenCameraPosition.position.x, animationTime).SetEase(Ease.InOutSine);
+        Invoke(nameof(ChangeBackButton), animationTime);
     }
 
-    private void ShowBackButton()
+    private void ChangeBackButton()
     {
-        backButton.gameObject.SetActive(true);
+        bool isActive = backButton.isActiveAndEnabled;
+        backButton.gameObject.SetActive(!isActive);
     }
 
     public void MoveToFirstScreen()
     {
-        mainCamera.DOMoveX(firstScreenCameraPosition.x, 0.5f).SetEase(Ease.InOutSine);
-        backButton.gameObject.SetActive(false);
-        lights.DOLocalRotate(Vector3.zero, 0.5f);
+        mainCamera.DOMoveX(_firstScreenCameraPosition.x, animationTime).SetEase(Ease.InOutSine);
+        ChangeBackButton();
     }
 
-    /// <summary>
-    /// 1 = New game, 2 = Sandbox
-    /// </summary>
-    /// <param name="scene"></param>
-    public void LoadScene(int scene)
-    {
-        SceneManager.LoadScene(scene);
-    }
 
     public void QuitApplication()
     {
         Application.Quit();
     }
+
 }
