@@ -27,6 +27,11 @@ public class ColorSoakShader : MonoBehaviour
         }
     }
 
+    void OnDestroy()
+    {
+        _image.material.SetFloat("_SpreadPercent", 0);
+    }
+
     private IEnumerator PlayAnimation(float playDuration)
     {
         while (_image.material.GetFloat("_SpreadPercent") > FULLY_COVERED)
