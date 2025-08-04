@@ -5,7 +5,8 @@ public class SoundManager : Singleton<SoundManager>
 {
 
     [SerializeField] private AudioSource musicSource, soundSource, dialogueSource;
-
+    private const float MUSIC_VOLUME = 0.5f;
+    
     public void PlaySound(AudioClip sound)
     {
         soundSource.PlayOneShot(sound);
@@ -42,7 +43,7 @@ public class SoundManager : Singleton<SoundManager>
 
     public IEnumerator SwitchSound(AudioSource source, AudioClip music, float fadeDuration)
     {
-        float volume = source.volume; //Gets the current volume for later
+        float originalVolume = MUSIC_VOLUME; //Gets the current volume for later
         if (source.isPlaying) //If there's already music playing, fade it out first
         {
             yield return FadeOutSound(source, fadeDuration);
@@ -50,12 +51,12 @@ public class SoundManager : Singleton<SoundManager>
 
         source.clip = music; //Set the new clip
         source.Play(); //Start it
-        while (source.volume < volume) //Gradually get to the previous volume
+        while (source.volume < originalVolume) //Gradually get to the previous volume
         {
             source.volume += Time.deltaTime / fadeDuration;
             yield return null;
-            source.volume = volume; //Reset it to what is was before
         }
+            source.volume = originalVolume; //Reset it to what is was before
     }
 
     private IEnumerator FadeOutSound(AudioSource source, float fadeDuration)

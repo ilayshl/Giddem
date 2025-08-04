@@ -1,49 +1,46 @@
 using UnityEngine;
 using DG.Tweening;
 using System;
+using UnityEngine.UI;
 
+/// <summary>
+/// Responsible for fading in and out an image.
+/// </summary>
 public class FadeUI : Singleton<FadeUI>
 {
-    public Action OnFadeInFinish;
+    public Action OnEnableFinish;
+    public float EnableDuration { get => enableDuration; }
+    public float DisableDuration { get => disableDuration; }
     [SerializeField] private bool isActiveOnStart;
-    [SerializeField] private float fadeInDuration;
-    [SerializeField] private float fadeOutDuration;
+    [SerializeField] private float enableDuration;
+    [SerializeField] private float disableDuration;
     [SerializeField] private Color startColor;
     [SerializeField] private Color endColor;
-    private bool _isVisible = false;
-    private SpriteRenderer _sr;
+    private bool _isEnabled = true;
+    private Image _image;
 
     protected override void Awake()
     {
         base.Awake();
-        _sr = GetComponent<SpriteRenderer>();
+        _image = GetComponent<Image>();
     }
 
     void Start()
     {
-        _isVisible = isActiveOnStart;
-        if (isActiveOnStart)
-        {
-            _sr.color = startColor;
-            Fade();
-        }
-        else
-        {
-            _sr.color = endColor;
-        }
+            _image.color = startColor;
     }
 
     public void Fade()
     {
-        if (_isVisible)
+        if (_isEnabled)
         {
-            _sr.DOColor(endColor, fadeOutDuration).SetEase(Ease.InOutSine);
+            _image.DOColor(endColor, disableDuration).SetEase(Ease.InOutSine);
         }
         else
         {
-            _sr.DOColor(startColor, fadeInDuration).OnComplete(() => OnFadeInFinish?.Invoke())
+            _image.DOColor(startColor, enableDuration).OnComplete(() => OnEnableFinish?.Invoke())
             .SetEase(Ease.InOutSine);
         }
-        _isVisible = !_isVisible;
+        _isEnabled = !_isEnabled;
     }
 }

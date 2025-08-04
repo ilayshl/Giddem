@@ -12,16 +12,6 @@ public class MainMenu : MonoBehaviour
     private int _sceneToTransition;
     private Vector3 _firstScreenCameraPosition;
 
-    private void OnEnable()
-    {
-        FadeUI.Instance.OnFadeInFinish += TransitionScenes;
-    }
-
-    private void OnDestroy()
-    {
-        FadeUI.Instance.OnFadeInFinish -= TransitionScenes;
-    }
-
     void Start()
     {
         _firstScreenCameraPosition = mainCamera.position;
@@ -65,30 +55,10 @@ public class MainMenu : MonoBehaviour
         ChangeBackButton();
     }
 
-    /// <summary>
-    /// 1 = New game, 2 = Sandbox
-    /// </summary>
-    /// <param name="scene"></param>
-    public void SetSceneToTransition(int scene)
-    {
-        _sceneToTransition = scene;
-        SoundManager.Instance.StopMusic(2f);
-    }
 
     public void QuitApplication()
     {
         Application.Quit();
     }
 
-    private void TransitionScenes()
-    {
-        if (_sceneToTransition != 0)
-        {
-            SceneHandler.Instance.TransitionScene((SceneType)_sceneToTransition);
-        }
-        else
-        {
-            Debug.LogWarning("[MainMenu] No scene was selected!");
-        }
-    }
 }
