@@ -12,9 +12,9 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Statchy
+  companyName: YES Productions
   productName: Giddem_Project
-  defaultCursor: {fileID: 0}
+  defaultCursor: {fileID: 2800000, guid: d8007c1a7fb6af54fa3199e64b388e56, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.122641504, g: 0.118592024, b: 0.118592024, a: 1}
   m_ShowUnitySplashScreen: 1
