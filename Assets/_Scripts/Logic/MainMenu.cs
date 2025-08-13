@@ -2,6 +2,9 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Holds the behaviour of the main menu canvases.
+/// </summary>
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private Transform mainCamera;

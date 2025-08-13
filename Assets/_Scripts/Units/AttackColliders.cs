@@ -5,6 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Handles the logic for the attack colliders.
 /// Start with InitiateAttack and end with EndAttack.
+/// Used in conjuction with HitColliders.
 /// </summary>
 public class AttackColliders : MonoBehaviour
 {

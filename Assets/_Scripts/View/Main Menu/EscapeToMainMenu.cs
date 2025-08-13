@@ -1,7 +1,9 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class EscapeToMainMenui : MonoBehaviour
+/// <summary>
+/// Changes to Main Menu when given the correct input.
+/// </summary>
+public class EscapeToMainMenu : MonoBehaviour
 {
     void Update()
     {

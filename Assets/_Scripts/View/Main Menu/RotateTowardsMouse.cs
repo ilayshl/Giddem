@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Rotates an object towards the mouse's current position.
+/// </summary>
 public class RotateTowardsMouse : MonoBehaviour
 {
     Quaternion offset;
@@ -17,6 +20,6 @@ public class RotateTowardsMouse : MonoBehaviour
         {
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = targetRotation * offset;
-            }
+        }
     }
 }
