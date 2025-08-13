@@ -2,6 +2,10 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// General scene handling script.
+/// Responsible for scene transitions.
+/// </summary>
 public class SceneHandler : Singleton<SceneHandler>
 {
     [SerializeField] private AudioClip musicClip;
@@ -32,7 +36,7 @@ public class SceneHandler : Singleton<SceneHandler>
         FadeUI.Instance.OnEnableFinish += TransitionScene;
     }
 
-    
 
-    
+
+
 }

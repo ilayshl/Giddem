@@ -3133,7 +3133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActiveOnStart: 1
-  animDuration: 10
+  animDuration: 15
 --- !u!1 &1105637470
 GameObject:
   m_ObjectHideFlags: 0

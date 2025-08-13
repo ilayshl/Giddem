@@ -1,6 +1,9 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// Allows the player to interact with specific, pre-determined InteractableObject types.
+/// </summary>
 public class PlayerInteract : MonoBehaviour
 {
     public Action<InteractableObject> OnInteractAbility; //To use on the PlayerTelekinesis and PlayerGrapple abilities

@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Holds the behaviour of the fiery flickering effect for a light source.
+/// </summary>
 public class FireLightFlicker : MonoBehaviour
 {
     [SerializeField] private float maxInterval = 1f;
