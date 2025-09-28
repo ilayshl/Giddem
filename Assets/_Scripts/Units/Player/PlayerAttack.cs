@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     private const float ATTACK_COOLDOWN = 1f;
+    [SerializeField] private KeyCode inputKey;
     [SerializeField] private CharacterManager playerManager;
     [SerializeField] private AttackColliders attackColliders;
     private Coroutine _attackCooldown;
@@ -28,15 +29,15 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        CheckForClick();
+        CheckForInput();
     }
 
     /// <summary>
     /// Checks for correct input and if hadn't attacked already
     /// </summary>
-    private void CheckForClick()
+    private void CheckForInput()
     {
-        if (Input.GetKey(KeyCode.Mouse0) && _attackCooldown == null)
+        if (Input.GetKey(inputKey) && _attackCooldown == null)
         {
             playerManager.ChangeCharacterState(CharacterState.Attack);
             LookAtCursor();

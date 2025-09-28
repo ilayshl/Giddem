@@ -945,7 +945,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d1be9f677bd5347d79379811a12d94e4, type: 3}
       propertyPath: m_Name
-      value: Y Bot
+      value: Player Model
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d1be9f677bd5347d79379811a12d94e4, type: 3}
       propertyPath: m_Layer
@@ -1503,6 +1503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 928b715a9b66a46a99fc03cf4b6918ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputKey: 0
   playerManager: {fileID: 4132948944991069440}
   attackColliders: {fileID: 6292663310389329827}
 --- !u!114 &811083788705847490
@@ -1519,6 +1520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerManager: {fileID: 4132948944991069440}
   dashCooldown: 2
+  inputKey: 0
   dashLimit: 2
   forwardTransform: {fileID: 3370795361514275403}
   layersToCollide:

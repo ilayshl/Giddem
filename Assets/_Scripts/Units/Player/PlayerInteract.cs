@@ -64,9 +64,19 @@ public class PlayerInteract : MonoBehaviour
                 {
                     if (objectType == interactable.ObjectType)
                     {
-                        _highlightedObject?.RemoveOutline();
-                        _highlightedObject = interactable;
-                        interactable.ShowOutline();
+                        if (_highlightedObject == null)
+                        {
+                            _highlightedObject = interactable;
+                            interactable.ShowOutline();
+                        }
+                        else if (Vector3.Distance(transform.position, interactable.transform.position) <
+                                Vector3.Distance(transform.position, _highlightedObject.transform.position))
+                        {
+                            _highlightedObject.RemoveOutline();
+                            _highlightedObject = interactable;
+                            _highlightedObject.ShowOutline();
+                        }
+                        
                     }
                 }
             }
@@ -80,7 +90,7 @@ public class PlayerInteract : MonoBehaviour
     /// <param name="other"></param>
     protected void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Interactable"))
+        /* if (other.CompareTag("Interactable"))
         {
             if (other.TryGetComponent<InteractableObject>(out InteractableObject interactable))
             {
@@ -90,6 +100,12 @@ public class PlayerInteract : MonoBehaviour
                     _highlightedObject = null;
                 }
             }
+        } */
+        if (_highlightedObject == null) return;
+        if (other.gameObject == _highlightedObject.gameObject)
+        {
+            other.GetComponent<InteractableObject>().RemoveOutline();
+            _highlightedObject = null;
         }
     }
 
