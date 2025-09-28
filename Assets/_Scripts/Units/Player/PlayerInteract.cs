@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -10,7 +11,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private CharacterManager playerManager;
     [SerializeField] private InteractableObjectType[] objectTypeToCollide; //Types that the collider will be able to detect.
     [SerializeField] private KeyCode inputKey;
-    private InteractableObject _highlightedObject;
+    [SerializeField] private List<InteractableObject> _interactablesInRange;
 
     private void Update()
     {
@@ -22,15 +23,15 @@ public class PlayerInteract : MonoBehaviour
     /// </summary>
     private void GetInput()
     {
-        if (_highlightedObject == null) return; //If nothing is highlighted
+        if (_interactablesInRange.Count == 0) return; //If nothing is highlighted
         if (Input.GetKeyDown(inputKey))
         {
             CharacterState state = playerManager.state;
             if (state == CharacterState.Idle || state == CharacterState.Run)
             {
-                _highlightedObject.OnInteract();
+                _interactablesInRange[0].OnInteract();
 
-                switch (_highlightedObject.ObjectType) //For player-related behaviour such as abilities
+                switch (_interactablesInRange[0].ObjectType) //For player-related behaviour such as abilities
                 {
                     case InteractableObjectType.Telekinesis:
                         playerManager.ChangeCharacterState(CharacterState.Telekinesis);
@@ -40,12 +41,12 @@ public class PlayerInteract : MonoBehaviour
                         break;
                 }
 
-                if (!_highlightedObject.enabled) //If was destroyed from Interaction
+                if (!_interactablesInRange[0].enabled) //If was destroyed from Interaction
                 {
-                    _highlightedObject = null; //Reset highlight
+                    _interactablesInRange.Remove(_interactablesInRange[0]); //Reset highlight
                 }
 
-                OnInteractAbility?.Invoke(_highlightedObject);
+                OnInteractAbility?.Invoke(_interactablesInRange[0]);
             }
         }
     }
@@ -64,19 +65,8 @@ public class PlayerInteract : MonoBehaviour
                 {
                     if (objectType == interactable.ObjectType)
                     {
-                        if (_highlightedObject == null)
-                        {
-                            _highlightedObject = interactable;
-                            interactable.ShowOutline();
-                        }
-                        else if (Vector3.Distance(transform.position, interactable.transform.position) <
-                                Vector3.Distance(transform.position, _highlightedObject.transform.position))
-                        {
-                            _highlightedObject.RemoveOutline();
-                            _highlightedObject = interactable;
-                            _highlightedObject.ShowOutline();
-                        }
-                        
+                        _interactablesInRange.Add(interactable);
+                        CheckListOrder(interactable);
                     }
                 }
             }
@@ -85,27 +75,44 @@ public class PlayerInteract : MonoBehaviour
     }
 
     /// <summary>
+    /// Checks if the given interactable is the first in the list to highlight it
+    /// </summary>
+    /// <param name="interactable"></param>
+    private void CheckListOrder(InteractableObject interactable)
+    {
+        if (_interactablesInRange[0] == interactable)
+        {
+            interactable.ShowOutline();
+        }
+    }
+
+
+    /// <summary>
     /// When object leaves sight, if it is the object that is currently higlighted, cancel highlight
     /// </summary>
     /// <param name="other"></param>
     protected void OnTriggerExit(Collider other)
     {
-        /* if (other.CompareTag("Interactable"))
+        if (_interactablesInRange.Count == 0) return; //If there's no interactable in range, no need to check collision
+        
+        if (other.TryGetComponent<InteractableObject>(out InteractableObject interactable))
         {
-            if (other.TryGetComponent<InteractableObject>(out InteractableObject interactable))
+            if (_interactablesInRange.Contains(interactable))
             {
-                if (interactable == _highlightedObject)
+                if (_interactablesInRange[0] == interactable) //If the interactable is highlighted
                 {
                     interactable.RemoveOutline();
-                    _highlightedObject = null;
+                    _interactablesInRange.Remove(interactable);
+                    if (_interactablesInRange.Count > 0) //If there's another interactable in range currently
+                    {
+                    _interactablesInRange[0].ShowOutline();
+                    }
+                }
+                else
+                {
+                    _interactablesInRange.Remove(interactable);
                 }
             }
-        } */
-        if (_highlightedObject == null) return;
-        if (other.gameObject == _highlightedObject.gameObject)
-        {
-            other.GetComponent<InteractableObject>().RemoveOutline();
-            _highlightedObject = null;
         }
     }
 
