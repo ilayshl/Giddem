@@ -35,10 +35,10 @@ public abstract class InteractableObject : MonoBehaviour
     /// </summary>
     public void RemoveOutline()
     {
-        Material[] materials = meshRenderer.materials;
-        Material[] newMaterials = new Material[materials.Length - 1];
-        newMaterials[0] = materials[0];
-        meshRenderer.materials = newMaterials;
+            Material[] materials = meshRenderer.materials;
+            Material[] newMaterials = new Material[materials.Length - 1];
+            newMaterials[0] = materials[0];
+            meshRenderer.materials = newMaterials;
     }
 
     /// <summary>

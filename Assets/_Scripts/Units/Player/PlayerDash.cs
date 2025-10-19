@@ -12,6 +12,7 @@ public class PlayerDash : MonoBehaviour
     private const float DASH_POWER = 4f; //Multiplier for moveSpeed
     private const float DESTINATION_RANGE = 0.4f;
     public float dashCooldown = 2f; //Public to be edited in the game via attributes
+    [SerializeField] private KeyCode inputKey;
     [SerializeField] private int dashLimit = 2; //How many consecutive dashes the player can perform before cd
     [SerializeField] Transform forwardTransform; //To create collision ray
     [SerializeField] private LayerMask[] layersToCollide;
@@ -61,7 +62,7 @@ public class PlayerDash : MonoBehaviour
     /// </summary>
     private void CheckForInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(inputKey))
         {
             PrepareDash();
         }

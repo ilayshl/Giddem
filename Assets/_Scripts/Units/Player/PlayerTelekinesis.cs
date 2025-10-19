@@ -107,7 +107,7 @@ public class PlayerTelekinesis : MonoBehaviour
     /// <param name="movePower"></param>
     private void ShootObject(float movePower)
     {
-        _rb.AddForce((IsometricHelper.ToIso(_input).normalized * _input.normalized.magnitude)
+        _rb.AddForce(IsometricHelper.ToIso(_input).normalized * _input.normalized.magnitude
                 * (MOVE_FORCE * PUSH_MULT) * Time.fixedDeltaTime, ForceMode.Impulse);
     }
 
