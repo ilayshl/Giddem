@@ -23,14 +23,11 @@ public abstract class InteractableObject : MonoBehaviour
     /// </summary>
     public void ShowOutline()
     {
-        foreach (Transform transform in transform)
-        {
-            Material[] materials = meshRenderer.materials;
-            Material[] newMaterials = new Material[materials.Length + 1];
-            materials.CopyTo(newMaterials, 0);
-            newMaterials[newMaterials.Length - 1] = highlightMat;
-            meshRenderer.materials = newMaterials;
-        }
+        Material[] materials = meshRenderer.materials;
+        Material[] newMaterials = new Material[materials.Length + 1];
+        materials.CopyTo(newMaterials, 0);
+        newMaterials[newMaterials.Length - 1] = highlightMat;
+        meshRenderer.materials = newMaterials;
     }
 
     /// <summary>
@@ -38,13 +35,10 @@ public abstract class InteractableObject : MonoBehaviour
     /// </summary>
     public void RemoveOutline()
     {
-        foreach (Transform transform in transform)
-        {
             Material[] materials = meshRenderer.materials;
             Material[] newMaterials = new Material[materials.Length - 1];
             newMaterials[0] = materials[0];
             meshRenderer.materials = newMaterials;
-        }
     }
 
     /// <summary>

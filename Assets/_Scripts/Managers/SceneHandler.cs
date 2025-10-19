@@ -14,6 +14,11 @@ public class SceneHandler : Singleton<SceneHandler>
 
     void Start()
     {
+        if(SoundManager.Instance == null)
+        {
+            Debug.LogWarning("Please start game from the main menu!");
+            return;
+        }
         SoundManager.Instance.PlayMusic(musicClip, FadeUI.Instance.EnableDuration);
         FadeUI.Instance.Fade();
     }
